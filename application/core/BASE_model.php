@@ -1,4 +1,5 @@
 <?php  
+    //model gốc chứa các function cơ bản có thể dùng chung
     class BASE_model extends CI_Model {
         protected $table = '';
 
