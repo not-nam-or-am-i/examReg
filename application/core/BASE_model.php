@@ -14,12 +14,21 @@
         public function get_by_id($id) {
             $this->db->select('*');
             $this->db->where('id', $id);
-            return $this->db->get($this->table)->result();
+            return $this->db->get($this->table)->row();
         }
 
         public function delete($id) {
             $this->db->where('id', $id);
             $query = $this->db->delete($this->table);
             return true;
+        }
+
+        public function insert($data) {
+            return $this->db->insert($this->table, $data);
+        }
+
+        public function update($id, $data) {
+            $this->db->where('id', $id);
+            return $this->db->update($this->table, $data);
         }
     }
