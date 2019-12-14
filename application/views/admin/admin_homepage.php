@@ -1,3 +1,10 @@
+<!-- 
+	TODO:
+	- Fix all routes in top_actions_container
+	- Move navbar to templates to load
+-->
+
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
