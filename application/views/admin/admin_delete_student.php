@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Navigation bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  	<a class="navbar-brand" href="#">AdminHomepage</a>
+  	<a class="navbar-brand" href="<?php echo base_url(); ?>">AdminHomepage</a>
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     	<span class="navbar-toggler-icon"></span>
   	</button>
@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   	<div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
       		<li class="nav-item active">
-        		<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        		<a class="nav-link" href="<?php echo base_url(); ?>">Home <span class="sr-only">(current)</span></a>
       		</li>
       		<li class="nav-item dropdown">
         		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -141,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       				<div class="card-body">
         				<h5 class="card-title">Add</h5>
 						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<?php echo anchor('createStudent', 'Add', ['class'=>'btn btn-primary btn-sm']);?>
+						<?php echo anchor('CRUD_Students_Controller/create', 'Add', ['class'=>'btn btn-primary btn-sm']);?>
       				</div>
     			</div>
   			</div>
@@ -175,9 +175,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
     </div>
 
-    <?php echo validation_errors(); ?>
-    
-    <?php echo form_open('CRUD_Students_Controller/create', ['class'=>'form-row']);?>
+	<div class="jumbotron">
+		<p class="lead">U sure u wanna throw dis in da trash? Mày có chắc không?</p>
+		<hr class="my-4">
+		<p>Không quay lại được đâu đấy meh</p>
+		<tr>
+			<th></th>
+				<td><?php echo $student->id; ?></td>
+				<td><?php echo $student->ten; ?></td>
+				<td>
+					<?php echo $student->khoa_hoc; ?>
+				</td>
+				<td><?php echo $student->password; ?></td>
+		</tr>
+		<p class="lead">
+			<?php echo anchor('admin/delete-student/'.$id, 'Xoá', ['class'=>'btn btn-primary btn-sm']);?>
+		</p>
+	</div>
+
+    <?php echo form_open('admin/delete-student/'.$id, ['class'=>'form-row']);?>
         <div class="create-form">
                 <div id="form-input-container" class="form-row">
                     <div class="col-3">
@@ -195,7 +211,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php echo form_input(['name'=>'attribute4', 'placeholder'=>'Another attribute', 'class'=>'form-control']); ?>
                     </div>
                 </div>
-
+				<?php echo validation_errors(); ?>
                 <div>
                     <?php echo form_submit(['name'=>'submit', 'value'=>'Add', 'class'=>'btn btn-primary btn-sm']);?>
                 </div>

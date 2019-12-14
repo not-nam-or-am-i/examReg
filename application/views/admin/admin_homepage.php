@@ -1,3 +1,9 @@
+<!-- 
+	TODO:
+	- Fix all routes in navbar
+	- Move navbar to templates to load
+-->
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
@@ -87,7 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Navigation bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  	<a class="navbar-brand" href="#">AdminHomepage</a>
+  	<a class="navbar-brand" href="<?php echo base_url(); ?>">AdminHomepage</a>
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     	<span class="navbar-toggler-icon"></span>
   	</button>
@@ -95,7 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   	<div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
       		<li class="nav-item active">
-        		<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        		<a class="nav-link" href="<?php echo base_url(); ?>">Home <span class="sr-only">(current)</span></a>
       		</li>
       		<li class="nav-item dropdown">
         		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -130,6 +136,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
 <div id="container">
 
+	<!--
 	<div id="top-actions-container">
 		<div class="row">
   			<div class="col-sm-3">
@@ -137,7 +144,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       				<div class="card-body">
         				<h5 class="card-title">Add</h5>
 						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<?php echo anchor('CRUD_Students_Controller/create', 'Add', ['class'=>'btn btn-primary btn-sm']);?>
+						<?php // echo anchor('CRUD_Students_Controller/create', 'Add', ['class'=>'btn btn-primary btn-sm']);?>
       				</div>
     			</div>
   			</div>
@@ -170,11 +177,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   			</div>
 		</div>
 	</div>
-	
+	-->
 
 	<div class="database">
         <div class="database-header">
-            <h1 class="database-title">Student database</h1>
+            <h1 class="database-title">
+				Student database
+				<?php echo anchor('CRUD_Students_Controller/create', 'Add', ['class'=>'btn btn-primary btn-sm']);?>
+			</h1>
         </div>
             
         <div class="box-body">
@@ -202,8 +212,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</td>
 							<td><?php echo $student->password; ?></td>
 							<th>
-								<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Edit</button>
-								<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Delete</button>
+								<?php echo anchor('admin/update-student/'.$student->id, 'Edit', ['class'=>'btn btn-primary btn-sm']);?>
+								<?php echo anchor('admin/delete-student/'.$student->id, 'Delete', ['class'=>'btn btn-primary btn-sm']);?>
 							</th>
 						</tr>
 					<?php endforeach; ?>

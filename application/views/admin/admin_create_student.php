@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Navigation bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  	<a class="navbar-brand" href="#">AdminHomepage</a>
+  	<a class="navbar-brand" href="<?php echo base_url(); ?>">AdminHomepage</a>
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     	<span class="navbar-toggler-icon"></span>
   	</button>
@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   	<div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
       		<li class="nav-item active">
-        		<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        		<a class="nav-link" href="<?php echo base_url(); ?>">Home <span class="sr-only">(current)</span></a>
       		</li>
       		<li class="nav-item dropdown">
         		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -175,8 +175,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
     </div>
 
-    <?php echo validation_errors(); ?>
-    <!-- Form điền dữ liệu -->
+	<!-- Form điền dữ liệu -->
     <?php echo form_open('admin/add-student', ['class'=>'form-row']);?>
         <div class="create-form">
                 <div id="form-input-container" class="form-row">
@@ -186,15 +185,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         ?>
                     </div>
                     <div class="col">
-                        <?php echo form_input(['name'=>'id', 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+                        <?php echo form_input(['name'=>'id', 'value'=>set_value('id'), 'placeholder'=>'ID', 'class'=>'form-control']); ?>
                     </div>
                     <div class="col">
-                        <?php echo form_input(['name'=>'password', 'placeholder'=>'Password', 'class'=>'form-control']); ?>
+                        <?php echo form_input(['name'=>'password', 'value'=>set_value('password'), 'placeholder'=>'Password', 'class'=>'form-control']); ?>
                     </div>
                     <div class="col">
-                        <?php echo form_input(['name'=>'khoa_hoc', 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
+                        <?php echo form_input(['name'=>'khoa_hoc', 'value'=>set_value('khoa_hoc'), 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
                     </div>
                 </div>
+				<?php echo validation_errors(); ?>
                 <div>
                     <?php echo form_submit(['name'=>'submit', 'value'=>'Add', 'class'=>'btn btn-primary btn-sm']);?>
                     <?php //echo anchor('');?>

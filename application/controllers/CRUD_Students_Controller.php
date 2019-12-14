@@ -64,19 +64,13 @@ class CRUD_Students_Controller extends CI_Controller {
         }
 	}
 
-    //TODO: làm chức năng delete
+    //TODO: chạy, nhưng TẠI SAO NÓ KHÔNG DIRECT SANG DELETE VIEW???
 	public function delete($id) {
-        
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('id', 'ID', 'required');
- 
-        if ($this->form_validation->run() === FALSE) {
-            $this->load->view('admin/admin_delete_student');
-        } else {
-            //TODO: delete in database
+        $data['student'] = $this->account_model->get_by_id($id);
+        $this->load->view('admin/admin_delete_student');
 
-            
-        }
+        $this->account_model->delete($id);
+        redirect('admin');
 	}
 
 }
