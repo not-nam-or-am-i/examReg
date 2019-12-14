@@ -1,4 +1,5 @@
 <?php
+//Form ở dòng 179
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
@@ -175,24 +176,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
     </div>
 
+	<!-- Form nhập -->
     <?php echo validation_errors(); ?>
     
-    <?php echo form_open('CRUD_Students_Controller/create', ['class'=>'form-row']);?>
+    <?php echo form_open('admin/update-students' .$id, ['class'=>'form-row']);?>
         <div class="create-form">
                 <div id="form-input-container" class="form-row">
                     <div class="col-3">
                         <?php 
-                            echo form_input(['name'=>'name', 'value'=>set_value('name'), 'placeholder'=>'Name', 'class'=>'form-control']); 
+                            echo form_input(['name'=>'name', 'value'=>$student->ten, 'placeholder'=>'Name', 'class'=>'form-control']); 
                         ?>
                     </div>
                     <div class="col-3">
-                        <?php echo form_input(['name'=>'id', 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+                        <?php echo form_input(['name'=>'id', 'value'=>$student->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
                     </div>
                     <div class="col-3">
-                        <?php echo form_input(['name'=>'attribute3', 'placeholder'=>'Another attribute', 'class'=>'form-control']); ?>
+                        <?php echo form_input(['name'=>'password', 'value'=>$student->password, 'placeholder'=>'Password', 'class'=>'form-control']); ?>
                     </div>
                     <div class="col-3">
-                        <?php echo form_input(['name'=>'attribute4', 'placeholder'=>'Another attribute', 'class'=>'form-control']); ?>
+                        <?php echo form_input(['name'=>'khoa_hoc', 'value'=>$student->khoa_hoc, 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
                     </div>
                 </div>
 

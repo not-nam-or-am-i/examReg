@@ -5,4 +5,10 @@
         public function __construct() {
             parent::__construct();
         }
+
+        public function get_all_students() {
+            $this->db->select('*');
+            $this->db->where('is_admin', false);
+            return $this->db->get($this->table)->result();
+        }
     }

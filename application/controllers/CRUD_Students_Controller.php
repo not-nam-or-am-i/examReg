@@ -2,74 +2,80 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CRUD_Students_Controller extends CI_Controller {
+    public function __construct() {
+        parent::__construct();
+        $this->load->helper('url', 'form');
+        $this->load->model('account_model');
+    }
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+    //load trang mặc định
 	public function index()
-	{
-    //TODO: 
-    /*
-        $this->load->model('account');
-        $student_accounts = $this->account->getAll(); // if isAdmin==false
-    */
-
-    //TODO: xong load đống thuộc tính vào array
-
-		$this->load->view('admin_homepage');
+	{   
+        $data['student_accounts'] = $this->account_model->get_all_students();
+		$this->load->view('admin/admin_homepage', $data);
 	}
 
+    //tạo một tài khoản cho sinh viên
 	public function create() {
-        
+        //kiểm tra dữ liệu điền vào có trống không
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('id', 'ID', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('khoa_hoc', 'Khóa học', 'required');
  
         if ($this->form_validation->run() === FALSE) {
-			$this->load->view('admin_create_student');
+			$this->load->view('admin/admin_create_student');
         } else {
-            //TODO: create in database
+            $data = array(
+                'ten'       => $this->input->post('name'),
+                'id'        => $this->input->post('id'),
+                'khoa_hoc'  => $this->input->post('khoa_hoc'),
+                'password'  => $this->input->post('password')
+            );
+            $this->account_model->insert($data);
 
-            redirect($this->input->post('admin_homepage'));
+            redirect('admin');
         }
 	}
-	
+    
+    //sửa thông tin sinh viên
 	public function update($id) {
+        $data['student'] = $this->account_model->get_by_id($id);
         
+        //kiểm tra dữ liệu điền vào có trống không
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('id', 'ID', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('khoa_hoc', 'Khóa học', 'required');
  
         if ($this->form_validation->run() === FALSE) {
-            $this->load->view('admin_update_student');
+            $data['id'] = $id;
+            $this->load->view('admin/admin_update_student', $data);
         } else {
-            //TODO: update in database
+            $update_data = array(
+                'ten'       => $this->input->post('name'),
+                'id'        => $this->input->post('id'),
+                'khoa_hoc'  => $this->input->post('khoa_hoc'),
+                'password'  => $this->input->post('password')
+            );
+            $this->account_model->update($id, $update_data);
 
-            redirect($this->input->post('admin_homepage'));
+            redirect('admin');
         }
 	}
 
-	public function delete() {
+    //TODO: làm chức năng delete
+	public function delete($id) {
         
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('id', 'ID', 'required');
  
         if ($this->form_validation->run() === FALSE) {
-            $this->load->view('admin_delete_student');
+            $this->load->view('admin/admin_delete_student');
         } else {
             //TODO: delete in database
 
-            redirect($this->input->post('admin_homepage'));
+            
         }
 	}
 

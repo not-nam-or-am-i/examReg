@@ -195,14 +195,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php foreach ($student_accounts as $student) : ?>
 						<tr>
 							<th></th>
-							<td><?php echo $account[id]; ?></td>
-							<td><?php echo $account[name]; ?></td>
+							<td><?php echo $student->id; ?></td>
+							<td><?php echo $student->ten; ?></td>
 							<td>
-								<?php foreach ($account[classes] as $class) : ?>
-									<?php echo $class ?>
-								<?php endforeach; ?>
+								<?php echo $student->khoa_hoc; ?>
 							</td>
-							<td></td>
+							<td><?php echo $student->password; ?></td>
 							<th>
 								<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Edit</button>
 								<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Delete</button>
@@ -211,31 +209,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php endforeach; ?>
 				</tbody>
 				
-				<!-- Sandbox examples -->
-                <tbody>
-					<tr>
-						<th></th>
-						<td>17021283</td>
-						<td>Me</td>
-						<td>XSTK</td>
-						<td>blehbleh</td>
-						<th>
-							<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Edit</button>
-							<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Delete</button>
-						</th>
-					</tr>
-					<tr>
-						<th></th>
-						<td>Trident</td>
-						<td>Internet Explorer 5.0</td>
-						<td>Win 95+</td>
-						<td>5</td>
-						<th>
-							<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Edit</button>
-							<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Delete</button>
-						</th>
-					</tr>
-				</tbody>
                 <tfoot>
 					<tr>
 						<th data-checkbox="false"></th>

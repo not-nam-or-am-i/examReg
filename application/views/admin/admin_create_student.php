@@ -176,8 +176,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <?php echo validation_errors(); ?>
-    
-    <?php echo form_open('CRUD_Students_Controller/create', ['class'=>'form-row']);?>
+    <!-- Form điền dữ liệu -->
+    <?php echo form_open('admin/add-student', ['class'=>'form-row']);?>
         <div class="create-form">
                 <div id="form-input-container" class="form-row">
                     <div class="col">
@@ -189,10 +189,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php echo form_input(['name'=>'id', 'placeholder'=>'ID', 'class'=>'form-control']); ?>
                     </div>
                     <div class="col">
-                        <?php echo form_input(['name'=>'attribute3', 'placeholder'=>'Another attribute', 'class'=>'form-control']); ?>
+                        <?php echo form_input(['name'=>'password', 'placeholder'=>'Password', 'class'=>'form-control']); ?>
                     </div>
                     <div class="col">
-                        <?php echo form_input(['name'=>'attribute4', 'placeholder'=>'Another attribute', 'class'=>'form-control']); ?>
+                        <?php echo form_input(['name'=>'khoa_hoc', 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
                     </div>
                 </div>
                 <div>
