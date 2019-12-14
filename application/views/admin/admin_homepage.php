@@ -204,8 +204,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</td>
 							<td></td>
 							<th>
-								<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Edit</button>
-								<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Delete</button>
+								<?php echo anchor('CRUD_Students_Controller/update', 'Update', ['class'=>'btn btn-primary btn-sm']);?>
+								<?php echo anchor('CRUD_Students_Controller/delete', 'Delete', ['class'=>'btn btn-primary btn-sm']);?>
 							</th>
 						</tr>
 					<?php endforeach; ?>
@@ -220,19 +220,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<td>XSTK</td>
 						<td>blehbleh</td>
 						<th>
-							<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Edit</button>
-							<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Delete</button>
+							<?php echo anchor('CRUD_Students_Controller/update', 'Update', ['class'=>'btn btn-primary btn-sm']);?>
+							<?php echo anchor('CRUD_Students_Controller/delete', 'Delete', ['class'=>'btn btn-primary btn-sm']);?>
 						</th>
 					</tr>
 					<tr>
 						<th></th>
-						<td>Trident</td>
+						<td>11111111</td>
 						<td>Internet Explorer 5.0</td>
 						<td>Win 95+</td>
 						<td>5</td>
 						<th>
-							<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Edit</button>
-							<button type="button" class="btn btn-primary btn-sm" onclick="location.href='#'">Delete</button>
+							<?php echo anchor('CRUD_Students_Controller/update', 'Update', ['class'=>'btn btn-primary btn-sm']);?>
+							<?php echo anchor('CRUD_Students_Controller/delete', 'Delete', ['class'=>'btn btn-primary btn-sm']);?>
 						</th>
 					</tr>
 				</tbody>
@@ -258,3 +258,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </body>
 </html>
+
