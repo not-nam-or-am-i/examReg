@@ -93,6 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	#add-button {
 		margin-left: 200px;
 	}
+
 	</style>
 </head>
 
@@ -116,8 +117,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         		</a>
 				<!-- TODO: FIX ALL HREF WHEN DONE -->
         		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item active" href="">Student CRUD</a>
-					<a class="dropdown-item" href="admin/subject">Subject CRUD</a>
+					<a class="dropdown-item active" href="admin">Student CRUD</a>
+					<a class="dropdown-item" href="">Subject CRUD</a>
 					<a class="dropdown-item" href="#">Create exam PERIOD</a>
           			<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">Import student list</a>
@@ -134,8 +135,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="bg-dark border-right col-5" id="sidebar-wrapper">
     <div class="list-group list-group-flush">
-        <a href="" class="list-group-item list-group-item-action bg-dark active">Student CRUD</a>
-        <a href="admin/subject" class="list-group-item list-group-item-action bg-dark list-group-item-light">Subject CRUD</a>
+        <a href="admin" class="list-group-item list-group-item-action bg-dark active">Student CRUD</a>
+        <a href="" class="list-group-item list-group-item-action bg-dark list-group-item-light">Subject CRUD</a>
         <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Import student list</a>
         <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Import student</a>
         <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Create exam PERIOD</a>
@@ -196,46 +197,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="database">
         <div class="database-header">
             <h1 class="database-title">
-				Student database
-				<?php echo anchor('admin/add-student', 'Thêm', ['class'=>'btn btn-primary btn-sm'], ['id'=>'add-button']);?>
+				Subject database
+				<?php echo anchor('admin/add-subject', 'Thêm', ['class'=>'btn btn-primary btn-sm']);?>
 			</h1>
         </div>
             
-        <div id="database-table" class="box-body">
+        <div class="box-body">
             <table id="example1" class="table table-bordered table-striped">
 				<thead>
 					<tr>
 						<th>Checkbox</th>
 						<th>ID</th>
-						<th>Tên</th>
 						<th>Môn học</th>
-						<th>Password</th>
 						<th></th>
 					</tr>
 				</thead>
 
 				<!-- Database retrival -->
 				<tbody>
-					<?php foreach ($student_accounts as $student) : ?>
+					<?php foreach ($subjects as $subject) : ?>
 						<!-- Table -->
 						<tr>
 							<th></th>
-							<td><?php echo $student->id; ?></td>
-							<td><?php echo $student->ten; ?></td>
-							<td>
-								<?php echo $student->khoa_hoc; ?>
-							</td>
-							<td><?php echo $student->password; ?></td>
+							<td><?php echo $subject->id; ?></td>
+							<td><?php echo $subject->ten_mon; ?></td>
 							<th>
-								<?php echo anchor('admin/update-student/'.$student->id, 'Sửa', ['class'=>'btn btn-primary btn-sm']); ?>
-								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteConfirmModal-<?php echo $student->id;?>">
+								<?php echo anchor('admin/update-subject/'.$subject->id, 'Sửa', ['class'=>'btn btn-primary btn-sm']); ?>
+								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteConfirmModal-<?php echo $subject->id;?>">
   									Xoá
 								</button>
 							</th>
 						</tr>
 
 						<!-- Modal for Delete Confirmation Pop-up -->
-						<div class="modal fade" id="deleteConfirmModal-<?php echo $student->id;?>" role="dialog" aria-labelledby="exampleModalLabel">
+						<div class="modal fade" id="deleteConfirmModal-<?php echo $subject->id;?>" role="dialog" aria-labelledby="exampleModalLabel">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -245,11 +240,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										</button>
 									</div>
 									<div class="modal-body">
-										Xóa sinh viên này?
+										Xóa môn học này?
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-										<?php echo anchor('admin/delete-student/'.$student->id, 'Delete', ['class'=>'btn btn-primary btn-sm']); ?>
+										<?php echo anchor('admin/delete-subject/'.$subject->id, 'Delete', ['class'=>'btn btn-primary btn-sm']); ?>
 									</div>
 								</div>
 							</div>
@@ -261,9 +256,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<tr>
 						<th data-checkbox="false"></th>
 						<th>ID</th>
-						<th>Tên</th>
 						<th>Môn học</th>
-						<th>Password</th>
 						<th></th>
 					</tr>
                 </tfoot>

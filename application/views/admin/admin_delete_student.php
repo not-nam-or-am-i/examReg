@@ -1,7 +1,9 @@
+<!-- CURRENTLY UNUSED -->
+
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+	defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 	<meta charset="utf-8">
 
@@ -134,89 +136,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
 <div id="container">
 
-	<div id="top-actions-container">
-		<div class="row">
-  			<div class="col-sm-3">
-    			<div class="card">
-      				<div class="card-body">
-        				<h5 class="card-title">Add</h5>
-						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<?php echo anchor('CRUD_Students_Controller/create', 'Add', ['class'=>'btn btn-primary btn-sm']);?>
-      				</div>
-    			</div>
-  			</div>
-  			<div class="col-sm-3"> 
-    			<div class="card">
-      				<div class="card-body">
-        				<h5 class="card-title">Update</h5>
-        				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        				<a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-      				</div>
-    			</div>
-  			</div>
-		  	<div class="col-sm-3">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Delete</h5>
-						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-					</div>
-				</div>
-  			</div>
-		  	<div class="col-sm-3">
-    			<div class="card">
-      				<div class="card-body">
-        				<h5 class="card-title">Import a list</h5>
-        				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        				<a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-      				</div>
-    			</div>
-  			</div>
-		</div>
-    </div>
-
-	<div class="jumbotron">
-		<p class="lead">U sure u wanna throw dis in da trash? Mày có chắc không?</p>
-		<hr class="my-4">
-		<p>Không quay lại được đâu đấy meh</p>
-		<tr>
-			<th></th>
-				<td><?php echo $student->id; ?></td>
-				<td><?php echo $student->ten; ?></td>
-				<td>
-					<?php echo $student->khoa_hoc; ?>
-				</td>
-				<td><?php echo $student->password; ?></td>
-		</tr>
-		<p class="lead">
-			<?php echo anchor('admin/delete-student/'.$id, 'Xoá', ['class'=>'btn btn-primary btn-sm']);?>
-		</p>
-	</div>
-
-    <?php echo form_open('admin/delete-student/'.$id, ['class'=>'form-row']);?>
-        <div class="create-form">
-                <div id="form-input-container" class="form-row">
-                    <div class="col-3">
-                        <?php 
-                            echo form_input(['name'=>'name', 'value'=>set_value('name'), 'placeholder'=>'Name', 'class'=>'form-control']); 
-                        ?>
-                    </div>
-                    <div class="col-3">
-                        <?php echo form_input(['name'=>'id', 'placeholder'=>'ID', 'class'=>'form-control']); ?>
-                    </div>
-                    <div class="col-3">
-                        <?php echo form_input(['name'=>'attribute3', 'placeholder'=>'Another attribute', 'class'=>'form-control']); ?>
-                    </div>
-                    <div class="col-3">
-                        <?php echo form_input(['name'=>'attribute4', 'placeholder'=>'Another attribute', 'class'=>'form-control']); ?>
-                    </div>
-                </div>
-				<?php echo validation_errors(); ?>
-                <div>
-                    <?php echo form_submit(['name'=>'submit', 'value'=>'Add', 'class'=>'btn btn-primary btn-sm']);?>
-                </div>
-        </div>     
-    </form>	
+	
 </div>
 
 

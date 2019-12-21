@@ -1,9 +1,3 @@
-<!-- 
-	TODO:
-	- Fix all href in navbar
-	- Move navbar to templates to load
--->
-
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
@@ -134,23 +128,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="bg-dark border-right col-5" id="sidebar-wrapper">
     <div class="list-group list-group-flush">
-        <a href="" class="list-group-item list-group-item-action bg-dark active">Student CRUD</a>
-        <a href="admin/subject" class="list-group-item list-group-item-action bg-dark list-group-item-light">Subject CRUD</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark active">Student CRUD</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Subject CRUD</a>
         <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Import student list</a>
         <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Import student</a>
         <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Create exam PERIOD</a>
     </div>
 </div>
-
-<?php 
-	//include '/application/views/navigationBar.php' C:\xampp\htdocs\web\application\views\navigationBar.php
-	//include '../navigationBar.php';
-?> 
         
-<!-- Main content -->
 <div id="container">
 
-	<!--
 	<div id="top-actions-container">
 		<div class="row">
   			<div class="col-sm-3">
@@ -158,11 +145,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       				<div class="card-body">
         				<h5 class="card-title">Add</h5>
 						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<?php // echo anchor('CRUD_Students_Controller/create', 'Add', ['class'=>'btn btn-primary btn-sm']);?>
+						<?php echo anchor('admin/add-student', 'Add', ['class'=>'btn btn-primary btn-sm'], ['id'=>'add-button']); ?>
       				</div>
     			</div>
   			</div>
-  			<div class="col-sm-3">
+  			<div class="col-sm-3"> 
     			<div class="card">
       				<div class="card-body">
         				<h5 class="card-title">Update</h5>
@@ -190,92 +177,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     			</div>
   			</div>
 		</div>
-	</div>
-	-->
+    </div>
 
-	<div class="database">
-        <div class="database-header">
-            <h1 class="database-title">
-				Student database
-				<?php echo anchor('admin/add-student', 'Thêm', ['class'=>'btn btn-primary btn-sm'], ['id'=>'add-button']);?>
-			</h1>
-        </div>
-            
-        <div id="database-table" class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th>Checkbox</th>
-						<th>ID</th>
-						<th>Tên</th>
-						<th>Môn học</th>
-						<th>Password</th>
-						<th></th>
-					</tr>
-				</thead>
-
-				<!-- Database retrival -->
-				<tbody>
-					<?php foreach ($student_accounts as $student) : ?>
-						<!-- Table -->
-						<tr>
-							<th></th>
-							<td><?php echo $student->id; ?></td>
-							<td><?php echo $student->ten; ?></td>
-							<td>
-								<?php echo $student->khoa_hoc; ?>
-							</td>
-							<td><?php echo $student->password; ?></td>
-							<th>
-								<?php echo anchor('admin/update-student/'.$student->id, 'Sửa', ['class'=>'btn btn-primary btn-sm']); ?>
-								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteConfirmModal-<?php echo $student->id;?>">
-  									Xoá
-								</button>
-							</th>
-						</tr>
-
-						<!-- Modal for Delete Confirmation Pop-up -->
-						<div class="modal fade" id="deleteConfirmModal-<?php echo $student->id;?>" role="dialog" aria-labelledby="exampleModalLabel">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Xác nhận</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										Xóa sinh viên này?
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-										<?php echo anchor('admin/delete-student/'.$student->id, 'Delete', ['class'=>'btn btn-primary btn-sm']); ?>
-									</div>
-								</div>
-							</div>
-						</div>
-					<?php endforeach; ?>
-				</tbody>
-				
-                <tfoot>
-					<tr>
-						<th data-checkbox="false"></th>
-						<th>ID</th>
-						<th>Tên</th>
-						<th>Môn học</th>
-						<th>Password</th>
-						<th></th>
-					</tr>
-                </tfoot>
-            </table>
-
-			
-        </div>
-    </div>		
+	<!-- Form nhập -->
+    <?php echo form_open('admin/add-subject', ['class'=>'form-row']);?>
+        <div class="create-form">
+                <div id="form-input-container" class="form-row">
+                    <!-- TODO: Show previous data -->
+                    <div class="col">
+                        <?php echo form_input(['name'=>'id', 'value'=>set_value('id'), 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+                    </div>
+                    <div class="col">
+                        <?php echo form_input(['name'=>'ten_mon', 'value'=>set_value('ten_mon'), 'placeholder'=>'Tên môn', 'class'=>'form-control']); ?>
+                    </div>
+                </div>
+				<?php echo validation_errors(); ?>
+                <div>
+                    <?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']); ?>
+                    <?php //echo anchor(''); ?>
+                </div>
+        </div>     
+    </form>	
 </div>
 
+
+<!-- Bootstrap relevant frameworks import -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
 </body>
 </html>

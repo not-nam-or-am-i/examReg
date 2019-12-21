@@ -1,8 +1,10 @@
 <?php
 //Form ở dòng 179
-defined('BASEPATH') OR exit('No direct script access allowed');
+//Form: CTRL+F "<!-- Form nhập -->"
+
+	defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 	<meta charset="utf-8">
 
@@ -91,6 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <!-- Navigation bar -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   	<a class="navbar-brand" href="<?php echo base_url(); ?>">AdminHomepage</a>
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,13 +109,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           			Actions
         		</a>
+        		<!-- TODO: FIX ALL HREF WHEN DONE -->
         		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          			<a class="dropdown-item" href="#">Import student list</a>
-          			<a class="dropdown-item" href="#">Import student</a>
+					<a class="dropdown-item active" href="">Student CRUD</a>
+					<a class="dropdown-item" href="admin/subject">Subject CRUD</a>
 					<a class="dropdown-item" href="#">Create exam PERIOD</a>
           			<div class="dropdown-divider"></div>
-          			<a class="dropdown-item" href="#">Student CRUD</a>
-					<a class="dropdown-item" href="#">Subject CRUD</a>  
+					<a class="dropdown-item" href="#">Import student list</a>
+          			<a class="dropdown-item" href="#">Import student eligibility list</a>
         		</div>
       		</li>
     	</ul>
@@ -125,13 +129,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="bg-dark border-right col-5" id="sidebar-wrapper">
     <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-dark active">Student CRUD</a>
-        <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Subject CRUD</a>
+        <a href="" class="list-group-item list-group-item-action bg-dark active">Student CRUD</a>
+        <a href="admin/subject" class="list-group-item list-group-item-action bg-dark list-group-item-light">Subject CRUD</a>
         <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Import student list</a>
         <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Import student</a>
         <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Create exam PERIOD</a>
     </div>
 </div>
+
+
+<?php //include '../navigationBar.php'?>
         
 <div id="container">
 
@@ -142,7 +149,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       				<div class="card-body">
         				<h5 class="card-title">Add</h5>
 						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<?php echo anchor('createStudent', 'Add', ['class'=>'btn btn-primary btn-sm']);?>
+						<?php echo anchor('admin/add-student', 'Add', ['class'=>'btn btn-primary btn-sm']);?>
       				</div>
     			</div>
   			</div>
@@ -182,7 +189,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div id="form-input-container" class="form-row">
                     <div class="col-3">
                         <?php 
-                            echo form_input(['name'=>'name', 'value'=>$student->ten, 'placeholder'=>'Name', 'class'=>'form-control']); 
+                            echo form_input(['name'=>'ten', 'value'=>$student->ten, 'placeholder'=>'Tên', 'class'=>'form-control']); 
                         ?>
                     </div>
                     <div class="col-3">

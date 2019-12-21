@@ -18,22 +18,23 @@ class CRUD_Students_Controller extends CI_Controller {
     //tạo một tài khoản cho sinh viên
 	public function create() {
         //kiểm tra dữ liệu điền vào có trống không
-        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('ten', 'Tên', 'required');
         $this->form_validation->set_rules('id', 'ID', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         $this->form_validation->set_rules('khoa_hoc', 'Khóa học', 'required');
  
         if ($this->form_validation->run() === FALSE) {
-			$this->load->view('admin/admin_create_student');
+            $this->load->view('admin/admin_create_student');
+            //TODO: insert a failure msg
         } else {
             $data = array(
-                'ten'       => $this->input->post('name'),
+                'ten'       => $this->input->post('ten'),
                 'id'        => $this->input->post('id'),
                 'khoa_hoc'  => $this->input->post('khoa_hoc'),
                 'password'  => $this->input->post('password')
             );
             $this->account_model->insert($data);
-
+            //TODO: insert a success msg
             redirect('admin');
         }
 	}
@@ -43,7 +44,7 @@ class CRUD_Students_Controller extends CI_Controller {
         $data['student'] = $this->account_model->get_by_id($id);
         
         //kiểm tra dữ liệu điền vào có trống không
-        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('ten', 'Tên', 'required');
         $this->form_validation->set_rules('id', 'ID', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         $this->form_validation->set_rules('khoa_hoc', 'Khóa học', 'required');
@@ -53,24 +54,26 @@ class CRUD_Students_Controller extends CI_Controller {
             $this->load->view('admin/admin_update_student', $data);
         } else {
             $update_data = array(
-                'ten'       => $this->input->post('name'),
+                'ten'       => $this->input->post('ten'),
                 'id'        => $this->input->post('id'),
                 'khoa_hoc'  => $this->input->post('khoa_hoc'),
                 'password'  => $this->input->post('password')
             );
             $this->account_model->update($id, $update_data);
-
+            //TODO: insert a success msg
             redirect('admin');
         }
 	}
 
-    //TODO: chạy, nhưng TẠI SAO NÓ KHÔNG DIRECT SANG DELETE VIEW???
 	public function delete($id) {
         $data['student'] = $this->account_model->get_by_id($id);
-        $this->load->view('admin/admin_delete_student');
 
         $this->account_model->delete($id);
-        redirect('admin');
+        if ($this->account_model->delete($id) === FALSE) {
+            //TODO: insert a failure msg
+        } else {
+            //TODO: insert a success msg
+            redirect('admin');
+        }
 	}
-
 }
