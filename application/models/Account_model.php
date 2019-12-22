@@ -11,4 +11,8 @@
             $this->db->where('is_admin', false);
             return $this->db->get($this->table)->result();
         }
+
+        public function insert_multiple($data) {
+            return $this->db->insert_batch($this->table, $data);
+        }
     }
