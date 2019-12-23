@@ -9,4 +9,8 @@
         public function insert_multiple($data) {
             return $this->db->insert_batch($this->table, $data);
         }
+
+        public function update_multiple($data) {
+            return $this->db->update_batch($this->table, $data, 'id_sv');
+        }
     }
