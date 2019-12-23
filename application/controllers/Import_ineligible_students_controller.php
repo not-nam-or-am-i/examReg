@@ -3,7 +3,7 @@
 //TODO: sửa view trong upload_file và cuối import_excel(); hàm import excel cần được truyền id môn học
 require 'vendor/autoload.php';
 
-class Import_students_list_by_subject_controller extends CI_Controller {
+class Import_ineligible_students_controller extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->helper('url', 'form');
@@ -39,7 +39,7 @@ class Import_students_list_by_subject_controller extends CI_Controller {
                 ));
                 
             }
-            $this->sv_mon_model->insert_multiple($data_batch);
+            $this->sv_mon_model->update_multiple($data_batch);
             
             //TODO: load view hoặc redirect tùy
             //$this->load->view('excel_view/data_check');
