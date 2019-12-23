@@ -5,4 +5,8 @@
         public function __construct() {
             parent::__construct();
         }
+
+        public function insert_multiple($data) {
+            return $this->db->insert_batch($this->table, $data);
+        }
     }
