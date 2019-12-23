@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CRUD_Students_Controller extends CI_Controller {
+
     public function __construct() {
         parent::__construct();
         $this->load->helper('url', 'form');
@@ -75,5 +76,30 @@ class CRUD_Students_Controller extends CI_Controller {
             //TODO: insert a success msg
             redirect('admin');
         }
-	}
+    }
+    
+    //TODO: MULTIPLE DELETE BY CHECKBOX
+    
+    public function delete_multiple() {
+        if ($this->input->post('checkbox_value')) {
+            $id = $this->input->post('checkbox_value');
+            for ($count = 0; $count < count($id); $count++) {
+                $this->account_model->delete($id[$count]);
+            }
+        }
+    }
+
+    /*
+    public function delete_multiple($id) {
+        $data['student'] = $this->account_model->get_by_id($id);
+
+        $this->account_model->delete($id);
+        if ($this->account_model->delete($id) === FALSE) {
+            //TODO: insert a failure msg
+        } else {
+            //TODO: insert a success msg
+            redirect('admin');
+        }
+    }
+    */
 }

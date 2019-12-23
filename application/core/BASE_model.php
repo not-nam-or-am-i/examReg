@@ -30,5 +30,8 @@
         public function update($id, $data) {
             $this->db->where('id', $id);
             return $this->db->update($this->table, $data);
+
+            // TODO: TÔI CẦN 1 CÁCH CHECK XEM QUERY CÓ THAY ĐỔI DATABASE KHÔNG
+            // return $this->db->affected_rows();
         }
     }

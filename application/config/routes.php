@@ -14,6 +14,8 @@ $route['admin/update-subject/(:num)']   = 'crud_subjects_controller/update/$1';
 $route['admin/delete-subject/(:num)']   = 'crud_subjects_controller/delete/$1';
 
 //TODO: import student list
+$route['admin/import-student-list']     = 'import_students_info_controller/index';
+
 //TODO: import ineligible
 //TODO: export shits
 //TODO: create exam period
