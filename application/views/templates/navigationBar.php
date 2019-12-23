@@ -21,7 +21,7 @@
 					<a class="dropdown-item" href="#">Create exam PERIOD</a>
           			<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="admin/import-student-list">Import student list</a>
-          			<a class="dropdown-item" href="#">Import student eligibility list</a>
+          			<a class="dropdown-item" href="admin/import-eligibilities">Import student eligibility list</a>
         		</div>
       		</li>
     	</ul>

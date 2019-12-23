@@ -161,6 +161,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<?php echo anchor('admin/import-student-list', 'Thêm file - ĐỐNG NÀY CẦN REDESIGN', ['class'=>'btn btn-primary btn-sm'], ['id'=>'import-button']);?>
 			</h1>
         </div>
+
+		<?php if ($this->session->flashdata('success')) { ?>
+			<div class="alert alert-success alert-dismissible text-center"> 
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<?php echo $this->session->flashdata('success'); ?>
+			</div>
+        <?php } ?>
             
         <div id="database-table" class="box-body">
             <table id="example1" class="table table-bordered table-striped">

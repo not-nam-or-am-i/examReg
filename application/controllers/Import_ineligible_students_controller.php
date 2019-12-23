@@ -11,9 +11,8 @@ class Import_ineligible_students_controller extends CI_Controller {
     }
 
     //load view trang 
-    public function upload_file() {
-        //TODO:
-        //$this->load->view('excel_view/excel_data);
+    public function index() {
+        $this->load->view('admin/import/admin_import_eligibilities');
     }
 
     //lưu thông tin excel vào csdl
@@ -22,7 +21,7 @@ class Import_ineligible_students_controller extends CI_Controller {
         $data_batch = array();
 
         //kiểm tra điều kiên file đã được đặt chưa
-        if(isset($_FILES["file"]["name"])) {
+        if (isset($_FILES["file"]["name"])) {
             //lấy đường dẫn vào lưu data vào mảng
             $path = $_FILES["file"]["tmp_name"];
             $data = \PhpOffice\PhpSpreadsheet\IOFactory::load($path)->getActiveSheet()->toArray();
@@ -41,11 +40,19 @@ class Import_ineligible_students_controller extends CI_Controller {
             }
             $this->sv_mon_model->update_multiple($data_batch);
             
-            //TODO: load view hoặc redirect tùy
-            //$this->load->view('excel_view/data_check');
+            //TODO: Form not redirected to admin => Viết hàm check if query was executed successfully trong model
+            /*
+            if (??) {
+                $this->session->set_flashdata('error', "Unexpected, oops");
+            }
+            else {
+                $this->session->set_flashdata('success', "Thêm danh sách sinh viên thành công"); 
+                redirect('admin');
+            }
+            */  
         }
             
-        
+        redirect('admin');
     }
 
 }

@@ -126,25 +126,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div-->
 
 <div id="container">
-    <?php echo form_open_multipart("admin/import-student-list"); ?>
-        <div id="form-box" class="card text-center mx-auto w-75">
+    <?php echo form_open_multipart("admin/import-eligibilities/proceed"); ?>
+        <div id="form-box" class="card text-center mx-auto w-50">
             <div class="card-body">
-                <h4 class="card-title">Special title treatment</h4>
+                <h4 class="card-title text-left">Tải file danh sách sinh viên không đủ điều kiện thi</h4>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" name="file" class="custom-file-input" required accept=".xls, .xlsx" />
-                        <label class="custom-file-label text-right" for="inputGroupFile04" style="padding-right: 75px">Choose file</label>
+                        <input type="file" name="file" class="custom-file-input" id="inputGroupFile04" required accept=".xls, .xlsx" />
+                        <label class="custom-file-label text-right" for="inputGroupFile04" style="padding-right: 75px">Chọn file</label>
                     </div>
                     <div class="input-group-append">
-                        <button type="submit" href="#" class="btn btn-primary btn-sm">Submit</button>
+                        <button type="submit" value="upload" class="btn btn-primary btn-sm">Tải lên</button>
                     </div>
                 </div>
+
                 <!-- TODO: AJAX Success Message-->
-                <p class="card-text mx-auto" style="width: 500px"></p>       
+        
+
+                <!-- Success message -->
+                <!-- TODO: FIX -->
+                <?php if ($this->session->flashdata('error')) { ?>
+                    <div class = "alert alert-danger alert-dismissible text-center">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <?php echo $this->session->flashdata('error'); ?>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </form> 
 </div>
+
+<script type="text/javascript">
+    //COMMENT: BUG: CHANGE .custom-file-label on uploading - đổi .custom-file-label thành filename sau khi upload
+    $('#inputGroupFile04').on('change', '.custom-file-input', function(event) {
+        $(this).next('.custom-file-label').html(event.target.files[0].name);
+    })
+    
+</script>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -152,3 +170,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<!--?php echo form_open_multipart('admin/import-student-list');?>
+<div>
+<input type="file" name="file" required accept=".xls, .xlsx"/>
+</div>
+<button type="submit" value="upload"> </button>
+</form-->

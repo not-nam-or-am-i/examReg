@@ -142,27 +142,39 @@
 	<!-- Form nhập -->
     <?php echo form_open('admin/add-student', ['class'=>'form-row']);?>
         <div class="create-form">
-                <div id="form-input-container" class="form-row">
-                    <div class="col">
-                        <?php 
-                            echo form_input(['name'=>'ten', 'value'=>set_value('ten'), 'placeholder'=>'Tên', 'class'=>'form-control']); 
-                        ?>
+			<div id="form-input-container" class="form-row">
+				<div class="col">
+					<?php 
+						echo form_input(['name'=>'ten', 'value'=>set_value('ten'), 'placeholder'=>'Tên', 'class'=>'form-control']); 
+					?>
+				</div>
+				<div class="col">
+					<?php echo form_input(['name'=>'id', 'value'=>set_value('id'), 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+				</div>
+				<div class="col">
+					<?php echo form_input(['name'=>'password', 'value'=>set_value('password'), 'placeholder'=>'Password', 'class'=>'form-control']); ?>
+				</div>
+				<div class="col">
+					<?php echo form_input(['name'=>'khoa_hoc', 'value'=>set_value('khoa_hoc'), 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
+				</div>
+			</div>
+			<?php echo validation_errors(); ?>
+			<div>
+				<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']);?>
+				<?php //echo anchor('');?>
+			</div>
+			
+			<?php if ($this->session->flashdata('success')) { ?>
+                    <div class="alert alert-success alert-dismissible text-center"> 
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <?php echo $this->session->flashdata('success'); ?>
                     </div>
-                    <div class="col">
-                        <?php echo form_input(['name'=>'id', 'value'=>set_value('id'), 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+                <?php } else if ($this->session->flashdata('error')) { ?>
+                    <div class = "alert alert-danger alert-dismissible text-center">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <?php echo $this->session->flashdata('error'); ?>
                     </div>
-                    <div class="col">
-                        <?php echo form_input(['name'=>'password', 'value'=>set_value('password'), 'placeholder'=>'Password', 'class'=>'form-control']); ?>
-                    </div>
-                    <div class="col">
-                        <?php echo form_input(['name'=>'khoa_hoc', 'value'=>set_value('khoa_hoc'), 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
-                    </div>
-                </div>
-				<?php echo validation_errors(); ?>
-                <div>
-                    <?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']);?>
-                    <?php //echo anchor('');?>
-                </div>
+                <?php } ?>
         </div>     
     </form>	
 </div>

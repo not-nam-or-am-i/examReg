@@ -24,14 +24,15 @@ class CRUD_Subjects_Controller extends CI_Controller {
         $this->form_validation->set_rules('ten_mon', 'Tên môn', 'required');
  
         if ($this->form_validation->run() === FALSE) {
-			$this->load->view('admin/admin_create_subject');
+            $this->load->view('admin/admin_create_subject');
+            $this->session->set_flashdata('error', "Unexpected error?");
         } else {
             $data = array(
                 'id'        => $this->input->post('id'),
                 'ten_mon'   => $this->input->post('ten_mon'),
             );
             $this->mon_model->insert($data);
-
+            $this->session->set_flashdata('success', "Thêm môn học thành công"); 
             redirect('admin/subject');
         }
 	}
@@ -47,6 +48,7 @@ class CRUD_Subjects_Controller extends CI_Controller {
         if ($this->form_validation->run() === FALSE) {
             $data['id'] = $id;
             $this->load->view('admin/admin_update_subject', $data);
+            $this->session->set_flashdata('error', "Unexpected error?");
         } else {
             $update_data = array(
                 'id'        => $this->input->post('id'),
@@ -54,6 +56,7 @@ class CRUD_Subjects_Controller extends CI_Controller {
             );
             $this->mon_model->update($id, $update_data);
 
+            $this->session->set_flashdata('success', "Sửa thông tin môn học thành công"); 
             redirect('admin/subject');
         }
 	}
@@ -62,9 +65,9 @@ class CRUD_Subjects_Controller extends CI_Controller {
         $data['student'] = $this->mon_model->get_by_id($id);
         $this->mon_model->delete($id);
         if ($this->mon_model->delete($id) === FALSE) {
-            //TODO: insert a failure msg
+            $this->session->set_flashdata('error', "Unexpected error?");
         } else {
-            //TODO: insert a success msg
+            $this->session->set_flashdata('success', "Xoá sinh viên thành công"); 
             redirect('admin/subject');
         }
 	}

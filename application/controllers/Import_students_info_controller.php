@@ -14,7 +14,6 @@ class Import_Students_Info_Controller extends CI_Controller {
     //load view trang 
     public function index() {
         $this->load->view('admin/import/admin_import_students');
-        $this->session->set_flashdata('error', "Unexpected error?");
     }
 
     //lưu thông tin excel vào csdl
@@ -42,33 +41,21 @@ class Import_Students_Info_Controller extends CI_Controller {
                     'is_admin'  => false
                 ));
             }
+            
             $this->account_model->insert_multiple($data_batch);
             
+            //TODO: Form not redirected to admin => Viết hàm check if query was executed successfully
             /*
-            if ($this->account_model->insert_multiple($data_batch) == true) {
+            if (??) {
+                $this->session->set_flashdata('error', "Unexpected, oops");
+            }
+            else {
                 $this->session->set_flashdata('success', "Thêm danh sách sinh viên thành công"); 
                 redirect('admin');
-            } else {
-                $this->session->set_flashdata('error', "ERROR_MESSAGE_HERE");
-                //COMMENT: idk, Codeigniter already handled this?
             }
-            */
-            //TODO: LOAD RA TABLE TRONG SUCCESS MESSAGE
-    
+            */  
+            
         } 
-
-        //TODO: LOAD (AJAX) SUCCESS MESSAGE -> REMOVE THIS
-        //Check nếu submit thành công => hiện success message
-        /*
-        $lines = $this->account_model->countChanges();
-        if (lines > 0) {
-            $this->session->set_flashdata('success', "Thêm danh sách sinh viên thành công"); 
-            redirect('admin');
-        } else {
-            $this->session->set_flashdata('error', "Unexpected error?");
-            //COMMENT: idk, Codeigniter already handled this?
-        } 
-        */
+        redirect('admin');
     }
-
 }
