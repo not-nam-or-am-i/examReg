@@ -39,7 +39,7 @@ class Import_students_list_by_subject_controller extends CI_Controller {
                 ));
                 
             }
-            $this->sv_mon_model->insert_multi($data_batch);
+            $this->sv_mon_model->insert_multiple($data_batch);
             
             //TODO: load view hoặc redirect tùy
             //$this->load->view('excel_view/data_check');

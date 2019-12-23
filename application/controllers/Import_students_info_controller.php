@@ -40,7 +40,7 @@ class Import_Students_Info_Controller extends CI_Controller {
                 ));
                 
             }
-            $this->account_model->insert_multi($data_batch);
+            $this->account_model->insert_multiple($data_batch);
             
             //TODO: load view hoặc redirect tùy
             //$this->load->view('excel_view/data_check');
