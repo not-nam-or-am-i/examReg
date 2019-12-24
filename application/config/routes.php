@@ -7,13 +7,13 @@ $route['admin/add-student']             = 'crud_students_controller/create';
 $route['admin/update-student/(:num)']   = 'crud_students_controller/update/$1';
 $route['admin/delete-student/(:num)']   = 'crud_students_controller/delete/$1';
 
-//TODO: CRUD subjects controller
+//ADMIN: CRUD subjects controller
 $route['admin/subject']                 = 'crud_subjects_controller/index';
 $route['admin/add-subject']             = 'crud_subjects_controller/create';
 $route['admin/update-subject/(:num)']   = 'crud_subjects_controller/update/$1';
 $route['admin/delete-subject/(:num)']   = 'crud_subjects_controller/delete/$1';
 
-//TODO: import student list
+//ADMIN: import student list
 $route['admin/import-student-list']             = 'import_students_info_controller/index';
 $route['admin/import-student-list/proceed']     = 'import_students_info_controller/import_excel';
 
@@ -21,7 +21,21 @@ $route['admin/import-student-list/proceed']     = 'import_students_info_controll
 $route['admin/import-eligibilities']            = 'import_ineligible_students_controller/index';
 $route['admin/import-eligibilities/proceed']    = 'import_ineligible_students_controller/import_excel';
 //TODO: export shits
-//TODO: create exam period
+
+
+//ADMIN: create exam period
+$route['admin/exam-period']                                     = 'create_exam_period_controller/index';
+$route['admin/exam-period/create']                              = 'create_exam_period_controller/create';
+$route['admin/update-exam-period/(:num)']                       = 'create_exam_period_controller/update/$1';
+$route['admin/delete-exam-period/(:num)']                       = 'create_exam_period_controller/delete/$1';
+
+$route['admin/exam-period-details/(:num)']                      = 'create_exam_period_controller/view_detail_index/$1';
+$route['admin/exam-period-details/create']                      = 'create_exam_period_controller/create_detail';
+
+//STUDENT: 
+$route['student']                       = 'register_exam_session_controller/index';
+
+//TODO: export registered list
 
 // using multiple controller
 $route['default_controller'] = 'CRUD_Students_Controller';

@@ -13,6 +13,14 @@ class Register_exam_session_controller extends CI_Controller{
         $this->load->model('ca_model');
     }
 
+    //load trang mặc định
+	public function index()
+	{   
+        //TODO: hừm query kiểu gì nhỉ... cần lấy ten_mon, bat_dau, ket_thuc, phong
+        $data['records'] = $this->phong_ca_model->get_ca_mon_phong(1);
+        $this->load->view('student/student_register_exam_session', $data);
+	}
+
     //lấy các môn mà sv học
     public function get_mon($id_sv) {
         //data mon gồm có: id môn, tên môn
@@ -52,6 +60,7 @@ class Register_exam_session_controller extends CI_Controller{
 
 
         //TODO: kiểm tra điều kiện phòng còn chỗ trống
+        //TODO: kiểm tra điều kiện ca thi không bị trùng bởi lịch đã đăng kí
         //TODO: thêm load view
     }
 }

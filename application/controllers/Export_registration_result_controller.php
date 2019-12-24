@@ -2,7 +2,7 @@
 //sinh viên in kết quả đăng ký
 //NOTE: chưa rõ cách lấy id của sinh viên kiểu gì nên viết tạm là tham số $id_sv vào hàm
 
-class Export_registration_result_controller extends CI_Controller{
+class Export_registration_result_controller extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->helper('url', 'form');

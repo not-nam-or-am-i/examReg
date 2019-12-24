@@ -1,7 +1,7 @@
 <?php
 //admin tạo kỳ thi
 
-class Create_exam_period_controller extends CI_Controller{
+class Create_exam_period_controller extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->helper('url', 'form');
@@ -12,6 +12,13 @@ class Create_exam_period_controller extends CI_Controller{
         $this->load->model('mon_model');
     }
 
+    //load trang mặc định
+    public function index()
+	{   
+        $data['exam_periods'] = $this->ky_thi_model->get_all_periods();
+        $this->load->view('admin/exam_periods/admin_exam_period', $data);
+    }
+    
     //tạo kỳ thi
     public function create() {
         //không cần id vì auto increment
@@ -19,46 +26,47 @@ class Create_exam_period_controller extends CI_Controller{
         $this->form_validation->set_rules('nam', 'Năm', 'required');
 
         if ($this->form_validation->run() === FALSE) {
-            //TODO: load view
-            //TODO: insert a failure msg
+            $this->load->view('admin/exam_periods/admin_create_exam_period');
+            $this->session->set_flashdata('error', "Unexpected error?");
         } else {
             $data = array(
                 'hoc_ky'       => $this->input->post('hoc_ky'),
-                'nam'        => $this->input->post('nam')
+                'nam'          => $this->input->post('nam')
             );
             $this->ky_thi_model->insert($data);
-            //TODO: insert a success msg
-            //TODO: redirect 
+            $this->session->set_flashdata('success', "Thêm kỳ thi thành công"); 
+            redirect('admin/exam-period');
         }
     }
 
 	public function update($id) {
-        $data['ky_thi'] = $this->ky_thi_model->get_by_id($id);
+        $data['period'] = $this->ky_thi_model->get_by_id($id);
         
         $this->form_validation->set_rules('hoc_ky', 'Học kỳ', 'required');
         $this->form_validation->set_rules('nam', 'Năm', 'required');
  
         if ($this->form_validation->run() === FALSE) {
             $data['id'] = $id;
-            //TODO: load view
+            $this->load->view('admin/exam_periods/admin_update_exam_period', $data);
+            $this->session->set_flashdata('error', "Sửa thông tin kỳ thi không thành công");
         } else {
             $update_data = array(
                 'hoc_ky'        => $this->input->post('hoc_ky'),
                 'nam'           => $this->input->post('nam')
             );
             $this->ky_thi_model->update($id, $update_data);
-            //TODO: insert a success msg
-            //TODO: redirect
+            $this->session->set_flashdata('success', "Sửa thông tin kỳ thi thành công"); 
+            redirect('admin/exam-period');
         }
 	}
 
 	public function delete($id) {
         $this->ky_thi_model->delete($id);
         if ($this->ky_thi_model->delete($id) === FALSE) {
-            //TODO: insert a failure msg
+            $this->session->set_flashdata('error', "Xóa kỳ thi không thành công");
         } else {
-            //TODO: insert a success msg
-            //TODO: redirect
+            $this->session->set_flashdata('success', "Xoá kỳ thi thành công"); 
+            redirect('admin/exam-period');
         }
     }
     
@@ -95,9 +103,29 @@ class Create_exam_period_controller extends CI_Controller{
         }
     }
 
+    //lấy ca và môn tương ứng của kỳ thi
+    public function get_all_ca($id_ky_thi) {
+        $data['ca'] = $this->ca_model->get_ca_by_ky($id_ky_thi);
+        //TODO: thêm load view
+    }
+
     //thêm phòng thi vào ca thi
     //TODO: chưa biết làm hàm này như nào cả...
     public function add_phong($id_ca) {
         //TODO: kiểu gì cũng phải insert vào bảng phong_ca nhưng chưa biết cách lấy id phòng
     }
+
+    public function view_detail_index($id)
+	{   
+        $data['period']  = $this->ky_thi_model->get_by_id($id);
+        $data['details'] = $this->phong_ca_model->get_ca_mon_phong($id);
+        $this->load->view('admin/exam_periods/admin_view_period_details', $data);
+    }
+
+    //TODO: Tạo create_phong_ca controller (ĐỀ BÀI CHỈ NÓI THÊM THÔI, thích thì viết nốt sửa xóa mệt quạ...)
+    public function create_detail() {
+
+    }
+    
+    
 }
