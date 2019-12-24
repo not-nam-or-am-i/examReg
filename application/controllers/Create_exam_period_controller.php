@@ -95,6 +95,14 @@ class Create_exam_period_controller extends CI_Controller{
         }
     }
 
+
+    //lấy ca và môn tương ứng của kỳ thi
+    public function get_all_ca($id_ky_thi) {
+        $data['ca'] = $this->ca_model->get_ca_by_ky($id_ky_thi);
+
+        //TODO: thêm load view
+    }
+
     //thêm phòng thi vào ca thi
     //TODO: chưa biết làm hàm này như nào cả...
     public function add_phong($id_ca) {

@@ -17,4 +17,15 @@
             $this->db->where($condition);
             return $this->db->get()->result();
         }
+
+        //lấy các ca thi và môn tương ứng của kỳ thi
+        public function get_ca_by_ky($id_ky) {
+            //query trực tiếp
+            $query = $this->db->query('SELECT `ca_thi`.`id` as id_ca, id_ky_thi, id_mon, `mon`.`ten_mon`, bat_dau, ket_thuc
+            FROM `ca_thi` 
+            JOIN `mon` ON id_mon=`mon`.`id`
+            WHERE id_ky_thi= ' . $id_ky);
+
+            return $query->result();
+        }
     }
