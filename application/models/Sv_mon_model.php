@@ -13,4 +13,17 @@
         public function update_multiple($data) {
             return $this->db->update_batch($this->table, $data, 'id_sv');
         }
+
+        //lấy môn sinh viên học bằng id sinh viên
+        public function get_mon($id_sv) {
+            //điều kiện query where
+            $condition = array('id_sv' => $id_sv);
+
+            //query
+            $this->db->select('`mon`.`id`, `mon`.`ten_mon`');
+            $this->db->from('sv_mon');
+            $this->db->join('mon', 'id_mon = `mon`.`id`', 'left');
+            $this->db->where($condition);
+            return $this->db->get()->result();
+        }
     }
