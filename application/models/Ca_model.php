@@ -25,6 +25,7 @@
             FROM `ca_thi` 
             JOIN `mon` ON id_mon=`mon`.`id`
             WHERE id_ky_thi= ' . $id_ky);
+            
             return $query->result();
         }
     }
