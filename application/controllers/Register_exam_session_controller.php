@@ -15,6 +15,7 @@ class Register_exam_session_controller extends CI_Controller{
 
     //lấy các môn mà sv học
     public function get_mon($id_sv) {
+        //data mon gồm có: id môn, tên môn
         $data['mon'] = $this->sv_mon_model->get_mon($id_sv);
 
         //TODO: thêm load view
@@ -22,6 +23,7 @@ class Register_exam_session_controller extends CI_Controller{
 
     //lấy các ca thi của môn
     public function get_ca($id_mon) {
+        //data ca gồm có: id ca, giờ bắt đầu, giờ kết thúc
         $data['ca'] = $this->ca_model->get_ca_by_mon($id_mon);
 
         //TODO: thêm load view
@@ -29,6 +31,7 @@ class Register_exam_session_controller extends CI_Controller{
 
     //lấy các phòng thi của ca thi
     public function get_phong($id_ca) {
+        //data phòng gồm có: tên phòng, số chỗ
         $data['phong'] = $this->phong_ca_model->get_phong_by_ca($id_ca);
 
         //TODO: thêm load view

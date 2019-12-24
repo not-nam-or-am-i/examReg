@@ -12,6 +12,7 @@
         //load trang mặc định
         public function index($id_ca, $id_phong) {
             //lấy ra danh sách sinh viên thi ca '$id_ca' trong phòng '$id_phong'
+            //data list gồm có: id sv, tên sv, khóa học
             $data['list'] = $this->sv_phong_ca_model->get_students_list($id_ca, $id_phong);
 
             //TODO: sửa $this->load->view('students_list_view/list', $data);
