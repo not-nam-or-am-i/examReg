@@ -7,6 +7,10 @@ class CRUD_Students_Controller extends CI_Controller {
         parent::__construct();
         $this->load->helper('url', 'form');
         $this->load->model('account_model');
+        // check login admin:
+        if (!$this->session->userdata('logged_in') || !$this->session->userdata('is_admin')){
+            redirect('login');
+        }
     }
 
     //load trang mặc định
@@ -32,7 +36,7 @@ class CRUD_Students_Controller extends CI_Controller {
                 'ten'       => $this->input->post('ten'),
                 'id'        => $this->input->post('id'),
                 'khoa_hoc'  => $this->input->post('khoa_hoc'),
-                'password'  => $this->input->post('password')
+                'password'  => md5($this->input->post('password'))
             );
             $this->account_model->insert($data);
             $this->session->set_flashdata('success', "Thêm sinh viên thành công"); 
@@ -59,7 +63,7 @@ class CRUD_Students_Controller extends CI_Controller {
                 'ten'       => $this->input->post('ten'),
                 'id'        => $this->input->post('id'),
                 'khoa_hoc'  => $this->input->post('khoa_hoc'),
-                'password'  => $this->input->post('password')
+                'password'  => md5($this->input->post('password'))
             );
             $this->account_model->update($id, $update_data);
             $this->session->set_flashdata('success', "Sửa thông tin sinh viên thành công"); 

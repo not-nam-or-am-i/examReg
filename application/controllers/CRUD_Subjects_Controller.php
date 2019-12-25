@@ -9,6 +9,10 @@ class CRUD_Subjects_Controller extends CI_Controller {
         $this->load->helper('url', 'form');
         $this->load->model('mon_model');
         $this->load->model('sv_mon_model');
+        // check login admin:
+        if (!$this->session->userdata('logged_in') || !$this->session->userdata('is_admin')){
+            redirect('login');
+        }
     }
 
     //load trang mặc định

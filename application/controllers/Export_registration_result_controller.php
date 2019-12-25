@@ -7,6 +7,10 @@ class Export_registration_result_controller extends CI_Controller {
         parent::__construct();
         $this->load->helper('url', 'form');
         $this->load->model('sv_phong_ca_model');
+        // check login sv:
+        if (!$this->session->userdata('logged_in') || $this->session->userdata('is_admin')){
+            redirect('login');
+        }
     }
 
     //lấy kết quả đăng ký thi

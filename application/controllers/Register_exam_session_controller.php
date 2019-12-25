@@ -10,6 +10,10 @@ class Register_exam_session_controller extends CI_Controller{
         $this->load->model('sv_phong_ca_model');
         $this->load->model('phong_ca_model');
         $this->load->model('ca_model');
+        // check login sv:
+        if (!$this->session->userdata('logged_in') || $this->session->userdata('is_admin')){
+            redirect('login');
+        }
     }
 
     //load trang mặc định

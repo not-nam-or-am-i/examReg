@@ -10,6 +10,10 @@ class Create_exam_period_controller extends CI_Controller {
         $this->load->model('phong_model');
         $this->load->model('phong_ca_model');
         $this->load->model('mon_model');
+        // check login admin:
+        if (!$this->session->userdata('logged_in') || !$this->session->userdata('is_admin')){
+            redirect('login');
+        }
     }
 
     //load trang mặc định

@@ -10,6 +10,10 @@ class Export_students_list_controller extends CI_Controller {
         $this->load->helper('url', 'form');
         $this->load->model('sv_phong_ca_model');
         $this->load->model('phong_model');
+        // check login admin:
+        if (!$this->session->userdata('logged_in') || !$this->session->userdata('is_admin')){
+            redirect('login');
+        }
     }
 
     //TODO: trang mặc định, hiện ca - phòng cho admin chọn để sau đó export danh sách sv trong phòng đó

@@ -8,6 +8,10 @@ class Import_ineligible_students_controller extends CI_Controller {
         parent::__construct();
         $this->load->helper('url', 'form');
         $this->load->model('sv_mon_model');
+        // check login admin:
+        if (!$this->session->userdata('logged_in') || !$this->session->userdata('is_admin')){
+            redirect('login');
+        }
     }
 
     //load view trang 
