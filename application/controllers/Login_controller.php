@@ -54,8 +54,10 @@ class Login_controller extends CI_Controller {
                 //TODO: redirect về trang của admin hoặc sv
                 if($this->session->userdata('is_admin')) {
                     //trang admin
+                    redirect('admin');
                 } else {
                     //trang sv
+                    redirect('student');
                 }
             } else {
                 //TODO: login fail msg
