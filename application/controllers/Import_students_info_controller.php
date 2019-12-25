@@ -37,7 +37,7 @@ class Import_Students_Info_Controller extends CI_Controller {
                     'ten'       => $row[0],
                     'id'        => $row[1],
                     'khoa_hoc'  => $row[2],
-                    'password'  => $row[3],
+                    'password'  => md5($row[3]),
                     'is_admin'  => false
                 ));
             }

@@ -31,7 +31,7 @@ class Login_controller extends CI_Controller {
         } else {
             $id = $this->input->post('id');
             //encrypt password
-            $password = $this->input->post('password');
+            $password = md5($this->input->post('password'));
 
             //Login
             $sv_data = $this->account_model->login($id, $password);
