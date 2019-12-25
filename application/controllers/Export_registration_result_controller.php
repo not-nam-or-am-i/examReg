@@ -10,8 +10,9 @@ class Export_registration_result_controller extends CI_Controller {
     }
 
     //lấy kết quả đăng ký thi
-    public function get_reg_result($id_sv) {
+    public function get_reg_result() {
         //data reg_result gồm có: id môn, tên môn, id ca, giờ bắt đầu, giờ kết thúc, tên phòng thi
+        $id_sv = $this->session->userdata('user_id');
         $data['reg_result'] = $this->sv_phong_ca_model->get_reg_result($id_sv);
 
         //TODO: load view
