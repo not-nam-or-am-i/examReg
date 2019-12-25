@@ -73,27 +73,38 @@ class Create_exam_period_controller extends CI_Controller {
             redirect('admin/exam-period');
         }
     }
+
+    public function ca_index()
+	{   
+        $data['exam_periods'] = $this->ky_thi_model->get_all_periods();
+        $this->load->view('admin/exam_periods/admin_exam_period', $data);
+    }
     
     //tạo ca thi cho kỳ thi
-    public function create_ca($id_ky_thi, $id_mon) {
+    public function create_ca($id_ky_thi) {
+        $data['id_ky_thi'] = $id_ky_thi;
+        $data['subjects'] = $this->mon_model->get_all_subjects();
+        $this->load->view('admin/exam_periods/admin_create_ca', $data);
+
         //không cần id vì auto increment
         //NOTE: input kiểu datetime?
         $this->form_validation->set_rules('bat_dau', 'Thời gian bắt đầu', 'required');
         $this->form_validation->set_rules('ket_thuc', 'Thời gian kết thúc', 'required');
+        $this->form_validation->set_rules('subjectList', 'Môn học', 'required');
 
         if ($this->form_validation->run() === FALSE) {
-            //TODO: load view
-            //TODO: insert a failure msg
+            $this->load->view('admin/exam_periods/admin_create_ca');
+            $this->session->set_flashdata('error', "Thêm ca thi không thành công");
         } else {
             $data = array(
                 'bat_dau'           => $this->input->post('bat_dau'),
                 'ket_thuc'          => $this->input->post('ket_thuc'),
                 'id_ky_thi'         => $id_ky_thi,
-                'id_mon'            => $id_mon
+                'id_mon'            => $this->input->post('subjectList')
             );
             $this->ca_model->insert($data);
-            //TODO: insert a success msg
-            //TODO: redirect 
+            $this->session->set_flashdata('success', "Thêm ca thi thành công"); 
+            redirect('admin/exam-period-details/'.$id_ky_thi);
         }
     }
 
@@ -119,6 +130,7 @@ class Create_exam_period_controller extends CI_Controller {
         //TODO: kiểu gì cũng phải insert vào bảng phong_ca nhưng chưa biết cách lấy id phòng
     }
 
+    //xem chi tiết ca_môn trong kỳ thi
     public function view_detail_index($id)
 	{   
         $data['period']  = $this->ky_thi_model->get_by_id($id);
@@ -126,10 +138,48 @@ class Create_exam_period_controller extends CI_Controller {
         $this->load->view('admin/exam_periods/admin_view_period_details', $data);
     }
 
+<<<<<<< HEAD
     //TODO: Tạo create_phong_ca controller (ĐỀ BÀI CHỈ NÓI THÊM THÔI, thích thì viết nốt sửa xóa mệt quạ...)
     public function create_detail() {
         
+=======
+    //xem phòng thi trong ca thi
+    public function view_detail_room_index($id_ky_thi, $id_ca)
+	{   
+        $data['period']  = $this->ky_thi_model->get_by_id($id_ky_thi);
+        $data['ca']  = $this->ky_thi_model->get_ca_by_ky($id_ky_thi);
+        $data['details'] = $this->phong_ca_model->get_phong_by_ca($id_ca);
+        $this->load->view('admin/exam_periods/admin_view_rooms', $data);
     }
-    
-    
+
+    //tạo phòng thi cho ca thi
+    public function create_room($id_ky_thi, $id_ca) {
+        $data['id_ky_thi'] = $id_ky_thi;
+        $data['id_ca'] = $id_ca;
+        $data['details'] = $this->phong_ca_model->get_phong_by_ca($id_ca);
+        $this->load->view('admin/exam_periods/admin_create_ca', $data);
+
+        //không cần id vì auto increment
+        //NOTE: input kiểu datetime?
+        $this->form_validation->set_rules('bat_dau', 'Thời gian bắt đầu', 'required');
+        $this->form_validation->set_rules('ket_thuc', 'Thời gian kết thúc', 'required');
+        $this->form_validation->set_rules('subjectList', 'Môn học', 'required');
+
+        if ($this->form_validation->run() === FALSE) {
+            $this->load->view('admin/exam_periods/admin_create_ca');
+            $this->session->set_flashdata('error', "Thêm ca thi không thành công");
+        } else {
+            $data = array(
+                'bat_dau'           => $this->input->post('bat_dau'),
+                'ket_thuc'          => $this->input->post('ket_thuc'),
+                'id_ky_thi'         => $id_ky_thi,
+                'id_mon'            => $this->input->post('subjectList')
+            );
+            $this->ca_model->insert($data);
+            $this->session->set_flashdata('success', "Thêm ca thi thành công"); 
+            redirect('admin/exam-period-details/'.$id_ky_thi);
+        }
+>>>>>>> Fix bugs
+    }
+
 }

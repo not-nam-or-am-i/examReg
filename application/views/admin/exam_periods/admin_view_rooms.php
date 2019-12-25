@@ -1,13 +1,3 @@
-<!-- 
-	TODO:
-	- Fix all href in navbar
-	- Move navbar to templates to load
--->
-
-<!-- 
-	Tôi sẽ redesign layout cái đống nút sau...
--->
-
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
@@ -110,55 +100,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- Main content -->
 <div id="container">
 
-	<!-- TODO: Redesign
-	<div id="top-actions-container">
-		<div class="row">
-  			<div class="col-sm-3">
-    			<div class="card">
-      				<div class="card-body">
-        				<h5 class="card-title">Add</h5>
-						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<?php // echo anchor('CRUD_Students_Controller/create', 'Add', ['class'=>'btn btn-primary btn-sm']);?>
-      				</div>
-    			</div>
-  			</div>
-  			<div class="col-sm-3">
-    			<div class="card">
-      				<div class="card-body">
-        				<h5 class="card-title">Update</h5>
-        				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        				<a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-      				</div>
-    			</div>
-  			</div>
-		  	<div class="col-sm-3">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Delete</h5>
-						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-					</div>
-				</div>
-  			</div>
-		  	<div class="col-sm-3">
-    			<div class="card">
-      				<div class="card-body">
-        				<h5 class="card-title">Import a list</h5>
-        				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        				<a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-      				</div>
-    			</div>
-  			</div>
-		</div>
-	</div>
-	-->
-
 	<div class="database">
         <div class="database-header">
             <h1 class="database-title">
-                Dữ liệu kì thi học kỳ <?php echo $period->hoc_ky; ?>
-                năm học <?php echo $period->nam; ?>
-				<?php echo anchor('admin/exam-period-details/'.$period->id.'/create-ca', 'Thêm ca thi', ['class'=>'btn btn-primary btn-sm'], ['id'=>'add-button']);?>
+                Dữ liệu phòng cho ca số <?php echo $ca->id; ?>
+				<?php echo anchor('admin/exam-period-details/'.$period->id_ky_thi.'/'.$ca->id.'/create-room', 'Thêm phòng thi', ['class'=>'btn btn-primary btn-sm'], ['id'=>'add-button']);?>
 			</h1>
         </div>
 
@@ -193,10 +139,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<label class="custom-control-label" for="checkbox-<?php echo $detail->id;?>"></label>
 								</div>
 							</td-->
-							<td>(<?php echo $detail->bat_dau; ?> - <?php echo $detail->ket_thuc; ?>)</td>
-							<td><?php echo $detail->id_mon; ?></td>
-                            <td><?php echo $detail->ten_mon; ?></td>
-                            <td><?php echo anchor('admin/exam-period-details/'.$period->id.'/'.$detail->id_ca, 'Xem phòng', ['class'=>'btn btn-primary btn-sm'], ['id'=>'add-button']);?></td>
+							<td><?php echo $detail->ten_phong; ?></td>
+                            <td><?php echo $detail->so_cho; ?></td>
+                            <td><?php echo anchor('', 'Xem phòng', ['class'=>'btn btn-primary btn-sm'], ['id'=>'add-button']);?></td>
 							<!--th>
 								<?//php echo anchor('admin/update-exam-period/'.$detail->id, 'Sửa', ['class'=>'btn btn-primary btn-sm']); ?>
 								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteConfirmModal-<?php echo $detail->id;?>">

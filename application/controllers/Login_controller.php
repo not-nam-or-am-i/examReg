@@ -22,12 +22,14 @@ class Login_controller extends CI_Controller {
     // Login
     public function login(){
 
-        $this->form_validation->set_rules('id', 'id', 'required');
-        $this->form_validation->set_rules('password', 'password', 'required');
+        $this->form_validation->set_rules('id', 'Mã sinh viên', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
 
-        if($this->form_validation->run() === FALSE){
+        if ($this->form_validation->run() === FALSE){
             //load view
             $this->load->view('login/login');
+            $errors = validation_errors();
+            $this->session->set_flashdata('error', $errors);
         } else {
             $id = $this->input->post('id');
             //encrypt password
@@ -37,9 +39,7 @@ class Login_controller extends CI_Controller {
             $sv_data = $this->account_model->login($id, $password);
 
             //kiểm tra xem có tài khoản không
-            if($sv_data){
-                //TODO: login success msg
-
+            if ($sv_data){
                 // Create session
                 $user_data = array(
                     'user_id'       => $id,
@@ -52,14 +52,15 @@ class Login_controller extends CI_Controller {
                 $this->session->set_userdata($user_data);
 
                 //TODO: redirect về trang của admin hoặc sv
-                if($this->session->userdata('is_admin')) {
-                    //trang admin
+                if ($this->session->userdata('is_admin')) {
+                    redirect('admin');
                 } else {
-                    //trang sv
+                    redirect('student');
                 }
             } else {
                 //TODO: login fail msg
                 redirect('login');
+                $this->session->set_flashdata('error', 'Đăng nhập thất bại');
             }		
         }
     }

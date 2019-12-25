@@ -21,6 +21,7 @@ class Export_students_list_controller extends CI_Controller {
 
     }
 
+<<<<<<< HEAD
     //lấy danh sách sinh viên trong phòng thi, cần được truyền vào id_ca và id_phong
     public function get_students_list($id_ca, $id_phong) {
         //lấy ra danh sách sinh viên thi ca '$id_ca' trong phòng '$id_phong'
@@ -30,6 +31,22 @@ class Export_students_list_controller extends CI_Controller {
         $data['id_ca'] = $id_ca;
 
         $this->load->view('admin/export/admin_export_room', $data);
+=======
+    //hàm này để thực hiện download file pdf
+    function download() {
+        //get file content after the script is server-side interpreted
+        $data['content'] = $this->session->userdata('htmlPage');
+        
+        //debug...
+        //$this->load->view('pdf_view/view_data', $data);
+        
+        $dompdf = new DOMPDF();
+
+        //load stored html string
+        $dompdf->loadHtml($data['content']);
+        $dompdf->render();
+        $dompdf->stream("danh sách sinh viên.pdf");
+>>>>>>> Fix bugs
     }
 }
 

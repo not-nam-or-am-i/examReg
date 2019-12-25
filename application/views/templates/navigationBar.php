@@ -37,7 +37,5 @@
         <a href="<?php echo base_url(); ?>admin/" class="list-group-item list-group-item-action bg-dark active">Quản lý sinh viên</a>
 		<a href="<?php echo base_url(); ?>admin/subject" class="list-group-item list-group-item-action bg-dark list-group-item-light">Quản lý môn học</a>
 		<a href="<?php echo base_url(); ?>admin/exam-period" class="list-group-item list-group-item-action bg-dark list-group-item-light">Tạo kỳ thi</a>
-        <a href="<?php echo base_url(); ?>admin/import-student-list" class="list-group-item list-group-item-action bg-dark list-group-item-light">Tải danh sách sinh viên</a>
-        <a href="<?php echo base_url(); ?>admin/import-eligibilities" class="list-group-item list-group-item-action bg-dark list-group-item-light">Tải danh sach sinh viên không đủ điều kiện thi</a>
     </div>
 </div>

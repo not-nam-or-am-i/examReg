@@ -29,9 +29,12 @@ $route['admin/import-eligibilities/proceed/(:num)']         = 'crud_subjects_con
 $route['admin/import-ineligibilities/(:num)']               = 'crud_subjects_controller/import_index_ineligible/$1';
 $route['admin/import-ineligibilities/proceed/(:num)']       = 'crud_subjects_controller/import_excel_ineligible/$1';
 
+<<<<<<< HEAD
 //ADMIN: export registered list
 $route['admin/export-room/(:num)/(:num)']               = 'export_students_list_controller/get_students_list/$1/$2';
 
+=======
+>>>>>>> Fix bugs
 
 //TODO: export shits
 
@@ -43,7 +46,12 @@ $route['admin/update-exam-period/(:num)']                       = 'create_exam_p
 $route['admin/delete-exam-period/(:num)']                       = 'create_exam_period_controller/delete/$1';
 
 $route['admin/exam-period-details/(:num)']                      = 'create_exam_period_controller/view_detail_index/$1';
-$route['admin/exam-period-details/create']                      = 'create_exam_period_controller/create_detail';
+$route['admin/exam-period-details/(:num)/create-ca']            = 'create_exam_period_controller/create_ca/$1';
+
+
+$route['admin/exam-period-details/(:num)/(num2)']               = 'create_exam_period_controller/view_detail_room_index/$1/$2';
+$route['admin/exam-period-details/(:num)/(num2)/create-room']   = 'create_exam_period_controller/create_room/$1/$2';
+
 
 //STUDENT: 
 $route['student']                       = 'register_exam_session_controller/index';
