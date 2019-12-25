@@ -9,7 +9,7 @@
   </div>
   <div>
     <label>password</label>
-    <input type="text" name="password" placeholder="password"></textarea>
+    <input type="password" name="password" placeholder="password"></textarea>
   </div>
   <button type="submit">Submit</button>
 </form>
