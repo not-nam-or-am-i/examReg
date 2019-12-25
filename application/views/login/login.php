@@ -25,8 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="card-body align-self-center justify-content-center">
                 <h4 class="card-title text-center">Đăng nhập</h4>
                 <div class="form-group text-left">
-                    <label for="email">Mã sinh viên</label>
-                    <input type="email" class="form-control" id="id" name="id" aria-describedby="idHelp" placeholder="1xxxxxxx">
+                    <label for="id">Mã sinh viên</label>
+                    <input type="text" class="form-control" id="id" name="id" aria-describedby="idHelp" placeholder="1xxxxxxx">
                 </div>
                 <div class="form-group text-left">
                     <label for="password">Password</label>

@@ -134,7 +134,7 @@ class Create_exam_period_controller extends CI_Controller {
     public function view_detail_index($id)
 	{   
         $data['period']  = $this->ky_thi_model->get_by_id($id);
-        $data['details'] = $this->phong_ca_model->get_ca_mon_phong($id);
+        $data['details'] = $this->phong_ca_model->get_ca_mon($id);
         $this->load->view('admin/exam_periods/admin_view_period_details', $data);
     }
 
@@ -142,7 +142,7 @@ class Create_exam_period_controller extends CI_Controller {
     public function view_detail_room_index($id_ky_thi, $id_ca)
 	{   
         $data['period']  = $this->ky_thi_model->get_by_id($id_ky_thi);
-        $data['ca']  = $this->ky_thi_model->get_ca_by_ky($id_ky_thi);
+        $data['ca']  = $this->ca_model->get_by_id($id_ca);
         $data['details'] = $this->phong_ca_model->get_phong_by_ca($id_ca);
         $this->load->view('admin/exam_periods/admin_view_rooms', $data);
     }

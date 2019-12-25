@@ -46,8 +46,8 @@ $route['admin/exam-period-details/(:num)']                      = 'create_exam_p
 $route['admin/exam-period-details/(:num)/create-ca']            = 'create_exam_period_controller/create_ca/$1';
 
 
-$route['admin/exam-period-details/(:num)/(num2)']               = 'create_exam_period_controller/view_detail_room_index/$1/$2';
-$route['admin/exam-period-details/(:num)/(num2)/create-room']   = 'create_exam_period_controller/create_room/$1/$2';
+$route['admin/exam-period-details/(:num)/(:num)']               = 'create_exam_period_controller/view_detail_room_index/$1/$2';
+$route['admin/exam-period-details/(:num)/(:num)/create-room']   = 'create_exam_period_controller/create_room/$1/$2';
 
 
 //STUDENT: 

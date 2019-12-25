@@ -104,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="database-header">
             <h1 class="database-title">
                 Dữ liệu phòng cho ca số <?php echo $ca->id; ?>
-				<?php echo anchor('admin/exam-period-details/'.$period->id_ky_thi.'/'.$ca->id.'/create-room', 'Thêm phòng thi', ['class'=>'btn btn-primary btn-sm'], ['id'=>'add-button']);?>
+				<?php echo anchor('admin/exam-period-details/'.$period->id.'/'.$ca->id.'/create-room', 'Thêm phòng thi', ['class'=>'btn btn-primary btn-sm'], ['id'=>'add-button']);?>
 			</h1>
         </div>
 
