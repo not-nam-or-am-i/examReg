@@ -138,11 +138,6 @@ class Create_exam_period_controller extends CI_Controller {
         $this->load->view('admin/exam_periods/admin_view_period_details', $data);
     }
 
-<<<<<<< HEAD
-    //TODO: Tạo create_phong_ca controller (ĐỀ BÀI CHỈ NÓI THÊM THÔI, thích thì viết nốt sửa xóa mệt quạ...)
-    public function create_detail() {
-        
-=======
     //xem phòng thi trong ca thi
     public function view_detail_room_index($id_ky_thi, $id_ca)
 	{   
@@ -179,7 +174,6 @@ class Create_exam_period_controller extends CI_Controller {
             $this->session->set_flashdata('success', "Thêm ca thi thành công"); 
             redirect('admin/exam-period-details/'.$id_ky_thi);
         }
->>>>>>> Fix bugs
     }
 
 }

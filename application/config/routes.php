@@ -29,12 +29,9 @@ $route['admin/import-eligibilities/proceed/(:num)']         = 'crud_subjects_con
 $route['admin/import-ineligibilities/(:num)']               = 'crud_subjects_controller/import_index_ineligible/$1';
 $route['admin/import-ineligibilities/proceed/(:num)']       = 'crud_subjects_controller/import_excel_ineligible/$1';
 
-<<<<<<< HEAD
 //ADMIN: export registered list
 $route['admin/export-room/(:num)/(:num)']               = 'export_students_list_controller/get_students_list/$1/$2';
 
-=======
->>>>>>> Fix bugs
 
 //TODO: export shits
 

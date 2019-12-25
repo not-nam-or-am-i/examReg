@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!-- 
 	TODO:
 	- Fix all href in navbar
@@ -185,35 +184,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
 </body>
 </html>
-=======
-<!DOCTYPE html>
-<html>
-<head>
-	<style type="text/css">
-      @media print
-      {
-        body * { visibility: hidden; }
-        #print * { visibility: visible; }
-        #print * { position: absolute; top: 40px; left: 30px; }
-      }
-	</style>
-</head>
-<body>
-
-<p>Click the button to print the current page.</p>
-<div class="div1">Div1</div>
-
-<div id="print" class="div2">
-	<div>djhcwiinucwncwiuqenw<div>
-</div>
-
-<button class="div1"onclick="myFunction()">Print this page</button>
-<script>
-function myFunction() {
-    window.print();
-}
-</script>
-
-</body>
-</html>
->>>>>>> Fix bugs
