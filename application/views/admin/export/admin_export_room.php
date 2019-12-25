@@ -110,13 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- Main content -->
 <div id="container">
 
-	<div class="database">
-        <div class="database-header">
-            <h1 class="database-title">
-				Danh sách sinh viên
-			</h1>
-        </div>
-    </div>
+	
 
     <button onclick="export2Word(window.docx)" class="btn btn-primary btn-sm">Tải bản word</button>
     <input type="button" onclick="printDiv('printableArea')" value="In kết quả" class="btn btn-primary btn-sm" />
@@ -124,6 +118,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="docx">
         <div class="WordSection1">
 
+			<h1 class="database-title">
+				Danh sách sinh viên phòng <?php echo $phong; ?> ca <?php echo $id_ca; ?>
+			</h1>
             <table style="border:none; width: 100%; border-collapse:collapse;">
                 
                 <tr>

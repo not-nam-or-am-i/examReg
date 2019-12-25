@@ -114,20 +114,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
 <!-- Main content -->
 <div id="container">
-    <div class="database">
-        <div class="database-header">
-            <h1 class="database-title">
-				Kết quả đăng ký
-			</h1>
-        </div>
-    </div>
 
     <button onclick="export2Word(window.docx)" class="btn btn-primary btn-sm">Tải bản word</button>
     <input type="button" onclick="printDiv('printableArea')" value="In kết quả" class="btn btn-primary btn-sm" />
     <div id="printableArea">
     <div id="docx">
         <div class="WordSection1">
-
+            <h1 class="database-title">
+				Kết quả đăng ký
+			</h1>
+            <h5>Mã sinh viên: <?php echo $this->session->userdata('user_id'); ?></h5>
+            <h5>Tên sinh viên: <?php echo $this->session->userdata('ten'); ?></h5>
             <table style="border:none; width: 100%; border-collapse:collapse;">
                 
                 <tr>
@@ -152,8 +149,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 
             </table>
 
-            <h5>Mã sinh viên: <?php echo $this->session->userdata('user_id') ?></h5>
-            <h5>Tên sinh viên: <?php echo $this->session->userdata('ten') ?></h5>
+            
         </div>
     </div>
     </div>

@@ -29,6 +29,9 @@ $route['admin/import-eligibilities/proceed/(:num)']         = 'crud_subjects_con
 $route['admin/import-ineligibilities/(:num)']               = 'crud_subjects_controller/import_index_ineligible/$1';
 $route['admin/import-ineligibilities/proceed/(:num)']       = 'crud_subjects_controller/import_excel_ineligible/$1';
 
+//ADMIN: export registered list
+$route['admin/export-room/(:num)/(:num)']               = 'export_students_list_controller/get_students_list/$1/$2';
+
 
 //TODO: export shits
 
@@ -48,8 +51,7 @@ $route['student']                       = 'register_exam_session_controller/inde
 //STUDENT: export reg result
 $route['student/reg-result']            = 'export_registration_result_controller/get_reg_result';
 
-//ADMIN: export registered list
-$route['admin/export-room/(:num)/(:num)']               = 'export_students_list_controller/get_students_list/$1/$2';
+
 
 // using multiple controller
 $route['default_controller'] = 'CRUD_Students_Controller';

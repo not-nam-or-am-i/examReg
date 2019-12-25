@@ -9,6 +9,7 @@ class Export_students_list_controller extends CI_Controller {
         parent::__construct();
         $this->load->helper('url', 'form');
         $this->load->model('sv_phong_ca_model');
+        $this->load->model('phong_model');
     }
 
     //TODO: trang mặc định, hiện ca - phòng cho admin chọn để sau đó export danh sách sv trong phòng đó
@@ -21,6 +22,8 @@ class Export_students_list_controller extends CI_Controller {
         //lấy ra danh sách sinh viên thi ca '$id_ca' trong phòng '$id_phong'
         //data list gồm có: id sv, tên sv, khóa học
         $data['students'] = $this->sv_phong_ca_model->get_students_list($id_ca, $id_phong);
+        $data['phong'] = $this->phong_model->get_by_id($id_phong)->ten_phong;
+        $data['id_ca'] = $id_ca;
 
         $this->load->view('admin/export/admin_export_room', $data);
     }
