@@ -126,10 +126,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div-->
 
 <div id="container">
-    <?php echo form_open_multipart("admin/import-eligibilities/proceed"); ?>
+    <?php echo form_open_multipart("admin/import-eligibilities/proceed/".$id_mon, ['class'=>'form-row']); ?>
         <div id="form-box" class="card text-center mx-auto w-50">
             <div class="card-body">
-                <h4 class="card-title text-left">Tải file danh sách sinh viên không đủ điều kiện thi</h4>
+                <h4 class="card-title text-left">Tải file danh sách sinh viên theo môn</h4>
                 <div class="input-group">
                     <div class="custom-file">
                         <input type="file" name="file" class="custom-file-input" id="inputGroupFile04" required accept=".xls, .xlsx" />

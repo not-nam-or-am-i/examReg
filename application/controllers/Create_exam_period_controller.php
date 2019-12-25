@@ -124,7 +124,7 @@ class Create_exam_period_controller extends CI_Controller {
 
     //TODO: Tạo create_phong_ca controller (ĐỀ BÀI CHỈ NÓI THÊM THÔI, thích thì viết nốt sửa xóa mệt quạ...)
     public function create_detail() {
-
+        
     }
     
     

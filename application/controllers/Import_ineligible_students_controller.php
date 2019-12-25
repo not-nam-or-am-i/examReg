@@ -38,21 +38,16 @@ class Import_ineligible_students_controller extends CI_Controller {
                 ));
                 
             }
-            $this->sv_mon_model->update_multiple($data_batch);
-            
-            //TODO: Form not redirected to admin => Viết hàm check if query was executed successfully trong model
-            /*
-            if (??) {
+            $affectedRow = $this->sv_mon_model->update_multiple($data_batch);
+
+            if ($affectedRow == 0) {
                 $this->session->set_flashdata('error', "Unexpected, oops");
             }
             else {
-                $this->session->set_flashdata('success', "Thêm danh sách sinh viên thành công"); 
-                redirect('admin');
+                $this->session->set_flashdata('success', "Thêm danh sách sinh viên không đủ điều kiện dự thi môn thành công"); 
+                redirect('admin/subject');
             }
-            */  
         }
-            
-        redirect('admin');
     }
 
 }

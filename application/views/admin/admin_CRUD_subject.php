@@ -189,7 +189,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteConfirmModal-<?php echo $subject->id;?>">
   									Xoá
 								</button>
-								<?php echo anchor('admin/import-subject-students/'.$subject->id, 'Tải danh sách sinh viên', ['class'=>'btn btn-primary btn-sm']); ?>
+								<?php echo anchor('admin/import-eligibilities/'.$subject->id, 'Tải danh sách sinh viên', ['class'=>'btn btn-primary btn-sm']); ?>
+								<?php echo anchor('admin/import-ineligibilities/'.$subject->id, 'Tải sinh viên không đủ điêu kiện', ['class'=>'btn btn-primary btn-sm']); ?>
 							</th>
 						</tr>
 

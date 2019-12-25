@@ -6,15 +6,9 @@
     ob_start();
 ?>
 
+
+
 <?php
     $html = ob_get_clean();
-    function download() {
-        global $html;
-        $dompdf = new DOMPDF();
-
-        //load stored html string
-        $dompdf->loadHtml($html);
-        $dompdf->render();
-        $dompdf->stream("danh sách sinh viên.pdf");
-    }
+    $this->session->set_userdata('htmlPage', $html);
 ?>

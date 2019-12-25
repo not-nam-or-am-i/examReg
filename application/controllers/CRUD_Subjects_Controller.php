@@ -73,13 +73,12 @@ class CRUD_Subjects_Controller extends CI_Controller {
         }
     }
     
-    public function import_index($id_mon) {
+    public function import_index_eligible($id_mon) {
         $data['id_mon'] = $id_mon;
-        $this->load->view('admin/import/admin_import_subject_list', $data);
+        $this->load->view('admin/import/admin_import_eligibilities', $data);
     }
 
-    //lưu thông tin excel vào csdl
-    public function import_excel($id_mon) {
+    public function import_excel_eligible($id_mon) {
         //$this->load->view('admin/import/admin_import_subject_list');
         //mảng data_batch lưu tất cả dữ liệu được nhận từ excel
         $data_batch = array();
@@ -102,11 +101,55 @@ class CRUD_Subjects_Controller extends CI_Controller {
                 ));
                 
             }
-            $this->sv_mon_model->insert_multiple($data_batch);
+            $affectedRow = $this->sv_mon_model->insert_multiple($data_batch);
             
-            //TODO: load view hoặc redirect tùy
-            //$this->load->view('excel_view/data_check');
+            if ($affectedRow == 0) {
+                $this->session->set_flashdata('error', "Unexpected, oops");
+            }
+            else {
+                $this->session->set_flashdata('success', "Thêm danh sách sinh viên đủ điều kiện dự thi môn thành công"); 
+                redirect('admin/subject');
+            }
         }
     }
-    
+
+    public function import_index_ineligible($id_mon) {
+        $data['id_mon'] = $id_mon;
+        $this->load->view('admin/import/admin_import_ineligible', $data);
+    }
+
+    public function import_excel_ineligible($id_mon) {
+        //$this->load->view('admin/import/admin_import_subject_list');
+        //mảng data_batch lưu tất cả dữ liệu được nhận từ excel
+        $data_batch = array();
+
+        //kiểm tra điều kiên file đã được đặt chưa
+        if(isset($_FILES["file"]["name"])) {
+            //lấy đường dẫn vào lưu data vào mảng
+            $path = $_FILES["file"]["tmp_name"];
+            $data = \PhpOffice\PhpSpreadsheet\IOFactory::load($path)->getActiveSheet()->toArray();
+            
+            //unset dòng đầu tiên tại vì nó không mang dữ liệu
+            unset($data[0]);
+
+            //duyệt mảng data rồi lưu dữ liệu và data_batch
+            foreach($data as $row) {
+                array_push($data_batch, array(
+                    'id_sv'     => $row[1],
+                    'id_mon'    => $id_mon,
+                    'dk'        => false
+                ));
+                
+            }
+            $affectedRow = $this->sv_mon_model->insert_multiple($data_batch);
+            
+            if ($affectedRow == 0) {
+                $this->session->set_flashdata('error', "Unexpected, oops");
+            }
+            else {
+                $this->session->set_flashdata('success', "Thêm danh sách sinh viên vào môn thành công"); 
+                redirect('admin/subject');
+            }
+        }
+    }
 }

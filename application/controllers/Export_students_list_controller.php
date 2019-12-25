@@ -23,7 +23,7 @@ class Export_students_list_controller extends CI_Controller {
     //hàm này để thực hiện download file pdf
     function download() {
         //get file content after the script is server-side interpreted
-        $data['content'] = $this->session->userdata('html');
+        $data['content'] = $this->session->userdata('htmlPage');
         
         //debug...
         //$this->load->view('pdf_view/view_data', $data);
@@ -34,7 +34,6 @@ class Export_students_list_controller extends CI_Controller {
         $dompdf->loadHtml($data['content']);
         $dompdf->render();
         $dompdf->stream("danh sách sinh viên.pdf");
-
     }
 }
 
