@@ -3,7 +3,7 @@ require 'vendor/autoload.php';
 use Dompdf\Dompdf;
 //admin in danh sách thí sinh dự thi theo từng phòng thi của các ca thi.
 //xem export pdf note tôi gửi
-//TODO: sửa load view trong hàm index()
+//TODO: thêm trang mặc định gồm có danh sách các phòng thi
 class Export_students_list_controller extends CI_Controller {
     public function __construct() {
         parent::__construct();
@@ -11,29 +11,18 @@ class Export_students_list_controller extends CI_Controller {
         $this->load->model('sv_phong_ca_model');
     }
 
-    //load trang mặc định
-    public function index($id_ca, $id_phong) {
-        //lấy ra danh sách sinh viên thi ca '$id_ca' trong phòng '$id_phong'
-        //data list gồm có: id sv, tên sv, khóa học
-        $data['list'] = $this->sv_phong_ca_model->get_students_list($id_ca, $id_phong);
+    //TODO: trang mặc định, hiện ca - phòng cho admin chọn để sau đó export danh sách sv trong phòng đó
+    public function index() {
 
-        //TODO: sửa $this->load->view('students_list_view/list', $data);
     }
 
-    //hàm này để thực hiện download file pdf
-    function download() {
-        //get file content after the script is server-side interpreted
-        $data['content'] = $this->session->userdata('htmlPage');
-        
-        //debug...
-        //$this->load->view('pdf_view/view_data', $data);
-        
-        $dompdf = new DOMPDF();
+    //lấy danh sách sinh viên trong phòng thi, cần được truyền vào id_ca và id_phong
+    public function get_students_list($id_ca, $id_phong) {
+        //lấy ra danh sách sinh viên thi ca '$id_ca' trong phòng '$id_phong'
+        //data list gồm có: id sv, tên sv, khóa học
+        $data['students'] = $this->sv_phong_ca_model->get_students_list($id_ca, $id_phong);
 
-        //load stored html string
-        $dompdf->loadHtml($data['content']);
-        $dompdf->render();
-        $dompdf->stream("danh sách sinh viên.pdf");
+        $this->load->view('admin/export/admin_export_room', $data);
     }
 }
 
