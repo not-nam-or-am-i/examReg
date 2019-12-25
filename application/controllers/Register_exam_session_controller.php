@@ -1,6 +1,5 @@
 <?php
 //sinh viên đăng ký ca thi
-//NOTE: chưa rõ cách lấy id của sinh viên kiểu gì nên viết tạm là tham số $id_sv vào hàm
 
 class Register_exam_session_controller extends CI_Controller{
     public function __construct() {
@@ -22,8 +21,9 @@ class Register_exam_session_controller extends CI_Controller{
 	}
 
     //lấy các môn mà sv học
-    public function get_mon($id_sv) {
+    public function get_mon() {
         //data mon gồm có: id môn, tên môn
+        $id_sv = $this->session->userdata('user_id');
         $data['mon'] = $this->sv_mon_model->get_mon($id_sv);
 
         //TODO: thêm load view
@@ -46,10 +46,10 @@ class Register_exam_session_controller extends CI_Controller{
     }
 
     //sinh viên đăng ký phòng thi trong ca thi
-    public function register($id_sv, $id_phong, $id_ca) {
+    public function register($id_phong, $id_ca) {
         //số lượng sinh viên đã đăng ký thi tại phòng 'id_phong' (để kiểm tra xem phòng đã đầy chưa)
         $data['count'] = $this->sv_phong_ca_model->reg_count($id_ca, $id_phong);
-
+        $id_sv = $this->session->userdata('user_id');
         //đăng ký <=> insert vào bảng sv_phong_ca
         $reg_data = array (
             'id_sv'         => $id_sv,
