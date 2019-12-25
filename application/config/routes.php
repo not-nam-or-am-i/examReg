@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+//LOGIN
+$route['login']                         = 'login_controller/login';
+$route['logout']                        = 'login_controller/logout';
+
 //ADMIN: CRUD students controller
 $route['admin']                         = 'crud_students_controller/index';
 $route['admin/add-student']             = 'crud_students_controller/create';

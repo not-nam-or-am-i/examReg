@@ -15,4 +15,19 @@
         public function insert_multiple($data) {
             return $this->db->insert_batch($this->table, $data);
         }
+
+        // Log user in
+		public function login($id, $password){
+			// Validate
+			$this->db->where('id', $id);
+			$this->db->where('password', $password);
+
+			$result = $this->db->get('account');
+
+			if($result->num_rows() == 1){
+				return $result->row();
+			} else {
+				return false;
+			}
+		}
     }
