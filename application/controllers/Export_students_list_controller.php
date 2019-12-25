@@ -7,8 +7,16 @@
             parent::__construct();
             $this->load->helper('url', 'form');
             $this->load->model('sv_phong_ca_model');
+			// Phải có 2 lệnh sau ở mỗi Controller
+			$this->load->library('session');
+			$this->check_authentication();
         }
-
+		// kiểm tra tình trạng đăng nhập
+		public function check_authentication() {
+			if (! $this->session->userdata('session_id')) {
+				redirect('examReg/index.php/Log_controller');
+			}
+		}
         //load trang mặc định
         public function index($id_ca, $id_phong) {
             //lấy ra danh sách sinh viên thi ca '$id_ca' trong phòng '$id_phong'

@@ -4,6 +4,10 @@
 	- Move navbar to templates to load
 -->
 
+<!-- 
+	Tôi sẽ redesign layout cái đống nút sau...
+-->
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
@@ -93,65 +97,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	#add-button {
 		margin-left: 200px;
 	}
-
 	</style>
 </head>
 
 <body>
 
-<!-- Navigation bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  	<a class="navbar-brand" href="<?php echo base_url(); ?>">AdminHomepage</a>
-  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    	<span class="navbar-toggler-icon"></span>
-  	</button>
-
-  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-    	<ul class="navbar-nav mr-auto">
-      		<li class="nav-item active">
-        		<a class="nav-link" href="<?php echo base_url(); ?>">Home <span class="sr-only">(current)</span></a>
-      		</li>
-      		<li class="nav-item dropdown">
-        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          			Actions
-        		</a>
-				<!-- TODO: FIX ALL HREF WHEN DONE -->
-        		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item active" href="admin">Student CRUD</a>
-					<a class="dropdown-item" href="">Subject CRUD</a>
-					<a class="dropdown-item" href="#">Create exam PERIOD</a>
-          			<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Import student list</a>
-          			<a class="dropdown-item" href="#">Import student eligibility list</a>
-        		</div>
-      		</li>
-    	</ul>
-    	<ul class="form-inline my-2 my-lg-0">
-        	<a class="nav-link" id="username">Welcome, #adminName <span class="sr-only">(current)</span></a> 
-      		<button class="btn btn-primary" type="submit" onclick="window.location='<?php echo site_url('examreg/index.php/log_controller/logout') ?>'">Logout</button>
-    	</ul>
-  	</div>
-</nav>
-
-<div class="bg-dark border-right col-5" id="sidebar-wrapper">
-    <div class="list-group list-group-flush">
-        <a href="admin" class="list-group-item list-group-item-action bg-dark active">Student CRUD</a>
-        <a href="" class="list-group-item list-group-item-action bg-dark list-group-item-light">Subject CRUD</a>
-        <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Import student list</a>
-        <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Import student</a>
-        <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Create exam PERIOD</a>
-    </div>
-</div>
-
+<!-- Navigation bar + Sidemenu -->
 <?php 
-	//include '/application/views/navigationBar.php' C:\xampp\htdocs\web\application\views\navigationBar.php
-	//include '../navigationBar.php';
+	include_once(dirname(__FILE__).'/../../templates/navigationBar.php');
 ?> 
         
 <!-- Main content -->
 <div id="container">
 
-	<!--
+	<!-- TODO: Redesign
 	<div id="top-actions-container">
 		<div class="row">
   			<div class="col-sm-3">
@@ -197,8 +156,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="database">
         <div class="database-header">
             <h1 class="database-title">
-				Subject database
-				<?php echo anchor('admin/add-subject', 'Thêm', ['class'=>'btn btn-primary btn-sm']);?>
+				Dữ liệu kì thi
+				<?php echo anchor('admin/exam-period/create', 'Thêm', ['class'=>'btn btn-primary btn-sm'], ['id'=>'add-button']);?>
 			</h1>
         </div>
 
@@ -209,35 +168,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
         <?php } ?>
             
-        <div class="box-body">
+        <div id="database-table" class="box-body">
             <table id="example1" class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th>Checkbox</th>
-						<th>ID</th>
-						<th>Môn học</th>
+						<th>Chọn (CHƯA CHẠY)</th>
+						<th>ID Kỳ thi</th>
+						<th>Năm</th>
+						<th>Học kỳ</th>
 						<th></th>
 					</tr>
 				</thead>
 
 				<!-- Database retrival -->
 				<tbody>
-					<?php foreach ($subjects as $subject) : ?>
+					<?php foreach ($exam_periods as $period) : ?>
 						<!-- Table -->
 						<tr>
-							<th></th>
-							<td><?php echo $subject->id; ?></td>
-							<td><?php echo $subject->ten_mon; ?></td>
+							<td>
+								<div class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input" id="checkbox-<?php echo $period->id;?>">
+									<label class="custom-control-label" for="checkbox-<?php echo $period->id;?>"></label>
+								</div>
+							</td>
+							<td><?php echo $period->id; ?></td>
+							<td><?php echo $period->nam; ?></td>
+							<td><?php echo $period->hoc_ky; ?></td>
 							<th>
-								<?php echo anchor('admin/update-subject/'.$subject->id, 'Sửa', ['class'=>'btn btn-primary btn-sm']); ?>
-								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteConfirmModal-<?php echo $subject->id;?>">
+								<?php echo anchor('admin/update-exam-period/'.$period->id, 'Sửa', ['class'=>'btn btn-primary btn-sm']); ?>
+								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteConfirmModal-<?php echo $period->id;?>">
   									Xoá
 								</button>
+								<?php echo anchor('admin/exam-period-details/'.$period->id, 'Xem chi tiết', ['class'=>'btn btn-secondary btn-sm']); ?>
 							</th>
 						</tr>
 
 						<!-- Modal for Delete Confirmation Pop-up -->
-						<div class="modal fade" id="deleteConfirmModal-<?php echo $subject->id;?>" role="dialog" aria-labelledby="exampleModalLabel">
+						<?php 
+							//include_once(dirname(__FILE__).'/admin_delete_student.php');
+						?> 
+						<div class="modal fade" id="deleteConfirmModal-<?php echo $period->id;?>" role="dialog" aria-labelledby="exampleModalLabel">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -247,23 +217,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										</button>
 									</div>
 									<div class="modal-body">
-										Xóa môn học này?
+										Xóa kỳ thi này?
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-										<?php echo anchor('admin/delete-subject/'.$subject->id, 'Delete', ['class'=>'btn btn-primary btn-sm']); ?>
+										<?php echo anchor('admin/delete-exam-period/'.$period->id, 'Delete', ['class'=>'btn btn-primary btn-sm']); ?>
 									</div>
 								</div>
 							</div>
 						</div>
+						
 					<?php endforeach; ?>
 				</tbody>
 				
                 <tfoot>
 					<tr>
-						<th data-checkbox="false"></th>
-						<th>ID</th>
-						<th>Môn học</th>
+						<th>
+							<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteMultipleConfirmModal">
+								Xoá
+							</button>
+						</th>
+						<!-- Modal for Delete Confirmation Pop-up -->
+						<!--div class="modal fade" id="#deleteMultipleConfirmModal" role="dialog" aria-labelledby="exampleModalLabel">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Xác nhận</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										Xóa sinh viên này?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										<?//php echo anchor('admin/delete-student/'.$student->id, 'Delete', ['class'=>'btn btn-primary btn-sm']); ?>
+									</div>
+								</div>
+							</div>
+						</div-->
+						<th>ID Kỳ Thi</th>
+						<th>Năm</th>
+						<th>Học kỳ</th>
 						<th></th>
 					</tr>
                 </tfoot>

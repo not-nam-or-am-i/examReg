@@ -122,7 +122,7 @@
     	</ul>
     	<ul class="form-inline my-2 my-lg-0">
         	<a class="nav-link" id="username">Welcome, #adminName <span class="sr-only">(current)</span></a> 
-      		<button class="btn btn-primary" type="submit" onclick="window.location='<?php echo site_url('examreg/index.php/log_controller/logout') ?>'">Logout</button>
+      		<button class="btn btn-primary" type="submit">Logout</button>
     	</ul>
   	</div>
 </nav>
@@ -142,61 +142,20 @@
         
 <div id="container">
 
-	<div id="top-actions-container">
-		<div class="row">
-  			<div class="col-sm-3">
-    			<div class="card">
-      				<div class="card-body">
-        				<h5 class="card-title">Add</h5>
-						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<?php echo anchor('admin/add-student', 'Add', ['class'=>'btn btn-primary btn-sm']);?>
-      				</div>
-    			</div>
-  			</div>
-  			<div class="col-sm-3"> 
-    			<div class="card">
-      				<div class="card-body">
-        				<h5 class="card-title">Update</h5>
-        				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        				<a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-      				</div>
-    			</div>
-  			</div>
-		  	<div class="col-sm-3">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Delete</h5>
-						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-					</div>
-				</div>
-  			</div>
-		  	<div class="col-sm-3">
-    			<div class="card">
-      				<div class="card-body">
-        				<h5 class="card-title">Import a list</h5>
-        				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        				<a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-      				</div>
-    			</div>
-  			</div>
-		</div>
-    </div>
-
 	<!-- Form nhập -->
-    <?php echo form_open('admin/update-subject/'.$id, ['class'=>'form-row']);?>
+    <?php echo form_open('admin/update-exam-period/'.$period->id, ['class'=>'form-row']);?>
         <div class="update-form">
                 <div id="form-input-container" class="form-row">
                     <div class="col-3">
-                        <?php echo form_input(['name'=>'id', 'value'=>$subject->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+                        <?php echo form_input(['name'=>'nam', 'value'=>$period->nam, 'placeholder'=>'Năm', 'class'=>'form-control']); ?>
                     </div>
                     <div class="col-3">
-                        <?php echo form_input(['name'=>'ten_mon', 'value'=>$subject->ten_mon, 'placeholder'=>'Tên môn', 'class'=>'form-control']); ?>
+                        <?php echo form_input(['name'=>'hoc_ky', 'value'=>$period->hoc_ky, 'placeholder'=>'Học kỳ', 'class'=>'form-control']); ?>
                     </div>
                 </div>
 				<?php echo validation_errors(); ?>
                 <div>
-                    <?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']);?>
+                    <?php echo form_submit(['name'=>'submit', 'value'=>'Sửa', 'class'=>'btn btn-primary btn-sm']);?>
                 </div>
         </div>     
     </form>	

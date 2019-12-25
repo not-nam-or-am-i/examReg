@@ -11,7 +11,23 @@ class Register_exam_session_controller extends CI_Controller{
         $this->load->model('sv_phong_ca_model');
         $this->load->model('phong_ca_model');
         $this->load->model('ca_model');
+		// Phải có 2 lệnh sau ở mỗi Controller
+		$this->load->library('session');
+		$this->check_authentication();
     }
+	// kiểm tra tình trạng đăng nhập
+	public function check_authentication() {
+		if (! $this->session->userdata('session_id')) {
+			redirect('examReg/index.php/Log_controller');
+		}
+	}
+    //load trang mặc định
+	public function index()
+	{   
+        //TODO: hừm query kiểu gì nhỉ... cần lấy ten_mon, bat_dau, ket_thuc, phong
+        $data['records'] = $this->phong_ca_model->get_ca_mon_phong(1);
+        $this->load->view('student/student_register_exam_session', $data);
+	}
 
     //lấy các môn mà sv học
     public function get_mon($id_sv) {
@@ -52,6 +68,7 @@ class Register_exam_session_controller extends CI_Controller{
 
 
         //TODO: kiểm tra điều kiện phòng còn chỗ trống
+        //TODO: kiểm tra điều kiện ca thi không bị trùng bởi lịch đã đăng kí
         //TODO: thêm load view
     }
 }

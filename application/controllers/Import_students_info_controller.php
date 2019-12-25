@@ -9,8 +9,16 @@ class Import_Students_Info_Controller extends CI_Controller {
         parent::__construct();
         $this->load->helper('url', 'form');
         $this->load->model('account_model');
+		// Phải có 2 lệnh sau ở mỗi Controller
+		$this->load->library('session');
+		$this->check_authentication();
     }
-
+	// kiểm tra tình trạng đăng nhập
+	public function check_authentication() {
+		if (! $this->session->userdata('session_id')) {
+			redirect('examReg/index.php/Log_controller');
+		}
+	}
     //load view trang 
     public function index() {
         $this->load->view('admin/import/admin_import_students');

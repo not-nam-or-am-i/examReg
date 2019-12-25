@@ -5,4 +5,10 @@
         public function __construct() {
             parent::__construct();
         }
+
+        public function get_all_periods() {
+            $this->db->select('*');
+            return $this->db->get($this->table)->result();
+        }
+
     }
