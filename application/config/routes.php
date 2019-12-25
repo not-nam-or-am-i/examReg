@@ -45,6 +45,9 @@ $route['admin/exam-period-details/create']                      = 'create_exam_p
 //STUDENT: 
 $route['student']                       = 'register_exam_session_controller/index';
 
+//STUDENT: export reg result
+$route['student/reg-result']            = 'export_registration_result_controller/get_reg_result';
+
 //ADMIN: export registered list
 $route['admin/export-room/(:num)/(:num)']               = 'export_students_list_controller/get_students_list/$1/$2';
 
