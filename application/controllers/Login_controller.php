@@ -27,7 +27,7 @@ class Login_controller extends CI_Controller {
 
         if($this->form_validation->run() === FALSE){
             //load view
-            $this->load->view('login_view/login');
+            $this->load->view('login/login');
         } else {
             $id = $this->input->post('id');
             //encrypt password
