@@ -34,7 +34,7 @@ class Import_ineligible_students_controller extends CI_Controller {
                 array_push($data_batch, array(
                     'id_sv'     => $row[1],
                     'id_mon'    => $id_mon,
-                    'dk'        => true
+                    'dk'        => false
                 ));
                 
             }
