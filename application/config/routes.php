@@ -21,6 +21,10 @@ $route['admin/delete-subject/(:num)']   = 'crud_subjects_controller/delete/$1';
 $route['admin/import-student-list']             = 'import_students_info_controller/index';
 $route['admin/import-student-list/proceed']     = 'import_students_info_controller/import_excel';
 
+//ADMIN: import student list by subject
+$route['admin/import-subject-students/(:num)']              = 'crud_subjects_controller/import_index/$1';
+$route['admin/import-subject-students/proceed/(:num)']      = 'crud_subjects_controller/import_excel/$1';
+
 //TODO: import ineligible
 $route['admin/import-eligibilities']            = 'import_ineligible_students_controller/index';
 $route['admin/import-eligibilities/proceed']    = 'import_ineligible_students_controller/import_excel';

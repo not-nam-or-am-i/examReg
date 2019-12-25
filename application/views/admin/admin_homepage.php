@@ -176,8 +176,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<th>Chọn (CÁI NÀY CHƯA CHẠY ĐÂU ĐẤY)</th>
 						<th>ID</th>
 						<th>Tên</th>
-						<th>Môn học</th>
-						<th>Password</th>
+						<th>Khóa học</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -198,7 +197,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<td>
 								<?php echo $student->khoa_hoc; ?>
 							</td>
-							<td><?php echo $student->password; ?></td>
 							<th>
 								<?php echo anchor('admin/update-student/'.$student->id, 'Sửa', ['class'=>'btn btn-primary btn-sm']); ?>
 								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteConfirmModal-<?php echo $student->id;?>">
@@ -263,8 +261,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div-->
 						<th>ID</th>
 						<th>Tên</th>
-						<th>Môn học</th>
-						<th>Password</th>
+						<th>Khoá học</th>
 						<th></th>
 					</tr>
                 </tfoot>

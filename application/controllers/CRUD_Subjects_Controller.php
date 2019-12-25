@@ -8,6 +8,7 @@ class CRUD_Subjects_Controller extends CI_Controller {
         parent::__construct();
         $this->load->helper('url', 'form');
         $this->load->model('mon_model');
+        $this->load->model('sv_mon_model');
     }
 
     //load trang mặc định
@@ -70,6 +71,42 @@ class CRUD_Subjects_Controller extends CI_Controller {
             $this->session->set_flashdata('success', "Xoá sinh viên thành công"); 
             redirect('admin/subject');
         }
-	}
+    }
+    
+    public function import_index($id_mon) {
+        $data['id_mon'] = $id_mon;
+        $this->load->view('admin/import/admin_import_subject_list', $data);
+    }
+
+    //lưu thông tin excel vào csdl
+    public function import_excel($id_mon) {
+        //$this->load->view('admin/import/admin_import_subject_list');
+        //mảng data_batch lưu tất cả dữ liệu được nhận từ excel
+        $data_batch = array();
+
+        //kiểm tra điều kiên file đã được đặt chưa
+        if(isset($_FILES["file"]["name"])) {
+            //lấy đường dẫn vào lưu data vào mảng
+            $path = $_FILES["file"]["tmp_name"];
+            $data = \PhpOffice\PhpSpreadsheet\IOFactory::load($path)->getActiveSheet()->toArray();
+            
+            //unset dòng đầu tiên tại vì nó không mang dữ liệu
+            unset($data[0]);
+
+            //duyệt mảng data rồi lưu dữ liệu và data_batch
+            foreach($data as $row) {
+                array_push($data_batch, array(
+                    'id_sv'     => $row[1],
+                    'id_mon'    => $id_mon,
+                    'dk'        => true
+                ));
+                
+            }
+            $this->sv_mon_model->insert_multiple($data_batch);
+            
+            //TODO: load view hoặc redirect tùy
+            //$this->load->view('excel_view/data_check');
+        }
+    }
     
 }

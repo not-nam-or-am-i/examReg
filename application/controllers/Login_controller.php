@@ -5,11 +5,11 @@
 // thêm vào đầu các hàm trong controller câu kiểm tra đăng nhập sv/admin
 // controller của admin thì check login admin, controller của sv thì check login sv
 // check login admin:
-// if(!$this->session->userdata('logged_in') || !$this->session->userdata('is_admin')){
+// if (!$this->session->userdata('logged_in') || !$this->session->userdata('is_admin')){
 //     redirect('login');
 // }
 // check login sv:
-// if(!$this->session->userdata('logged_in') || $this->session->userdata('is_admin')){
+// if (!$this->session->userdata('logged_in') || $this->session->userdata('is_admin')){
 //     redirect('login');
 // }
 class Login_controller extends CI_Controller {
@@ -22,8 +22,8 @@ class Login_controller extends CI_Controller {
     // Login
     public function login(){
 
-        $this->form_validation->set_rules('id', 'Id', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('id', 'id', 'required');
+        $this->form_validation->set_rules('password', 'password', 'required');
 
         if($this->form_validation->run() === FALSE){
             //load view

@@ -5,7 +5,7 @@
 <?php echo form_open('login'); ?>
   <div>
     <label>id</label>
-    <input type="text" name="id" placeholder="Id">
+    <input type="text" name="id" placeholder="Mã sinh viên">
   </div>
   <div>
     <label>password</label>
