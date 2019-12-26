@@ -10,7 +10,7 @@ class Import_Students_Info_Controller extends CI_Controller {
         $this->load->helper('url', 'form');
         $this->load->model('account_model');
         // check login admin:
-        if (!$this->session->userdata('logged_in') || !$this->session->userdata('is_admin')){
+        if (!$this->session->userdata('logged_in') || !$this->session->userdata('is_admin')) {
             redirect('login');
         }
     }

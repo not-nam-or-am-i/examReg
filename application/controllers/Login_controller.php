@@ -20,7 +20,7 @@ class Login_controller extends CI_Controller {
     }
 
     // Login
-    public function login(){
+    public function login() {
 
         $this->form_validation->set_rules('id', 'Mã sinh viên', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');

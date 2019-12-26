@@ -19,8 +19,10 @@ class Register_exam_session_controller extends CI_Controller{
     //load trang mặc định
 	public function index()
 	{   
-        //TODO: hừm query kiểu gì nhỉ... cần lấy ten_mon, bat_dau, ket_thuc, phong
-        $data['records'] = $this->phong_ca_model->get_ca_mon_phong(1);
+        //TODO: Làm sao biết ID kỳ thi để truyền vào get_ca_mon?
+        //$data['records'] = $this->phong_ca_model->get_ca_mon(1);
+        $data['mon'] = $this->sv_mon_model->get_mon($this->session->userdata('user_id'));
+        //$data['ca'] = $this->ca_model->get_ca_by_mon($mon);
         $this->load->view('student/student_register_exam_session', $data);
 	}
 

@@ -120,10 +120,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<thead>
 					<tr>
 						<!--th>Chọn (CHƯA CHẠY)</th-->
-						<th>Ca</th>
-						<th>Mã môn</th>
-                        <th>Môn</th>
-                        <th>Phòng</th>
+						<th>Phòng</th>
+						<th>Số chỗ</th>
 						<!--th></th-->
 					</tr>
 				</thead>
@@ -141,7 +139,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</td-->
 							<td><?php echo $detail->ten_phong; ?></td>
                             <td><?php echo $detail->so_cho; ?></td>
-                            <td><?php echo anchor('', 'Xem phòng', ['class'=>'btn btn-primary btn-sm'], ['id'=>'add-button']);?></td>
 							<!--th>
 								<?//php echo anchor('admin/update-exam-period/'.$detail->id, 'Sửa', ['class'=>'btn btn-primary btn-sm']); ?>
 								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteConfirmModal-<?php echo $detail->id;?>">
@@ -204,10 +201,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 							</div>
 						</div-->
-						<th>Ca</th>
-						<th>Mã môn</th>
-                        <th>Môn</th>
-                        <th>Phòng</th>
+						<th>Phòng</th>
+						<th>Số chỗ</th>
 						<!--th></th-->
 					</tr>
                 </tfoot>

@@ -151,28 +151,25 @@ class Create_exam_period_controller extends CI_Controller {
     public function create_room($id_ky_thi, $id_ca) {
         $data['id_ky_thi'] = $id_ky_thi;
         $data['id_ca'] = $id_ca;
-        $data['details'] = $this->phong_ca_model->get_phong_by_ca($id_ca);
-        $this->load->view('admin/exam_periods/admin_create_ca', $data);
+        $data['ca']  = $this->ca_model->get_by_id($id_ca);
+        $data['phong']  = $this->phong_model->get_all();
+        $this->load->view('admin/exam_periods/admin_create_room', $data);
 
         //không cần id vì auto increment
         //NOTE: input kiểu datetime?
-        $this->form_validation->set_rules('bat_dau', 'Thời gian bắt đầu', 'required');
-        $this->form_validation->set_rules('ket_thuc', 'Thời gian kết thúc', 'required');
-        $this->form_validation->set_rules('subjectList', 'Môn học', 'required');
+        $this->form_validation->set_rules('id_phong', 'Tên phòng', 'required');
 
         if ($this->form_validation->run() === FALSE) {
-            $this->load->view('admin/exam_periods/admin_create_ca');
-            $this->session->set_flashdata('error', "Thêm ca thi không thành công");
+            $this->load->view('admin/exam_periods/admin_create_room');
+            $this->session->set_flashdata('error', "Thêm phòng thi không thành công");
         } else {
             $data = array(
-                'bat_dau'           => $this->input->post('bat_dau'),
-                'ket_thuc'          => $this->input->post('ket_thuc'),
-                'id_ky_thi'         => $id_ky_thi,
-                'id_mon'            => $this->input->post('subjectList')
+                'id_ca'              => $id_ca,
+                'id_phong'           => $this->input->post('id_phong')
             );
-            $this->ca_model->insert($data);
-            $this->session->set_flashdata('success', "Thêm ca thi thành công"); 
-            redirect('admin/exam-period-details/'.$id_ky_thi);
+            $this->phong_ca_model->insert($data);
+            $this->session->set_flashdata('success', "Thêm phòng thi vào ca thành công"); 
+            redirect('admin/exam-period-details/'.$id_ca);
         }
     }
 

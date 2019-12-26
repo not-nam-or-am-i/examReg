@@ -144,12 +144,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                             <!-- Database retrival -->
                             <tbody>
-                                <?php foreach ($records as $record) : ?>
+                                <?php foreach ($mon as $mon) : ?>
                                     <!-- Table -->
                                     <tr>
-                                        <td><?php echo $record->ten_mon; ?></td>
-                                        <td>(<?php echo $record->bat_dau; ?> - <?php echo $record->ket_thuc; ?>)</td>
-                                        <td><?php echo $record->ten_phong; ?></td>
+                                        <td><?php echo $mon->id ?>: <?php echo $mon->ten_mon ?></td>
+                                        
+                                        <td></td>
                                     </tr>
                                                             
                                 <?php endforeach; ?>
@@ -199,24 +199,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <th>Chọn (CÁI NÀY CHƯA CHẠY ĐÂU ĐẤY)</th>
                                     <th>Môn</th>
                                     <th>Ca</th>
-                                    <th>Phòng</th>
                                 </tr>
                             </thead>
 
                             <!-- Database retrival -->
                             <tbody>
-                                <?php foreach ($records as $record) : ?>
+                                <?php foreach ($mon as $mon) : ?>
                                     <!-- Table -->
                                     <tr>
                                         <td>
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="checkbox-<?php echo $record->id;?>">
-                                                <label class="custom-control-label" for="checkbox-<?php echo $record->id;?>"></label>
+                                                <input type="checkbox" class="custom-control-input" id="checkbox-<?php echo $mon->id;?>">
+                                                <label class="custom-control-label" for="checkbox-<?php echo $mon->id;?>"></label>
                                             </div>
                                         </td>
-                                        <td><?php echo $record->ten_mon; ?></td>
-                                        <td>(<?php echo $record->bat_dau; ?> - <?php echo $record->ket_thuc; ?>)</td>
-                                        <td><?php echo $record->ten_phong; ?></td>
+                                        <td><?php echo $mon->ten_mon; ?></td>
+                                        <td></td>
                                     </tr>
                                                             
                                 <?php endforeach; ?>

@@ -87,6 +87,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	#add-button {
 		margin-left: 200px;
 	}
+
+	#form-box {
+        margin-top: 50px;
+    }
 	</style>
 </head>
 
@@ -99,31 +103,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
 <div id="container">
 
+<		<div id="form-box" class="card text-center mx-auto w-50">
+            <div class="card-body">
+                <h4 class="card-title text-left">Tải file danh sách sinh viên theo môn</h4>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" name="file" class="custom-file-input" id="inputGroupFile04" required accept=".xls, .xlsx" />
+                        <label class="custom-file-label text-right" for="inputGroupFile04" style="padding-right: 75px">Chọn file</label>
+                    </div>
+                    <div class="input-group-append">
+                        <button type="submit" value="upload" class="btn btn-primary btn-sm">Tải lên</button>
+                    </div>
+                </div>
+
+                <!-- TODO: AJAX Success Message-->
+        
+
+                <!-- Success message -->
+                <!-- TODO: FIX -->
+                <?php if ($this->session->flashdata('error')) { ?>
+                    <div class = "alert alert-danger alert-dismissible text-center">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <?php echo $this->session->flashdata('error'); ?>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+
+	<!-- TODO: 1) Làm form bình thường không dùng form_open 2) route? --> 
 	<!-- Form nhập -->
-    <?php echo form_open('admin/exam-period-details/'.$id_ky_thi.'/'.$id_ca.'/create-ca', ['class'=>'form-row']);?>
-        <div class="create-form">
-            <div id="form-input-container" class="form-row">
+    <?php echo form_open('admin/exam-period-details/'.$id_ky_thi.'/'.$id_ca.'/create-room');?>
+        <div class="create-form card mx-auto w-50">
+            <div id="form-input-container card-body" class="form-row">
                 <!-- TODO: Show previous data -->
                 <div class="col">
-                    <?php echo form_input(['name'=>'bat_dau', 'value'=>set_value('bat_dau'), 'placeholder'=>'Thời gian bắt đầu', 'class'=>'form-control']); ?>
-                </div>
-                <div class="col">
-                    <?php echo form_input(['name'=>'ket_thuc', 'value'=>set_value('ket_thuc'), 'placeholder'=>'Thời gian kết thúc', 'class'=>'form-control']); ?>
-                </div>
-                <div class="col">
-                    <select class="custom-select form-control" name="subjectList">
-                        <option value="" selected disabled>Môn học</option>
-                        <?php foreach ($subjects as $subject) : ?>
-                            <option value="<?php echo $subject->id ?>"><?php echo $subject->id ?>: <?php echo $subject->ten_mon ?></a>
+                    <select class="custom-select form-control" name="id_phong">
+                        <option value="" selected disabled>Phòng thi</option>
+                        <?php foreach ($phong as $phong) : ?>
+                            <option value="<?php echo $phong->id ?>"><?php echo $phong->ten_phong ?> (<?php echo $phong->so_cho ?> chỗ)</a>
                         <?php endforeach; ?>
                     </select>
-                </div-->
+				</div-->
+				<div>
+					<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']); ?>
+					<?php //echo anchor(''); ?>
+				</div>
             </div>
             <?php echo validation_errors(); ?>
-            <div>
-                <?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']); ?>
-                <?php //echo anchor(''); ?>
-            </div>
         </div>     
     </form>	
 </div>
