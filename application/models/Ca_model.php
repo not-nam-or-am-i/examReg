@@ -21,7 +21,7 @@
         //lấy các ca thi của kỳ thi
         public function get_ca_by_ky($id_ky) {
             //query trực tiếp
-            $query = $this->db->query('SELECT * FROM `ca_thi` WHERE `ca_thi`.id_ky_thi = ' . $id_ky);
+            $query = $this->db->query('SELECT * FROM `ca_thi` WHERE `ca_thi`.id_ky_thi =' . $id_ky . ' ORDER BY `ca_thi`.`id` asc ' );
             
             return $query->result();
         }
