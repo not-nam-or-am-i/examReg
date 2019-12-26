@@ -15,34 +15,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="../../assets/dist/css/skins/_all-skins.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="../../assets/plugins/datatables/dataTables.bootstrap.css">
+
+  <style>
+      #form-box {
+        box-shadow: 5px;
+      }
+  </style>
+
 </head>
 
 <body>
 
-<div id="container h-100">
+<div id="container-fluid align-items-center">
   <?php echo form_open('login'); ?>
-      <div id="form-box" class="card text-center mx-auto my-auto w-25">
-            <div class="card-body align-self-center justify-content-center">
-                <h4 class="card-title text-center">Đăng nhập</h4>
-                <div class="form-group text-left">
-                    <label for="id">Mã sinh viên</label>
-                    <input type="text" class="form-control" id="id" name="id" aria-describedby="idHelp" placeholder="1xxxxxxx">
-                </div>
-                <div class="form-group text-left">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="*********">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+      <div id="form-box" class="card text-center mx-auto w-25">
+          <div class="card-body align-self-center justify-content-center">
+              <h4 class="card-title text-center">Đăng nhập</h4>
+              <div class="form-group text-left">
+                  <label for="id">Mã sinh viên</label>
+                  <input type="text" class="form-control" id="id" name="id" aria-describedby="idHelp" placeholder="1xxxxxxx">
+              </div>
+              <div class="form-group text-left">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="*********">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
 
-                <!-- Error message -->
-                <?php if ($this->session->flashdata('error')) { ?>
-                    <div class = "alert alert-danger alert-dismissible text-center">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <?php echo $this->session->flashdata('error'); ?>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
+              <!-- Error message -->
+              <?php if ($this->session->flashdata('error')) { ?>
+                  <div class = "alert alert-danger alert-dismissible text-center">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      <?php echo $this->session->flashdata('error'); ?>
+                  </div>
+              <?php } ?>
+          </div>
+      </div>
   </form>
 </div>
 

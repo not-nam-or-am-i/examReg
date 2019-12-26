@@ -39,7 +39,7 @@ class Login_controller extends CI_Controller {
             $sv_data = $this->account_model->login($id, $password);
 
             //kiểm tra xem có tài khoản không
-            if ($sv_data){
+            if ($sv_data) {
                 // Create session
                 $user_data = array(
                     'user_id'       => $id,
@@ -52,7 +52,7 @@ class Login_controller extends CI_Controller {
                 $this->session->set_userdata($user_data);
 
                 //TODO: redirect về trang của admin hoặc sv
-                if($this->session->userdata('is_admin')) {
+                if ($this->session->userdata('is_admin')) {
                     //trang admin
                     redirect('admin');
                 } else {

@@ -181,7 +181,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php foreach ($subjects as $subject) : ?>
 						<!-- Table -->
 						<tr>
-							<th></th>
+							<td>
+								<div class="custom-control custom-checkbox">
+									<input class="custom-control-input" type="checkbox" name="subjects[]" value="<?php echo $subject->id;?>" id="<?php echo $subject->id;?>">
+									<label class="custom-control-label" for="<?php echo $subject->id;?>"></label>
+								</div>
+							</td>
 							<td><?php echo $subject->id; ?></td>
 							<td><?php echo $subject->ten_mon; ?></td>
 							<th>
@@ -219,7 +224,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
                 <tfoot>
 					<tr>
-						<th data-checkbox="false"></th>
+						<th><button type="submit" name="submit" class="btn btn-primary btn-sm">Xoá</button></th>
 						<th>ID</th>
 						<th>Môn học</th>
 						<th></th>

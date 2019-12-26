@@ -164,13 +164,14 @@ class Create_exam_period_controller extends CI_Controller {
             $this->session->set_flashdata('error', "Thêm phòng thi không thành công");
         } else {
             $data = array(
-                'id_ca'              => $id_ca,
-                'id_phong'           => $this->input->post('id_phong')
+                'id'           => $this->input->post('id_phong'),
+                //'ten_phong'    => $this->phong_model->get_by_id($id_ca),
+                'so_cho'       => $this->input->post('id_phong'),
+                'id_ca'        => $id_ca
             );
             $this->phong_ca_model->insert($data);
             $this->session->set_flashdata('success', "Thêm phòng thi vào ca thành công"); 
             redirect('admin/exam-period-details/'.$id_ca);
-        }
+        } 
     }
-
 }

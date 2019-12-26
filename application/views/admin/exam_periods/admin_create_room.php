@@ -102,34 +102,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
         
 <div id="container">
-
-<		<div id="form-box" class="card text-center mx-auto w-50">
-            <div class="card-body">
-                <h4 class="card-title text-left">Tải file danh sách sinh viên theo môn</h4>
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" name="file" class="custom-file-input" id="inputGroupFile04" required accept=".xls, .xlsx" />
-                        <label class="custom-file-label text-right" for="inputGroupFile04" style="padding-right: 75px">Chọn file</label>
-                    </div>
-                    <div class="input-group-append">
-                        <button type="submit" value="upload" class="btn btn-primary btn-sm">Tải lên</button>
-                    </div>
-                </div>
-
-                <!-- TODO: AJAX Success Message-->
-        
-
-                <!-- Success message -->
-                <!-- TODO: FIX -->
-                <?php if ($this->session->flashdata('error')) { ?>
-                    <div class = "alert alert-danger alert-dismissible text-center">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <?php echo $this->session->flashdata('error'); ?>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
-
 	<!-- TODO: 1) Làm form bình thường không dùng form_open 2) route? --> 
 	<!-- Form nhập -->
     <?php echo form_open('admin/exam-period-details/'.$id_ky_thi.'/'.$id_ca.'/create-room');?>

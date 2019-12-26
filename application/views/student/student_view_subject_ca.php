@@ -1,13 +1,3 @@
-<!-- 
-	TODO:
-	- Fix all href in navbar
-	- Move navbar to templates to load
--->
-
-<!-- 
-	Tôi sẽ redesign layout cái đống nút sau...
--->
-
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
@@ -25,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" href="../../assets/dist/css/skins/_all-skins.min.css">
 	<!-- DataTables -->
 	<link rel="stylesheet" href="../../assets/plugins/datatables/dataTables.bootstrap.css">
-	<title>AdminTest</title>
+	<title>StudentTest</title>
 	
 
 	<!-- CSS -->
@@ -114,64 +104,61 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
 <!-- Main content -->
 <div id="container">
-    <div id="accordion">
-        <div class="database-card">
-            <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                    <button class="btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    Đăng kí 
-                    </button>
-                </h5>
-            </div>
-
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="card-body register-database">
-                    <div class="database-header">
-                        <h1 class="database-title">
-                            Đăng kí môn thi
-                        </h1>
-                    </div>
-
-                    <?php if ($this->session->flashdata('success')) { ?>
-                        <div class="alert alert-success alert-dismissible text-center"> 
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <?php echo $this->session->flashdata('success'); ?>
-                        </div>
-                    <?php } ?>
-                        
-                    <div id="database-table" class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Môn</th>
-                                    <th>Ca</th>
-                                </tr>
-                            </thead>
-
-                            <!-- Database retrival -->
-                            <tbody>
-                                <?php foreach ($mon as $mon) : ?>
-                                    <!-- Table -->
-                                    <tr>
-                                        <td><?php echo $mon->ten_mon; ?></td>
-                                        <td><?php echo anchor('student/subject-details/'.$mon->id, 'Xem ca thi cho môn', ['class'=>'btn btn-primary btn-sm'], ['id'=>'viewCaButton']) ?></td>
-                                    </tr>
-                                                            
-                                <?php endforeach; ?>
-                            </tbody>
-                            
-                            <tfoot>
-                                <tr>
-                                    <th>Môn</th>
-                                    <th>Ca</th>
-                                </tr>
-                            </tfoot>
-                        </table> 
-                    </div>
-                </div>		
-            </div>
+<div class="database">
+        <div class="database-header">
+            <h1 class="database-title">
+				Thông tin ca cho môn <?php echo $mon->ten_mon; ?>
+			</h1>
         </div>
-    </div>
+
+		<?php if ($this->session->flashdata('success')) { ?>
+			<div class="alert alert-success alert-dismissible text-center"> 
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<?php echo $this->session->flashdata('success'); ?>
+			</div>
+        <?php } ?>
+            
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<!--th>Checkbox</th-->
+						<th>Ca</th>
+						<th>Thời gian</th>
+						<th>Phòng</th>
+					</tr>
+				</thead>
+
+				<!-- Database retrival -->
+                <tbody>
+                    <?php foreach ($ca as $ca) : ?>
+                        <!-- Table -->
+                        <tr>
+                            <!--td>
+								<div class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input" id="checkbox-<?php echo $ca->id;?>">
+									<label class="custom-control-label" for="checkbox-<?php echo $ca->id;?>"></label>
+								</div>
+							</td-->
+                            <td><?php echo $ca->id; ?></td>
+                            <td>(<?php echo $ca->bat_dau; ?> - <?php echo $ca->ket_thuc; ?>)</td>
+                            <td><?php echo anchor('student/subject-details/'.$mon->id.'/'.$ca->id, 'Xem phòng cho ca', ['class'=>'btn btn-primary btn-sm'], ['id'=>'viewRoomButton']) ?></td>
+                        </tr>
+                                                
+                    <?php endforeach; ?>
+				</tbody>
+				
+                <tfoot>
+					<tr>
+                        <!--th>Checkbox</th-->
+						<th>Ca</th>
+						<th>Thời gian</th>
+						<th>Phòng</th>
+					</tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>	
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

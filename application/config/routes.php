@@ -12,10 +12,11 @@ $route['admin/update-student/(:num)']   = 'crud_students_controller/update/$1';
 $route['admin/delete-student/(:num)']   = 'crud_students_controller/delete/$1';
 
 //ADMIN: CRUD subjects controller
-$route['admin/subject']                 = 'crud_subjects_controller/index';
-$route['admin/add-subject']             = 'crud_subjects_controller/create';
-$route['admin/update-subject/(:num)']   = 'crud_subjects_controller/update/$1';
-$route['admin/delete-subject/(:num)']   = 'crud_subjects_controller/delete/$1';
+$route['admin/subject']                     = 'crud_subjects_controller/index';
+$route['admin/add-subject']                 = 'crud_subjects_controller/create';
+$route['admin/update-subject/(:num)']       = 'crud_subjects_controller/update/$1';
+$route['admin/delete-subject/(:num)']       = 'crud_subjects_controller/delete/$1';
+$route['admin/delete-subject-multiple']     = 'crud_subjects_controller/delete_multiple';
 
 //ADMIN: import student list
 $route['admin/import-student-list']             = 'import_students_info_controller/index';
@@ -51,10 +52,13 @@ $route['admin/exam-period-details/(:num)/(:num)/create-room']   = 'create_exam_p
 
 
 //STUDENT: 
-$route['student']                       = 'register_exam_session_controller/index';
+$route['student']                                               = 'register_exam_session_controller/index';
+$route['student/subject-details/(:num)']                        = 'register_exam_session_controller/get_ca/$1';
+$route['student/subject-details/(:num)/(:num)']                 = 'register_exam_session_controller/get_phong/$1/$2';
+$route['student/subject-details/(:num)/(:num)/register']        = 'register_exam_session_controller/register/$1/$2';
 
 //STUDENT: export reg result
-$route['student/reg-result']            = 'export_registration_result_controller/get_reg_result';
+$route['student/reg-result']                                    = 'export_registration_result_controller/get_reg_result';
 
 
 

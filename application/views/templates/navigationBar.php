@@ -5,31 +5,22 @@
     	<span class="navbar-toggler-icon"></span>
   	</button>
 
-  	<!--div class="collapse navbar-collapse" id="navbarSupportedContent">
+  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
-      		<li class="nav-item active">
+      		<!--li class="nav-item active">
         		<a class="nav-link" href="<?php echo base_url(); ?>">Home <span class="sr-only">(current)</span></a>
       		</li>
       		<li class="nav-item dropdown">
         		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           			Actions
         		</a>
-
-        		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item active" href="<?php echo base_url(); ?>admin/">Quản lý sinh viên</a>
-					<a class="dropdown-item" href="<?php echo base_url(); ?>admin/subject">Quản lý sinh viên</a>
-					<a class="dropdown-item" href="<?php echo base_url(); ?>admin/exam-period">Tạo kỳ thi</a>
-          			<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="<?php echo base_url(); ?>admin/import-student-list">Tải danh sách sinh viên</a>
-          			<a class="dropdown-item" href="<?php echo base_url(); ?>admin/import-eligibilities">Tải danh sach sinh viên không đủ điều kiện thi</a>
-        		</div>
-      		</li>
+      		</li-->
     	</ul>
     	<ul class="form-inline my-2 my-lg-0">
-        	<a class="nav-link" id="username">Welcome, #adminName <span class="sr-only">(current)</span></a> 
-      		<button class="btn btn-primary" type="submit">Logout</button>
+        	<!--a class="nav-link" id="username">Welcome, #adminName <span class="sr-only">(current)</span></a--> 
+			<a href="<?php echo base_url(); ?>logout/" class="btn btn-primary">Logout</a>
     	</ul>
-  	</div-->
+  	</div>
 </nav>
 
 <div class="bg-dark border-right col-5" id="sidebar-wrapper">
