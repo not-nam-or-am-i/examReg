@@ -19,7 +19,8 @@
             $query = $this->db->query('SELECT `ca_thi`.id as id_ca, `ca_thi`.`bat_dau`, `ca_thi`.`ket_thuc`, `mon`.`id` as id_mon, `mon`.`ten_mon`
             FROM `ca_thi`
             JOIN `mon` ON `ca_thi`.`id_mon` = `mon`.`id`
-            WHERE `ca_thi`.`id_ky_thi` = ' . $id_ky_thi);
+            WHERE `ca_thi`.`id_ky_thi` = '. $id_ky_thi .'
+            ORDER BY id_ca ASC' );
             return $query->result();
         }
     }
