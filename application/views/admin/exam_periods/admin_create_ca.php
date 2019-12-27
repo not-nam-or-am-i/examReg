@@ -104,10 +104,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="create-form">
             <div id="form-input-container" class="form-row">
                 <div class="col">
-                    <?php echo form_input(['name'=>'bat_dau', 'value'=>set_value('bat_dau'), 'placeholder'=>'Thời gian bắt đầu', 'class'=>'form-control']); ?>
+                    <?php echo form_input(['name'=>'bat_dau', 'value'=>set_value('bat_dau'), 'placeholder'=>'Thời gian bắt đầu', 'class'=>'form-control', 'type'=>'datetime-local']); ?>
                 </div>
                 <div class="col">
-                    <?php echo form_input(['name'=>'ket_thuc', 'value'=>set_value('ket_thuc'), 'placeholder'=>'Thời gian kết thúc', 'class'=>'form-control']); ?>
+                    <?php echo form_input(['name'=>'ket_thuc', 'value'=>set_value('ket_thuc'), 'placeholder'=>'Thời gian kết thúc', 'class'=>'form-control', 'type'=>'datetime-local']); ?>
                 </div>
                 <div class="col">
                     <select class="custom-select form-control" name="subjectList">
@@ -125,32 +125,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>     
     </form>	
-
-	<!--form id="form-row" action="<?php echo base_url(); ?>admin/exam-period-details/<?php echo $id_ky_thi; ?>'/create-ca" method="post" accept-charset="utf-8">
-		<div class="create-form">
-			<div id="form-input-container" class="form-row">
-				<div class="col">
-					<?php echo form_input(['name'=>'bat_dau', 'value'=>set_value('bat_dau'), 'placeholder'=>'Thời gian bắt đầu', 'class'=>'form-control']); ?>
-				</div>
-				<div class="col">
-					<?php echo form_input(['name'=>'ket_thuc', 'value'=>set_value('ket_thuc'), 'placeholder'=>'Thời gian kết thúc', 'class'=>'form-control']); ?>
-				</div>
-				<div class="col">
-					<select class="custom-select form-control" name="subjectList">
-						<option value="" selected disabled>Môn học</option>
-						<?php foreach ($subjects as $subject) : ?>
-							<option value="<?php echo $subject->id ?>"><?php echo $subject->id ?>: <?php echo $subject->ten_mon ?></a>
-						<?php endforeach; ?>
-					</select>
-				</div>
-			</div>
-			<?php echo validation_errors(); ?>
-			<div>
-				<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']); ?>
-				<?php //echo anchor(''); ?>
-			</div>
-		</div>   
-	</form-->
 </div>
 
 <!-- Bootstrap relevant frameworks import -->
