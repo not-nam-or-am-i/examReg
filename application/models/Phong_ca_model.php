@@ -11,8 +11,8 @@
             //query trực tiếp
             $query = $this->db->query('SELECT `phong`.`id` as id_phong, `phong`.`ten_phong`, `phong`.`so_cho`, `phong`.`id_ca`, COUNT(`sv_phong_ca`.`id_sv`) as da_dang_ky
             FROM `phong` 
-            JOIN `sv_phong_ca` ON `phong`.`id` = `sv_phong_ca`.`id_phong` AND `phong`.`id_ca` = `sv_phong_ca`.`id_ca`
-            WHERE `phong`.`id_ca` = '. $id_ca .'
+            LEFT JOIN `sv_phong_ca` ON `phong`.`id` = `sv_phong_ca`.`id_phong` AND `phong`.`id_ca` = `sv_phong_ca`.`id_ca`
+            WHERE `phong`.`id_ca` = '.$id_ca.'
             group BY `phong`.`id`, `phong`.`id_ca`' );
             return $query->result();
         }
