@@ -77,22 +77,22 @@ class CRUD_Subjects_Controller extends CI_Controller {
         }
     }
 
-    public function delete_multiple() {
-        $data['student'] = $this->mon_model->get_by_id($id);
-        $selectedSubjects = $this->input->post('subjects');
+    // public function delete_multiple() {
+    //     $data['student'] = $this->mon_model->get_by_id($id);
+    //     $selectedSubjects = $this->input->post('subjects');
 
-        //check xem có phòng nào được chọn không
-        if (empty($selectedStudents)) {
-            redirect('admin/subject');
-            $this->session->set_flashdata('error', "Vui lòng chọn ít nhất một môn"); 
-        } else {
-            foreach ($selectedSubjects as $subject) {
-                $this->mon_model->delete($subject->id);
-            }
-            $this->session->set_flashdata('success', "Đăng kí thành công"); 
-            redirect('student/subject-details/'.$id_mon.'/'.$id_ca);
-        }   
-    }
+    //     //check xem có phòng nào được chọn không
+    //     if (empty($selectedStudents)) {
+    //         redirect('admin/subject');
+    //         $this->session->set_flashdata('error', "Vui lòng chọn ít nhất một môn"); 
+    //     } else {
+    //         foreach ($selectedSubjects as $subject) {
+    //             $this->mon_model->delete($subject->id);
+    //         }
+    //         $this->session->set_flashdata('success', "Đăng kí thành công"); 
+    //         redirect('student/subject-details/'.$id_mon.'/'.$id_ca);
+    //     }   
+    // }
     
     public function import_index_eligible($id_mon) {
         $data['id_mon'] = $id_mon;
@@ -162,7 +162,7 @@ class CRUD_Subjects_Controller extends CI_Controller {
                 ));
                 
             }
-            $affectedRow = $this->sv_mon_model->insert_multiple($data_batch);
+            $affectedRow = $this->sv_mon_model->update_multiple($data_batch, $id_mon);
             
             if ($affectedRow == 0) {
                 $this->session->set_flashdata('error', "Unexpected, oops");

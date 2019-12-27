@@ -10,7 +10,10 @@
             return $this->db->insert_batch($this->table, $data);
         }
 
-        public function update_multiple($data) {
+        public function update_multiple($data, $id_mon) {
+            $condition = array('id_mon' => $id_mon);
+
+            $this->db->where($condition);
             return $this->db->update_batch($this->table, $data, 'id_sv');
         }
 
