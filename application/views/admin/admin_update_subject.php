@@ -99,7 +99,7 @@
         
 <div id="container">
 
-	<div id="top-actions-container">
+	<!--div id="top-actions-container">
 		<div class="row">
   			<div class="col-sm-3">
     			<div class="card">
@@ -138,7 +138,7 @@
     			</div>
   			</div>
 		</div>
-    </div>
+    </div-->
 
 	<!-- Form nhập -->
     <?php echo form_open('admin/update-subject/'.$id, ['class'=>'form-row']);?>

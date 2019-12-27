@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
 <div id="container">
 
-	<div id="top-actions-container">
+	<!--div id="top-actions-container">
 		<div class="row">
   			<div class="col-sm-3">
     			<div class="card">
@@ -138,7 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     			</div>
   			</div>
 		</div>
-    </div>
+    </div-->
 
 	<!-- Form nhập -->
     <?php echo form_open('admin/add-subject', ['class'=>'form-row']);?>
