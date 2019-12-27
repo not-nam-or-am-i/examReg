@@ -28,6 +28,8 @@ class Create_exam_period_controller extends CI_Controller {
         //không cần id vì auto increment
         $this->form_validation->set_rules('hoc_ky', 'Học kỳ', 'required');
         $this->form_validation->set_rules('nam', 'Năm', 'required');
+        $this->form_validation->set_rules('bat_dau', 'Thời gian bắt đầu', 'required');
+        $this->form_validation->set_rules('ket_thuc', 'Thời gian kết thúc', 'required');
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('admin/exam_periods/admin_create_exam_period');
@@ -35,7 +37,9 @@ class Create_exam_period_controller extends CI_Controller {
         } else {
             $data = array(
                 'hoc_ky'       => $this->input->post('hoc_ky'),
-                'nam'          => $this->input->post('nam')
+                'nam'          => $this->input->post('nam'),
+                'bat_dau'      => $this->input->post('bat_dau'),
+                'ket_thuc'     => $this->input->post('ket_thuc')
             );
             $this->ky_thi_model->insert($data);
             $this->session->set_flashdata('success', "Thêm kỳ thi thành công"); 

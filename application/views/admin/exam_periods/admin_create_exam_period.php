@@ -108,6 +108,12 @@
 				<div class="col">
 					<?php echo form_input(['name'=>'hoc_ky', 'value'=>set_value('hoc_ky'), 'placeholder'=>'Học kỳ', 'class'=>'form-control']); ?>
 				</div>
+				<div class="col">
+					<?php echo form_input(['name'=>'bat_dau', 'value'=>set_value('bat_dau'), 'placeholder'=>'Thời gian bắt đầu', 'class'=>'form-control']); ?>
+				</div>
+				<div class="col">
+					<?php echo form_input(['name'=>'ket_thuc', 'value'=>set_value('ket_thuc'), 'placeholder'=>'Thời gian kết thúc', 'class'=>'form-control']); ?>
+				</div>
 			</div>
 			<?php echo validation_errors(); ?>
 			<div>

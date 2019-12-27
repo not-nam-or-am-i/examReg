@@ -168,7 +168,7 @@ class CRUD_Subjects_Controller extends CI_Controller {
                 $this->session->set_flashdata('error', "Unexpected, oops");
             }
             else {
-                $this->session->set_flashdata('success', "Thêm danh sách sinh viên vào môn thành công"); 
+                $this->session->set_flashdata('success', "Thêm danh sách sinh viên không đủ điều kiện dự thi thành công"); 
                 redirect('admin/subject');
             }
         }
