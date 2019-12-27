@@ -153,8 +153,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <?php foreach ($mon as $mon) : ?>
                                     <!-- Table -->
                                     <tr>
-                                        <td><?php echo $mon->ten_mon; ?></td>
-                                        <td><?php echo anchor('student/subject-details/'.$mon->id, 'Xem ca thi cho môn', ['class'=>'btn btn-primary btn-sm'], ['id'=>'viewCaButton']) ?></td>
+										<?php if ($mon->dk == TRUE) { ?>
+											<td><?php echo $mon->ten_mon; ?></td>
+                                        	<td><?php echo anchor('student/subject-details/'.$mon->id, 'Xem ca thi cho môn', ['class'=>'btn btn-primary btn-sm'], ['id'=>'viewCaButton']) ?></td>
+										<?php } else { ?>
+                                        	<td><?php echo $mon->ten_mon; ?></td>
+                                        	<td>
+												<button type="button" class="btn btn-secondary btn-sm" disabled>Bạn không đủ điều kiện thi môn này</button>
+											</td>
+										<?php } ?>
                                     </tr>
                                                             
                                 <?php endforeach; ?>

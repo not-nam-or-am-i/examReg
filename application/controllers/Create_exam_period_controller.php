@@ -174,7 +174,7 @@ class Create_exam_period_controller extends CI_Controller {
             );
             $this->phong_model->insert($data);
             $this->session->set_flashdata('success', "Thêm phòng thi vào ca thành công"); 
-            redirect('admin/exam-period-details/'.$id_ky_thi);
+            redirect('admin/exam-period-details/'.$id_ky_thi.'/'.$id_ca);
         } 
     }
 }
