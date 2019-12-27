@@ -1,6 +1,5 @@
 <?php
 //sinh viên đăng ký ca thi
-
 class Register_exam_session_controller extends CI_Controller{
     public function __construct() {
         parent::__construct();
@@ -16,7 +15,6 @@ class Register_exam_session_controller extends CI_Controller{
             redirect('login');
         }
     }
-
     //load trang mặc định
 	public function index()
 	{   
@@ -32,20 +30,16 @@ class Register_exam_session_controller extends CI_Controller{
         //data mon gồm có: id môn, tên môn
         $id_sv = $this->session->userdata('user_id');
         $data['mon'] = $this->sv_mon_model->get_mon($id_sv);
-
         //TODO: thêm load view
     }
-
     //lấy các ca thi của môn
     public function get_ca($id_mon) {
         //data ca gồm có: id ca, giờ bắt đầu, giờ kết thúc
         $data['mon']      = $this->mon_model->get_by_id($id_mon);
         $data['ca']       = $this->ca_model->get_ca_by_mon($id_mon);
         //TODO: get phòng + ca cùng lúc = id môn
-
         $this->load->view('student/student_view_subject_ca', $data);
     }
-
     //lấy các phòng thi của ca thi
     public function get_phong($id_mon, $id_ca) {
         //data phòng gồm có: tên phòng, số chỗ
@@ -57,15 +51,12 @@ class Register_exam_session_controller extends CI_Controller{
         //TODO: thêm load view
         $this->load->view('student/student_view_subject_ca_room', $data);
     }
-
     //sinh viên đăng ký phòng thi trong ca thi
     public function register($id_mon, $id_ca) {
         $data['ca']             = $this->ca_model->get_by_id($id_ca);
         $data['phong']          = $this->phong_ca_model->get_phong_by_ca($id_ca);
         $id_sv = $this->session->userdata('user_id');
-
         $selectedRooms = $this->input->post('room');
-
         //check xem có phòng nào được chọn không
         if (empty($selectedRooms)) {
             redirect('student/subject-details/'.$id_mon.'/'.$id_ca);
