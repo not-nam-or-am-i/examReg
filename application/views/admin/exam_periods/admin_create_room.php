@@ -108,20 +108,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="create-form card mx-auto w-50">
             <div id="form-input-container card-body" class="form-row">
                 <!-- TODO: Show previous data -->
-                <div class="col">
+                <!--div class="col">
                     <select class="custom-select form-control" name="id_phong">
                         <option value="" selected disabled>Phòng thi</option>
-                        <?php foreach ($phong as $phong) : ?>
-                            <option value="<?php echo $phong->id ?>"><?php echo $phong->ten_phong ?> (<?php echo $phong->so_cho ?> chỗ)</a>
+                        <?php foreach ($phong as $row) : ?>
+                            <option value="<?php echo $row->id ?>"><?php echo $row->ten_phong ?> (<?php echo $row->so_cho ?> chỗ)</a>
                         <?php endforeach; ?>
                     </select>
 				</div-->
+				<div class="col">
+					<?php echo form_input(['name'=>'ten_phong', 'value'=>set_value('ten_phong'), 'placeholder'=>'Tên phòng', 'class'=>'form-control']); ?>
+				</div>
+				<div class="col">
+					<?php echo form_input(['name'=>'so_cho', 'value'=>set_value('so_cho'), 'placeholder'=>'Số chỗ', 'class'=>'form-control']); ?>
+				</div>
 				<div>
 					<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']); ?>
 					<?php //echo anchor(''); ?>
 				</div>
+
+				<?php echo validation_errors(); ?>
+
+				<?php if ($this->session->flashdata('success')) { ?>
+					<div class="alert alert-success alert-dismissible text-center"> 
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<?php echo $this->session->flashdata('success'); ?>
+					</div>
+				<?php } else if ($this->session->flashdata('error')) { ?>
+					<div class = "alert alert-danger alert-dismissible text-center">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<?php echo $this->session->flashdata('error'); ?>
+					</div>
+				<?php } ?>
             </div>
-            <?php echo validation_errors(); ?>
+            
         </div>     
     </form>	
 </div>

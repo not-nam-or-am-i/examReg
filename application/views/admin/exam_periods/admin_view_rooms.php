@@ -122,6 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<!--th>Chọn (CHƯA CHẠY)</th-->
 						<th>Phòng</th>
 						<th>Số chỗ</th>
+						<th>In danh sách sinh viên</th>
 						<!--th></th-->
 					</tr>
 				</thead>
@@ -139,6 +140,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</td-->
 							<td><?php echo $detail->ten_phong; ?></td>
                             <td><?php echo $detail->so_cho; ?></td>
+							<td><?php echo anchor(base_url().'admin/export-room/'.$ca->id.'/'.$detail->id, 'In', ['class'=>'btn btn-primary btn-sm']); ?></td>
 							<!--th>
 								<?//php echo anchor('admin/update-exam-period/'.$detail->id, 'Sửa', ['class'=>'btn btn-primary btn-sm']); ?>
 								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteConfirmModal-<?php echo $detail->id;?>">

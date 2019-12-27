@@ -174,6 +174,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<thead>
 					<tr>
 						<!--th>Chọn (CHƯA CHẠY)</th-->
+						<th>ID ca</th>
 						<th>Ca</th>
 						<th>Mã môn</th>
                         <th>Môn</th>
@@ -193,6 +194,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<label class="custom-control-label" for="checkbox-<?php echo $detail->id;?>"></label>
 								</div>
 							</td-->
+							<td><?php echo $detail->id_ca; ?></td>
 							<td>(<?php echo $detail->bat_dau; ?> - <?php echo $detail->ket_thuc; ?>)</td>
 							<td><?php echo $detail->id_mon; ?></td>
                             <td><?php echo $detail->ten_mon; ?></td>

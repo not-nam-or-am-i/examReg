@@ -79,13 +79,18 @@ class Create_exam_period_controller extends CI_Controller {
         $data['exam_periods'] = $this->ky_thi_model->get_all_periods();
         $this->load->view('admin/exam_periods/admin_exam_period', $data);
     }
+
+    public function create_ca_index($id_ky_thi) {
+        $data['id_ky_thi'] = $id_ky_thi;
+        $data['subjects'] = $this->mon_model->get_all_subjects();
+        $this->load->view('admin/exam_periods/admin_create_ca', $data);
+    }
     
     //tạo ca thi cho kỳ thi
     public function create_ca($id_ky_thi) {
         $data['id_ky_thi'] = $id_ky_thi;
         $data['subjects'] = $this->mon_model->get_all_subjects();
-        $this->load->view('admin/exam_periods/admin_create_ca', $data);
-
+        
         //không cần id vì auto increment
         //NOTE: input kiểu datetime?
         $this->form_validation->set_rules('bat_dau', 'Thời gian bắt đầu', 'required');
@@ -93,7 +98,7 @@ class Create_exam_period_controller extends CI_Controller {
         $this->form_validation->set_rules('subjectList', 'Môn học', 'required');
 
         if ($this->form_validation->run() === FALSE) {
-            $this->load->view('admin/exam_periods/admin_create_ca');
+            $this->load->view('admin/exam_periods/admin_create_ca', $data);
             $this->session->set_flashdata('error', "Thêm ca thi không thành công");
         } else {
             $data = array(
@@ -153,23 +158,23 @@ class Create_exam_period_controller extends CI_Controller {
         $data['id_ca'] = $id_ca;
         $data['ca']  = $this->ca_model->get_by_id($id_ca);
         $data['phong']  = $this->phong_model->get_all();
-        $this->load->view('admin/exam_periods/admin_create_room', $data);
+        
 
         //không cần id vì auto increment
         //NOTE: input kiểu datetime?
-        $this->form_validation->set_rules('id_phong', 'Tên phòng', 'required');
+        $this->form_validation->set_rules('ten_phong', 'Tên phòng', 'required');
+        $this->form_validation->set_rules('so_cho', 'Số chỗ', 'required');
 
         if ($this->form_validation->run() === FALSE) {
-            $this->load->view('admin/exam_periods/admin_create_room');
+            $this->load->view('admin/exam_periods/admin_create_room', $data);
             $this->session->set_flashdata('error', "Thêm phòng thi không thành công");
         } else {
             $data = array(
-                'id'           => $this->input->post('id_phong'),
-                //'ten_phong'    => $this->phong_model->get_by_id($id_ca),
-                'so_cho'       => $this->input->post('id_phong'),
+                'ten_phong'    => $this->input->post('ten_phong'),
+                'so_cho'       => $this->input->post('so_cho'),
                 'id_ca'        => $id_ca
             );
-            $this->phong_ca_model->insert($data);
+            $this->phong_model->insert($data);
             $this->session->set_flashdata('success', "Thêm phòng thi vào ca thành công"); 
             redirect('admin/exam-period-details/'.$id_ca);
         } 
