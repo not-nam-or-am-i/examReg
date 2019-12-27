@@ -107,7 +107,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="database">
         <div class="database-header">
             <h1 class="database-title">
-				Thông tin ca cho môn <?php echo $mon->ten_mon; ?>
+				Thông tin ca cho kì thi học kỳ <?php echo $ca[0]->hoc_ky; ?> 
+										năm <?php echo $ca[0]->nam; ?> 
+										môn <?php echo $mon->ten_mon; ?>
 			</h1>
         </div>
 

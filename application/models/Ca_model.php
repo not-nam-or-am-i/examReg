@@ -9,7 +9,7 @@
         //lấy các ca thi của một môn
         public function get_ca_by_mon($id_mon) {
             //query trực tiếp
-            $query = $this->db->query('SELECT `ky_thi`.`id` as id_ky_thi, `ky_thi`.`hoc_ky`, `ky_thi`.`nam`, `ca_thi`.`id`, `ca_thi`.`id_mon`, `ca_thi`.`bat_dau`, `ca_thi`.`ket_thuc`
+            $query = $this->db->query('SELECT `ky_thi`.`id` as id_ky_thi, `ky_thi`.`hoc_ky` as hoc_ky, `ky_thi`.`nam` as nam, `ca_thi`.`id`, `ca_thi`.`id_mon`, `ca_thi`.`bat_dau`, `ca_thi`.`ket_thuc`
             FROM `ca_thi` 
             JOIN `ky_thi` ON `ca_thi`.`id_ky_thi` = `ky_thi`.`id`
             WHERE id_mon = ' .$id_mon. ' AND `ky_thi`.bat_dau < LOCALTIME AND `ky_thi`.ket_thuc>LOCALTIME' );

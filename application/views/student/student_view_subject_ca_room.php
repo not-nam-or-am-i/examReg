@@ -141,14 +141,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <!-- Table -->
                             <tr>
                                 <td>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" name="room[]" value="<?php echo $row->id;?>" id="<?php echo $row->id;?>">
-                                        <label class="custom-control-label" for="<?php echo $row->id;?>"></label>
-                                    </div>
+									<?php if (($row->so_cho - $row->da_dang_ky) <= 0) { ?>
+										<div class="custom-control custom-radio">
+											<input class="custom-control-input" type="radio" disabled="disabled" name="room[]" value="<?php echo $row->id_phong;?>" id="<?php echo $row->id_phong;?>">
+											<label class="custom-control-label" for="<?php echo $row->id_phong;?>"></label>
+										</div>
+									<?php } else { ?>
+										<div class="custom-control custom-radio">
+											<input class="custom-control-input" type="radio" name="room[]" value="<?php echo $row->id_phong;?>" id="<?php echo $row->id_phong;?>">
+											<label class="custom-control-label" for="<?php echo $row->id_phong;?>"></label>
+										</div>
+									<?php } ?>
                                 </td>
                                 <td><?php echo $row->ten_phong; ?></td>
                                 <td><?php echo $row->so_cho; ?></td>
-                                <td><?php echo $row->so_cho - $count;?></td>
+                                <td><?php echo $row->so_cho - $row->da_dang_ky;?></td>
                             </tr>
                                                     
                         <?php endforeach; ?>
