@@ -98,47 +98,6 @@
         
 <div id="container">
 
-	<div id="top-actions-container">
-		<div class="row">
-  			<div class="col-sm-3">
-    			<div class="card">
-      				<div class="card-body">
-        				<h5 class="card-title">Add</h5>
-						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<?php echo anchor('admin/add-student', 'Add', ['class'=>'btn btn-primary btn-sm']);?>
-      				</div>
-    			</div>
-  			</div>
-  			<div class="col-sm-3"> 
-    			<div class="card">
-      				<div class="card-body">
-        				<h5 class="card-title">Update</h5>
-        				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        				<a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-      				</div>
-    			</div>
-  			</div>
-		  	<div class="col-sm-3">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Delete</h5>
-						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-					</div>
-				</div>
-  			</div>
-		  	<div class="col-sm-3">
-    			<div class="card">
-      				<div class="card-body">
-        				<h5 class="card-title">Import a list</h5>
-        				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        				<a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-      				</div>
-    			</div>
-  			</div>
-		</div>
-    </div>
-
 	<!-- Form nhập -->
     <?php echo form_open('admin/add-student', ['class'=>'form-row']);?>
         <div class="create-form">
