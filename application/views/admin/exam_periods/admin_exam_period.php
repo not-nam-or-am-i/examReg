@@ -172,7 +172,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <table id="example1" class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th>Chọn (CHƯA CHẠY)</th>
+						<!--th>Chọn (CHƯA CHẠY)</th-->
 						<th>ID Kỳ thi</th>
 						<th>Năm</th>
 						<th>Học kỳ</th>
@@ -185,12 +185,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php foreach ($exam_periods as $period) : ?>
 						<!-- Table -->
 						<tr>
-							<td>
+							<!--td>
 								<div class="custom-control custom-checkbox">
 									<input type="checkbox" class="custom-control-input" id="checkbox-<?php echo $period->id;?>">
 									<label class="custom-control-label" for="checkbox-<?php echo $period->id;?>"></label>
 								</div>
-							</td>
+							</td-->
 							<td><?php echo $period->id; ?></td>
 							<td><?php echo $period->nam; ?></td>
 							<td><?php echo $period->hoc_ky; ?></td>
@@ -232,11 +232,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
                 <tfoot>
 					<tr>
-						<th>
+						<!--th>
 							<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteMultipleConfirmModal">
 								Xoá
 							</button>
-						</th>
+						</th-->
 						<!-- Modal for Delete Confirmation Pop-up -->
 						<!--div class="modal fade" id="#deleteMultipleConfirmModal" role="dialog" aria-labelledby="exampleModalLabel">
 							<div class="modal-dialog" role="document">

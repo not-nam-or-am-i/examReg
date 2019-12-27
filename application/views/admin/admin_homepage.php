@@ -156,9 +156,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="database">
         <div class="database-header">
             <h1 class="database-title">
-				Student database
+				Danh sách sinh viên
 				<?php echo anchor('admin/add-student', 'Thêm', ['class'=>'btn btn-primary btn-sm'], ['id'=>'add-button']);?>
-				<?php echo anchor('admin/import-student-list', 'Thêm file - ĐỐNG NÀY CẦN REDESIGN', ['class'=>'btn btn-primary btn-sm'], ['id'=>'import-button']);?>
+				<?php echo anchor('admin/import-student-list', 'Tải list', ['class'=>'btn btn-primary btn-sm'], ['id'=>'import-button']);?>
 			</h1>
         </div>
 
@@ -173,7 +173,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <table id="example1" class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th>Chọn (CÁI NÀY CHƯA CHẠY ĐÂU ĐẤY)</th>
+						<!--th>Chọn (CÁI NÀY CHƯA CHẠY ĐÂU ĐẤY)</th-->
 						<th>ID</th>
 						<th>Tên</th>
 						<th>Khóa học</th>
@@ -186,12 +186,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php foreach ($student_accounts as $student) : ?>
 						<!-- Table -->
 						<tr>
-							<td>
+							<!--td>
 								<div class="custom-control custom-checkbox">
 									<input type="checkbox" class="custom-control-input" id="checkbox-<?php echo $student->id;?>">
 									<label class="custom-control-label" for="checkbox-<?php echo $student->id;?>"></label>
 								</div>
-							</td>
+							</td-->
 							<td><?php echo $student->id; ?></td>
 							<td><?php echo $student->ten; ?></td>
 							<td>
@@ -234,11 +234,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
                 <tfoot>
 					<tr>
-						<th>
+						<!--th>
 							<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteMultipleConfirmModal">
 								Xoá
 							</button>
-						</th>
+						</th-->
 						<!-- Modal for Delete Confirmation Pop-up -->
 						<!--div class="modal fade" id="#deleteMultipleConfirmModal" role="dialog" aria-labelledby="exampleModalLabel">
 							<div class="modal-dialog" role="document">
