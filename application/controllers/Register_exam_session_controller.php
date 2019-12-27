@@ -62,15 +62,7 @@ class Register_exam_session_controller extends CI_Controller{
     public function register($id_mon, $id_ca) {
         $data['ca']             = $this->ca_model->get_by_id($id_ca);
         $data['phong']          = $this->phong_ca_model->get_phong_by_ca($id_ca);
-        //số lượng sinh viên đã đăng ký thi tại phòng 'id_phong' (để kiểm tra xem phòng đã đầy chưa)
-        //$data['count'] = $this->sv_phong_ca_model->reg_count($id_ca, $id_phong);
         $id_sv = $this->session->userdata('user_id');
-
-        $seats = array();
-        foreach ($data['phong'] as $phong) {
-            array_push($seats, $this->sv_phong_ca_model->reg_count($id_ca, $phong->id));
-        }
-        $data['count'] = $seats;
 
         $selectedRooms = $this->input->post('room');
 

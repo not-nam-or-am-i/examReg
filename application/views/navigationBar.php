@@ -24,7 +24,7 @@
       		</li-->
     	</ul>
     	<ul class="form-inline my-2 my-lg-0">
-			<a class="nav-link" id="username">Welcome, <?php $this->session->userdata('ten') ?> <span class="sr-only">(current)</span></a>
+			<a class="nav-link" id="username">Welcome, <?php echo $this->session->userdata('ten'); ?> <span class="sr-only">(current)</span></a>
 			<a href="<?php echo base_url(); ?>logout/" class="btn btn-primary">Logout</a>
     	</ul>
   	</div>

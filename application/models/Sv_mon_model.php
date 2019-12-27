@@ -17,7 +17,7 @@
         //lấy môn sinh viên học bằng id sinh viên
         public function get_mon($id_sv) {
             //điều kiện query where
-            $condition = array('id_sv' => $id_sv);
+            $condition = array('id_sv' => $id_sv, 'dk' => true);
 
             //query
             $this->db->select('`mon`.`id`, `mon`.`ten_mon`');

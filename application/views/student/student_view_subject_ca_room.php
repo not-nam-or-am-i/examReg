@@ -137,18 +137,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <!-- Database retrival -->
                     <tbody>
-                        <?php foreach ($phong as $phong) : ?>
+                        <?php foreach ($phong as $row) : ?>
                             <!-- Table -->
                             <tr>
                                 <td>
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" name="room[]" value="<?php echo $phong->id;?>" id="<?php echo $phong->id;?>">
-                                        <label class="custom-control-label" for="<?php echo $phong->id;?>"></label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" name="room[]" value="<?php echo $row->id;?>" id="<?php echo $row->id;?>">
+                                        <label class="custom-control-label" for="<?php echo $row->id;?>"></label>
                                     </div>
                                 </td>
-                                <td><?php echo $phong->ten_phong; ?></td>
-                                <td><?php echo $phong->so_cho; ?></td>
-                                <td><?php ?></td>
+                                <td><?php echo $row->ten_phong; ?></td>
+                                <td><?php echo $row->so_cho; ?></td>
+                                <td><?php echo $row->so_cho - $count;?></td>
                             </tr>
                                                     
                         <?php endforeach; ?>
