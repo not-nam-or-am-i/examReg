@@ -29,7 +29,7 @@
 
 <div class="bg-dark border-right col-5" id="sidebar-wrapper">
     <div class="list-group list-group-flush">
-        <a href="admin" class="list-group-item list-group-item-action bg-dark active">Đăng kí dự thi</a>
-        <a href="admin/subject" class="list-group-item list-group-item-action bg-dark list-group-item-light">In danh sách Đăng kí dự thi</a>
+        <a href="<?php echo base_url(); ?>student" class="list-group-item list-group-item-action bg-dark active">Đăng kí dự thi</a>
+        <a href="<?php echo base_url(); ?>student/reg-result" class="list-group-item list-group-item-action bg-dark list-group-item-light">In danh sách Đăng kí dự thi</a>
     </div>
 </div>

@@ -67,7 +67,7 @@ class Register_exam_session_controller extends CI_Controller{
         $id_sv = $this->session->userdata('user_id');
 
         $seats = array();
-        foreach ($phong as $phong) {
+        foreach ($data['phong'] as $phong) {
             array_push($seats, $this->sv_phong_ca_model->reg_count($id_ca, $phong->id));
         }
         $data['count'] = $seats;
