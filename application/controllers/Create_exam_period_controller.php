@@ -133,12 +133,6 @@ class Create_exam_period_controller extends CI_Controller {
         //TODO: thêm load view
     }
 
-    //thêm phòng thi vào ca thi
-    //TODO: chưa biết làm hàm này như nào cả...
-    public function add_phong($id_ca) {
-        //TODO: kiểu gì cũng phải insert vào bảng phong_ca nhưng chưa biết cách lấy id phòng
-    }
-
     //xem chi tiết ca_môn trong kỳ thi
     public function view_detail_index($id)
 	{   
@@ -180,7 +174,7 @@ class Create_exam_period_controller extends CI_Controller {
             );
             $this->phong_model->insert($data);
             $this->session->set_flashdata('success', "Thêm phòng thi vào ca thành công"); 
-            redirect('admin/exam-period-details/'.$id_ca);
+            redirect('admin/exam-period-details/'.$id_ky_thi);
         } 
     }
 }
