@@ -8,14 +8,13 @@
 
         //lấy các ca thi của một môn
         public function get_ca_by_mon($id_mon) {
-            //điều kiện query where
-            $condition = array('id_mon' => $id_mon);
-
-            //query
-            $this->db->select('`id`, `bat_dau`, `ket_thuc`');
-            $this->db->from('ca_thi');
-            $this->db->where($condition);
-            return $this->db->get()->result();
+            //query trực tiếp
+            $query = $this->db->query('SELECT `ky_thi`.`id` as id_ky_thi, `ky_thi`.`hoc_ky`, `ky_thi`.`nam`, `ca_thi`.`id`, `ca_thi`.`id_mon`, `ca_thi`.`bat_dau`, `ca_thi`.`ket_thuc`
+            FROM `ca_thi` 
+            JOIN `ky_thi` ON `ca_thi`.`id_ky_thi` = `ky_thi`.`id`
+            WHERE id_mon = ' .$id_mon. ' AND `ky_thi`.bat_dau < LOCALTIME AND `ky_thi`.ket_thuc>LOCALTIME' );
+            
+            return $query->result();
         }
 
         //lấy các ca thi của kỳ thi
