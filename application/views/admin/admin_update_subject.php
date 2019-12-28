@@ -99,6 +99,8 @@
         
 <div id="container">
 
+
+
 	<!--div id="top-actions-container">
 		<div class="row">
   			<div class="col-sm-3">
@@ -141,21 +143,49 @@
     </div-->
 
 	<!-- Form nhập -->
-    <?php echo form_open('admin/update-subject/'.$id, ['class'=>'form-row']);?>
-        <div class="update-form">
-                <div id="form-input-container" class="form-row">
-                    <div class="col-3">
-                        <?php echo form_input(['name'=>'id', 'value'=>$subject->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
-                    </div>
-                    <div class="col-3">
-                        <?php echo form_input(['name'=>'ten_mon', 'value'=>$subject->ten_mon, 'placeholder'=>'Tên môn', 'class'=>'form-control']); ?>
-                    </div>
-                </div>
-				<?php echo validation_errors(); ?>
-                <div>
-                    <?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']);?>
-                </div>
-        </div>     
+    <?php echo form_open('admin/update-subject/'.$id);?>
+		<div class="form-row justify-content-md-center">
+			<?php if ($this->session->flashdata('success')) { ?>
+				<div class="alert alert-success alert-dismissible text-center col-md-6"> 
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<?php echo $this->session->flashdata('success'); ?>
+				</div>
+				<?php } else if ($this->session->flashdata('error')) { ?>
+				<div class = "alert alert-danger alert-dismissible text-center col-md-6">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<?php echo $this->session->flashdata('error'); ?>
+				</div>
+			<?php } ?>
+		</div>
+
+		<div class="form-row justify-content-md-center">
+			<div class="form-group col-md-5">
+				<label for="id">ID</label>
+				<?php echo form_input(['name'=>'id', 'value'=>$subject->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+			</div>
+			<div class="form-group col-md-3">
+				<label for="ten_mon">Tên môn</label>
+				<?php echo form_input(['name'=>'ten_mon', 'value'=>$subject->ten_mon, 'placeholder'=>'Tên môn', 'class'=>'form-control']); ?>
+			</div>
+		</div>
+
+		<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm offset-md-3']);?>
+
+
+        <!--div class="update-form">
+			<div id="form-input-container" class="form-row">
+				<div class="col-3">
+					<?php echo form_input(['name'=>'id', 'value'=>$subject->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+				</div>
+				<div class="col-3">
+					<?php echo form_input(['name'=>'ten_mon', 'value'=>$subject->ten_mon, 'placeholder'=>'Tên môn', 'class'=>'form-control']); ?>
+				</div>
+			</div>
+			<?php echo validation_errors(); ?>
+			<div>
+				<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']);?>
+			</div>
+        </div-->     
     </form>	
 </div>
 

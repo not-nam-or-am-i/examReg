@@ -22,14 +22,36 @@
     	</ul>
     	<ul class="form-inline my-2 my-lg-0">
         	<a class="nav-link" id="username">Welcome, <?php echo $this->session->userdata('ten') ?> <span class="sr-only">(current)</span></a> 
-			<a href="<?php echo base_url(); ?>logout/" class="btn btn-primary">Logout</a>
+			<a href="<?php echo base_url(); ?>logout/" class="btn btn-primary">Đăng xuất</a>
     	</ul>
   	</div>
 </nav>
 
 <div class="bg-dark border-right col-5" id="sidebar-wrapper">
     <div class="list-group list-group-flush">
-        <a href="<?php echo base_url(); ?>student" class="list-group-item list-group-item-action bg-dark active">Đăng kí dự thi</a>
-        <a href="<?php echo base_url(); ?>student/reg-result" class="list-group-item list-group-item-action bg-dark list-group-item-light">In danh sách Đăng kí dự thi</a>
+        <a 
+			href="<?php echo base_url(); ?>student" 
+			class="list-group-item list-group-item-action bg-dark 
+				<?php 
+				$student = array("admin", "index.php", "add-student", "import-student-list", "");
+				// if ((basename($_SERVER['PHP_SELF']) == "admin") || (basename($_SERVER['PHP_SELF']) == "index.php")) {
+				if (basename($_SERVER['PHP_SELF']) != "reg-result") {
+					echo "active";
+				} else {
+					echo "list-group-item-light";
+				} ?> ">
+			Đăng kí dự thi
+		</a>
+        <a 
+			href="<?php echo base_url(); ?>student/reg-result" 
+			class="list-group-item list-group-item-action bg-dark <?php 
+				$student = array("admin", "index.php", "add-student", "import-student-list", "");
+				// if ((basename($_SERVER['PHP_SELF']) == "admin") || (basename($_SERVER['PHP_SELF']) == "index.php")) {
+				if (basename($_SERVER['PHP_SELF']) == "reg-result") {
+					echo "active";
+				} else {
+					echo "list-group-item-light";
+				} ?> ">
+			In danh sách Đăng kí dự thi</a>
     </div>
 </div>

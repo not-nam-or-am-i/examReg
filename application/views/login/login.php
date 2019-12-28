@@ -17,8 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="../../assets/plugins/datatables/dataTables.bootstrap.css">
 
   <style>
-      #form-box {
-        box-shadow: 5px;
+      body, html {
+        height: 100%;
       }
   </style>
 
@@ -26,31 +26,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <body>
 
-<div id="container-fluid align-items-center">
-  <?php echo form_open('login'); ?>
-      <div id="form-box" class="card text-center mx-auto w-25">
-          <div class="card-body align-self-center justify-content-center">
-              <h4 class="card-title text-center">Đăng nhập</h4>
-              <div class="form-group text-left">
-                  <label for="id">Mã sinh viên</label>
-                  <input type="text" class="form-control" id="id" name="id" aria-describedby="idHelp" placeholder="1xxxxxxx">
-              </div>
-              <div class="form-group text-left">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" id="password" name="password" placeholder="*********">
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-
-              <!-- Error message -->
-              <?php if ($this->session->flashdata('error')) { ?>
-                  <div class = "alert alert-danger alert-dismissible text-center">
-                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                      <?php echo $this->session->flashdata('error'); ?>
-                  </div>
-              <?php } ?>
-          </div>
-      </div>
-  </form>
+<div class="container h-100">
+    <div class="card row h-100 justify-content-center align-items-center">
+        <?php echo form_open('login'); ?>
+            <div class="card-body">
+                <h4 class="card-title text-center">Đăng nhập</h4>
+                <div class="form-group text-left">
+                    <label for="id">Mã sinh viên</label>
+                    <input type="text" class="form-control" id="id" name="id" aria-describedby="idHelp" placeholder="1xxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            <div>
+        </form>   
+    </div>  
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

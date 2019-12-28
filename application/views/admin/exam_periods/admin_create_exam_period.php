@@ -66,7 +66,7 @@
 
 	#container {
 		margin: 10px;
-		padding-top: 20px;
+		padding-top: 50px;
 		padding-left: 200px;
 	}
 
@@ -99,40 +99,46 @@
 <div id="container">
 
 	<!-- Form nhập -->
-    <?php echo form_open('admin/exam-period/create', ['class'=>'form-row']);?>
-        <div class="create-form">
-			<div id="form-input-container" class="form-row">
-                <div class="col">
-					<?php echo form_input(['name'=>'nam', 'value'=>set_value('nam'), 'placeholder'=>'Năm học', 'class'=>'form-control']); ?>
+    <?php echo form_open('admin/exam-period/create');?>
+
+		<div class="form-row justify-content-md-center">
+			<?php if ($this->session->flashdata('success')) { ?>
+				<div class="alert alert-success alert-dismissible text-center col-md-8"> 
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<?php echo $this->session->flashdata('success'); ?>
 				</div>
-				<div class="col">
-					<?php echo form_input(['name'=>'hoc_ky', 'value'=>set_value('hoc_ky'), 'placeholder'=>'Học kỳ', 'class'=>'form-control']); ?>
+				<?php } else if ($this->session->flashdata('error')) { ?>
+				<div class = "alert alert-danger alert-dismissible text-center col-md-8">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<?php echo $this->session->flashdata('error'); ?>
 				</div>
-				<div class="col">
-					<?php echo form_input(['name'=>'bat_dau', 'value'=>set_value('bat_dau'), 'placeholder'=>'Thời gian bắt đầu', 'class'=>'form-control', 'type'=>'date']); ?>
-				</div>
-				<div class="col">
-					<?php echo form_input(['name'=>'ket_thuc', 'value'=>set_value('ket_thuc'), 'placeholder'=>'Thời gian kết thúc', 'class'=>'form-control', 'type'=>'date']); ?>
-				</div>
+			<?php } ?>
+		</div>
+		
+		<div class="form-row justify-content-md-center">
+			<div class="form-group col-md-2">
+				<label for="nam">Năm</label>
+				<?php echo form_input(['name'=>'nam', 'value'=>set_value('nam'), 'placeholder'=>'Năm học', 'class'=>'form-control']); ?>
 			</div>
-			<?php echo validation_errors(); ?>
-			<div>
-				<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']);?>
-				<?php //echo anchor('');?>
+			<div class="form-group col-md-6">
+				<label for="hoc_ky">Học kỳ</label>
+				<?php echo form_input(['name'=>'hoc_ky', 'value'=>set_value('hoc_ky'), 'placeholder'=>'Học kỳ', 'class'=>'form-control']); ?>
+			</div>
+		</div>
+		<div class="form-row justify-content-md-center">
+			<div class="form-group col-md-4">
+				<label for="bat_dau">Bắt đầu</label>
+				<?php echo form_input(['name'=>'bat_dau', 'value'=>set_value('bat_dau'), 'placeholder'=>'Thời gian bắt đầu', 'class'=>'form-control', 'type'=>'date']); ?>
 			</div>
 			
-			<?php if ($this->session->flashdata('success')) { ?>
-                    <div class="alert alert-success alert-dismissible text-center"> 
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <?php echo $this->session->flashdata('success'); ?>
-                    </div>
-                <?php } else if ($this->session->flashdata('error')) { ?>
-                    <div class = "alert alert-danger alert-dismissible text-center">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <?php echo $this->session->flashdata('error'); ?>
-                    </div>
-                <?php } ?>
-        </div>     
+			<div class="form-group col-md-4">
+				<label for="ket_thuc">Kết thúc</label>
+				<?php echo form_input(['name'=>'ket_thuc', 'value'=>set_value('ket_thuc'), 'placeholder'=>'Thời gian kết thúc', 'class'=>'form-control', 'type'=>'date']); ?>
+			</div>
+		</div>
+
+		<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm offset-md-2']);?>
+
     </form>	
 </div>
 

@@ -30,7 +30,7 @@ class CRUD_Students_Controller extends CI_Controller {
  
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('admin/admin_create_student');
-            $this->session->set_flashdata('error', "Unexpected error?");
+            $this->session->set_flashdata('error', validation_errors());
         } else {
             $data = array(
                 'ten'       => $this->input->post('ten'),
@@ -42,10 +42,17 @@ class CRUD_Students_Controller extends CI_Controller {
             $this->session->set_flashdata('success', "Thêm sinh viên thành công"); 
             redirect('admin');
         }
-	}
+    }
+
+    public function update_index($id) {
+        $data['id']      = $id;
+        $data['student'] = $this->account_model->get_by_id($id);
+        $this->load->view('admin/admin_update_student');
+    }
     
     //sửa thông tin sinh viên
 	public function update($id) {
+        $data['id']      = $id;
         $data['student'] = $this->account_model->get_by_id($id);
         
         //kiểm tra dữ liệu điền vào có trống không
@@ -57,7 +64,7 @@ class CRUD_Students_Controller extends CI_Controller {
         if ($this->form_validation->run() === FALSE) {
             $data['id'] = $id;
             $this->load->view('admin/admin_update_student', $data);
-            $this->session->set_flashdata('error', "Unexpected error?");
+            $this->session->set_flashdata('error', validation_errors());
         } else {
             $update_data = array(
                 'ten'       => $this->input->post('ten'),

@@ -67,7 +67,7 @@
 
 	#container {
 		margin: 10px;
-		padding-top: 20px;
+		padding-top: 50px;
 		padding-left: 200px;
 	}
 
@@ -92,9 +92,12 @@
 
 <body>
 
-<!-- Navigation bar -->
+<!-- Navigation bar + Sidemenu -->
+<?php 
+	include_once(dirname(__FILE__).'/../../templates/navigationBar.php');
+?> 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<!-- nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   	<a class="navbar-brand" href="<?php echo base_url(); ?>">AdminHomepage</a>
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     	<span class="navbar-toggler-icon"></span>
@@ -109,7 +112,6 @@
         		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           			Actions
         		</a>
-				<!-- TODO: FIX ALL HREF WHEN DONE -->
         		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item active" href="admin">Student CRUD</a>
 					<a class="dropdown-item" href="">Subject CRUD</a>
@@ -135,29 +137,41 @@
         <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Import student</a>
         <a href="#" class="list-group-item list-group-item-action bg-dark list-group-item-light">Create exam PERIOD</a>
     </div>
-</div>
+</div-->
 
-
-<?php //include '../navigationBar.php'?>
         
 <div id="container">
 
 	<!-- Form nhập -->
-    <?php echo form_open('admin/update-exam-period/'.$period->id, ['class'=>'form-row']);?>
-        <div class="update-form">
-                <div id="form-input-container" class="form-row">
-                    <div class="col-3">
-                        <?php echo form_input(['name'=>'nam', 'value'=>$period->nam, 'placeholder'=>'Năm', 'class'=>'form-control']); ?>
-                    </div>
-                    <div class="col-3">
-                        <?php echo form_input(['name'=>'hoc_ky', 'value'=>$period->hoc_ky, 'placeholder'=>'Học kỳ', 'class'=>'form-control']); ?>
-                    </div>
-                </div>
-				<?php echo validation_errors(); ?>
-                <div>
-                    <?php echo form_submit(['name'=>'submit', 'value'=>'Sửa', 'class'=>'btn btn-primary btn-sm']);?>
-                </div>
-        </div>     
+    <?php echo form_open('admin/update-exam-period/'.$period->id);?>
+
+		<div class="form-row justify-content-md-center">
+			<?php if ($this->session->flashdata('success')) { ?>
+				<div class="alert alert-success alert-dismissible text-center col-md-6"> 
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<?php echo $this->session->flashdata('success'); ?>
+				</div>
+				<?php } else if ($this->session->flashdata('error')) { ?>
+				<div class = "alert alert-danger alert-dismissible text-center col-md-6">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<?php echo $this->session->flashdata('error'); ?>
+				</div>
+			<?php } ?>
+		</div>
+
+		<div class="form-row justify-content-md-center">
+			<div class="form-group col-md-3">
+				<label for="nam">Năm</label>
+				<?php echo form_input(['name'=>'nam', 'value'=>$period->nam, 'placeholder'=>'Năm học', 'class'=>'form-control']); ?>
+			</div>
+			<div class="form-group col-md-3">
+				<label for="hoc_ky">Học kỳ</label>
+				<?php echo form_input(['name'=>'hoc_ky', 'value'=>$period->hoc_ky, 'placeholder'=>'Học kỳ', 'class'=>'form-control']); ?>
+			</div>
+		</div>
+
+		<?php echo form_submit(['name'=>'submit', 'value'=>'Sửa', 'class'=>'btn btn-primary btn-sm offset-md-3']);?>
+  
     </form>	
 </div>
 

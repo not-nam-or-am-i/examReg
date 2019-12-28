@@ -42,7 +42,7 @@ class Create_exam_period_controller extends CI_Controller {
                 'ket_thuc'     => $this->input->post('ket_thuc')
             );
             $this->ky_thi_model->insert($data);
-            $this->session->set_flashdata('success', "Thêm kỳ thi thành công"); 
+            $this->session->set_flashdata('success', validation_errors()); 
             redirect('admin/exam-period');
         }
     }
@@ -56,7 +56,7 @@ class Create_exam_period_controller extends CI_Controller {
         if ($this->form_validation->run() === FALSE) {
             $data['id'] = $id;
             $this->load->view('admin/exam_periods/admin_update_exam_period', $data);
-            $this->session->set_flashdata('error', "Sửa thông tin kỳ thi không thành công");
+            $this->session->set_flashdata('error', validation_errors());
         } else {
             $update_data = array(
                 'hoc_ky'        => $this->input->post('hoc_ky'),
@@ -165,7 +165,7 @@ class Create_exam_period_controller extends CI_Controller {
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('admin/exam_periods/admin_create_room', $data);
-            $this->session->set_flashdata('error', "Thêm phòng thi không thành công");
+            $this->session->set_flashdata('error', validation_errors());
         } else {
             $data = array(
                 'ten_phong'    => $this->input->post('ten_phong'),

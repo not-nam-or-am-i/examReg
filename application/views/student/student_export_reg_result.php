@@ -118,40 +118,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <button onclick="export2Word(window.docx)" class="btn btn-primary btn-sm">Tải bản word</button>
     <input type="button" onclick="printDiv('printableArea')" value="In kết quả" class="btn btn-primary btn-sm" />
     <div id="printableArea">
-    <div id="docx">
-        <div class="WordSection1">
-            <h1 class="database-title">
-				Kết quả đăng ký
-			</h1>
-            <h5>Mã sinh viên: <?php echo $this->session->userdata('user_id'); ?></h5>
-            <h5>Tên sinh viên: <?php echo $this->session->userdata('ten'); ?></h5>
-            <table style="border:none; width: 100%; border-collapse:collapse;">
-                
-                <tr>
-                    <th style="border-top:1px solid #000; border-left:1px solid #000; text-align:center;">Mã môn học</th>
-                    <th style="border-top: 1px solid #000; border-left: 1px solid #000; text-align: center;">Tên môn học</th>
-                    <th style="border-top: 1px solid #000; border-left: 1px solid #000; text-align: center;">Mã ca</th>
-                    <th style="border-top: 1px solid #000; border-left: 1px solid #000; text-align: center;">Giờ bắt đầu</th>
-                    <th style="border-top: 1px solid #000; border-left: 1px solid #000; text-align: center;">Giờ kết thúc</th>
-                    <th style="border-top: 1px solid #000; border-left: 1px solid #000; border-right:1px solid #000; text-align: center;">Phòng thi</th>
-                </tr>
-                <?php foreach ($reg_result as $row) : ?>
-                    <!-- Table -->
-                    <tr>
-                        <td style="border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center;"><?php echo $row->id_mon; ?></td>
-                        <td style="border-top:1px solid #000; border-left:1px solid #000; border-bottom: 1px solid #000; text-align: center;"><?php echo $row->ten_mon; ?></td>
-                        <td style="border-top:1px solid #000; border-left:1px solid #000; border-bottom: 1px solid #000; text-align: center;"><?php echo $row->id_ca; ?></td>
-                        <td style="border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center;"><?php echo $row->bat_dau; ?></td>
-                        <td style="border-top:1px solid #000; border-left:1px solid #000; border-bottom: 1px solid #000; text-align: center;"><?php echo $row->ket_thuc; ?></td>
-                        <td style="border-top: 1px solid #000; border-left: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center;"><?php echo $row->ten_phong; ?></td>  
-                    </tr>
-                <?php endforeach; ?>
-                
-            </table>
+		<div id="docx">
+			<div class="WordSection1">
+				<h1 class="database-title">
+					Kết quả đăng ký
+				</h1>
 
-            
-        </div>
-    </div>
+				<h5>Mã sinh viên: <?php echo $this->session->userdata('user_id'); ?></h5>
+				<h5>Tên sinh viên: <?php echo $this->session->userdata('ten'); ?></h5>
+
+				<table style="border:none; width: 100%; border-collapse:collapse;">
+					
+					<tr>
+						<th style="border-top:1px solid #000; border-left:1px solid #000; text-align:center;">Mã môn học</th>
+						<th style="border-top: 1px solid #000; border-left: 1px solid #000; text-align: center;">Tên môn học</th>
+						<th style="border-top: 1px solid #000; border-left: 1px solid #000; text-align: center;">Mã ca</th>
+						<th style="border-top: 1px solid #000; border-left: 1px solid #000; text-align: center;">Giờ bắt đầu</th>
+						<th style="border-top: 1px solid #000; border-left: 1px solid #000; text-align: center;">Giờ kết thúc</th>
+						<th style="border-top: 1px solid #000; border-left: 1px solid #000; border-right:1px solid #000; text-align: center;">Phòng thi</th>
+					</tr>
+					<?php foreach ($reg_result as $row) : ?>
+						<!-- Table -->
+						<tr>
+							<td style="border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center;"><?php echo $row->id_mon; ?></td>
+							<td style="border-top:1px solid #000; border-left:1px solid #000; border-bottom: 1px solid #000; text-align: center;"><?php echo $row->ten_mon; ?></td>
+							<td style="border-top:1px solid #000; border-left:1px solid #000; border-bottom: 1px solid #000; text-align: center;"><?php echo $row->id_ca; ?></td>
+							<td style="border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; text-align: center;"><?php echo $row->bat_dau; ?></td>
+							<td style="border-top:1px solid #000; border-left:1px solid #000; border-bottom: 1px solid #000; text-align: center;"><?php echo $row->ket_thuc; ?></td>
+							<td style="border-top: 1px solid #000; border-left: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; text-align: center;"><?php echo $row->ten_phong; ?></td>  
+						</tr>
+					<?php endforeach; ?>
+				</table>
+			</div>
+		</div>
     </div>
 </div>
 
@@ -159,7 +158,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script>
-    function export2Word( element ) {
+    function export2Word(element) {
 
         var html, link, blob, url, css;
 

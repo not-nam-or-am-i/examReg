@@ -30,7 +30,7 @@ class CRUD_Subjects_Controller extends CI_Controller {
  
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('admin/admin_create_subject');
-            $this->session->set_flashdata('error', "Unexpected error?");
+            $this->session->set_flashdata('error', validation_errors());
         } else {
             $data = array(
                 'id'        => $this->input->post('id'),
@@ -53,7 +53,7 @@ class CRUD_Subjects_Controller extends CI_Controller {
         if ($this->form_validation->run() === FALSE) {
             $data['id'] = $id;
             $this->load->view('admin/admin_update_subject', $data);
-            $this->session->set_flashdata('error', "Unexpected error?");
+            $this->session->set_flashdata('error', validation_errors());
         } else {
             $update_data = array(
                 'id'        => $this->input->post('id'),

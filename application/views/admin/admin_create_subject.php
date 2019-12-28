@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	#container {
 		margin: 10px;
-		padding-top: 20px;
+		padding-top: 50px;
 		padding-left: 200px;
 	}
 
@@ -141,23 +141,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div-->
 
 	<!-- Form nhập -->
-    <?php echo form_open('admin/add-subject', ['class'=>'form-row']);?>
-        <div class="create-form">
-                <div id="form-input-container" class="form-row">
-                    <!-- TODO: Show previous data -->
-                    <div class="col">
-                        <?php echo form_input(['name'=>'id', 'value'=>set_value('id'), 'placeholder'=>'ID', 'class'=>'form-control']); ?>
-                    </div>
-                    <div class="col">
-                        <?php echo form_input(['name'=>'ten_mon', 'value'=>set_value('ten_mon'), 'placeholder'=>'Tên môn', 'class'=>'form-control']); ?>
-                    </div>
-                </div>
-				<?php echo validation_errors(); ?>
-                <div>
-                    <?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']); ?>
-                    <?php //echo anchor(''); ?>
-                </div>
-        </div>     
+    <?php echo form_open('admin/add-subject');?>
+		<div class="form-row justify-content-md-center">
+			<?php if ($this->session->flashdata('success')) { ?>
+				<div class="alert alert-success alert-dismissible text-center col-md-8"> 
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<?php echo $this->session->flashdata('success'); ?>
+				</div>
+				<?php } else if ($this->session->flashdata('error')) { ?>
+				<div class = "alert alert-danger alert-dismissible text-center col-md-8">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<?php echo $this->session->flashdata('error'); ?>
+				</div>
+			<?php } ?>
+		</div>
+		<div class="form-row justify-content-md-center">
+			<div class="form-group col-md-3">
+				<label for="id">ID</label>
+				<?php echo form_input(['name'=>'id', 'value'=>set_value('id'), 'placeholder'=>'ID', 'class'=>'form-control form-group']); ?>
+			</div>
+			<div class="form-group col-md-5">
+				<label for="ten">Tên môn</label>
+				<?php echo form_input(['name'=>'ten', 'value'=>set_value('ten'), 'placeholder'=>'Tên', 'class'=>'form-control form-group']); ?>
+			</div>
+		</div>
+		<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm offset-md-2']); ?>
     </form>	
 </div>
 

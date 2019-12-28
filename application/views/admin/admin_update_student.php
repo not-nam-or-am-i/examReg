@@ -67,7 +67,7 @@
 
 	#container {
 		margin: 10px;
-		padding-top: 20px;
+		padding-top: 50px;
 		padding-left: 200px;
 	}
 
@@ -99,7 +99,7 @@
         
 <div id="container">
 
-	<div id="top-actions-container">
+	<!--div id="top-actions-container">
 		<div class="row">
   			<div class="col-sm-3">
     			<div class="card">
@@ -138,32 +138,68 @@
     			</div>
   			</div>
 		</div>
-    </div>
+    </div-->
 
 	<!-- Form nhập -->
-    <?php echo form_open('admin/update-student/'.$id, ['class'=>'form-row']);?>
-        <div class="update-form">
-                <div id="form-input-container" class="form-row">
-                    <div class="col-3">
-                        <?php 
-                            echo form_input(['name'=>'ten', 'value'=>$student->ten, 'placeholder'=>'Tên', 'class'=>'form-control']); 
-                        ?>
-                    </div>
-                    <div class="col-3">
-                        <?php echo form_input(['name'=>'id', 'value'=>$student->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
-                    </div>
-                    <div class="col-3">
-                        <?php echo form_input(['name'=>'password', 'value'=>$student->password, 'placeholder'=>'Password', 'class'=>'form-control']); ?>
-                    </div>
-                    <div class="col-3">
-                        <?php echo form_input(['name'=>'khoa_hoc', 'value'=>$student->khoa_hoc, 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
-                    </div>
-                </div>
-				<?php echo validation_errors(); ?>
-                <div>
-                    <?php echo form_submit(['name'=>'submit', 'value'=>'Update', 'class'=>'btn btn-primary btn-sm']);?>
-                </div>
-        </div>     
+    <?php echo form_open('admin/update-student/'.$id);?>
+		<div class="form-row justify-content-md-center">
+			<?php if ($this->session->flashdata('success')) { ?>
+				<div class="alert alert-success alert-dismissible text-center col-md-6"> 
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<?php echo $this->session->flashdata('success'); ?>
+				</div>
+				<?php } else if ($this->session->flashdata('error')) { ?>
+				<div class = "alert alert-danger alert-dismissible text-center col-md-6">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<?php echo $this->session->flashdata('error'); ?>
+				</div>
+			<?php } ?>
+		</div>
+
+		<div class="form-row justify-content-md-center">
+			<div class="form-group col-md-5">
+				<label for="ten">Tên</label>
+				<?php echo form_input(['name'=>'ten', 'value'=>$student->ten, 'placeholder'=>'Tên', 'class'=>'form-control']); ?>
+			</div>
+			<div class="form-group col-md-3">
+				<label for="id">ID</label>
+				<?php echo form_input(['name'=>'id', 'value'=>$student->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+			</div>
+		</div>
+		<div class="form-row justify-content-md-center">
+			<div class="form-group col-md-5">
+				<label for="password">Password</label>
+				<?php echo form_input(['name'=>'password', 'value'=>$student->password, 'placeholder'=>'Password', 'class'=>'form-control']); ?>
+			</div>
+			<div class="form-group col-md-3">
+				<label for="khoa_hoc">Khóa học</label>
+				<?php echo form_input(['name'=>'khoa_hoc', 'value'=>$student->khoa_hoc, 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
+			</div>
+		</div>
+		<?php echo form_submit(['name'=>'submit', 'value'=>'Update', 'class'=>'btn btn-primary btn-sm offset-md-3']);?>
+
+        <!--div class="update-form">
+			<div id="form-input-container" class="form-row">
+				<div class="col-3">
+					<?php 
+						echo form_input(['name'=>'ten', 'value'=>$student->ten, 'placeholder'=>'Tên', 'class'=>'form-control']); 
+					?>
+				</div>
+				<div class="col-3">
+					<?php echo form_input(['name'=>'id', 'value'=>$student->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+				</div>
+				<div class="col-3">
+					<?php echo form_input(['name'=>'password', 'value'=>$student->password, 'placeholder'=>'Password', 'class'=>'form-control']); ?>
+				</div>
+				<div class="col-3">
+					<?php echo form_input(['name'=>'khoa_hoc', 'value'=>$student->khoa_hoc, 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
+				</div>
+			</div>
+			<?php echo validation_errors(); ?>
+			<div>
+				<?php echo form_submit(['name'=>'submit', 'value'=>'Update', 'class'=>'btn btn-primary btn-sm']);?>
+			</div>
+        </div-->     
     </form>	
 </div>
 

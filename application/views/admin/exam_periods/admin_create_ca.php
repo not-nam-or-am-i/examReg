@@ -63,8 +63,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	#container {
 		margin: 10px;
-		padding-top: 20px;
-		padding-left: 200px;
+		padding-top: 50px;
+		padding-left: 400px;
 	}
 
 	#top-actions-container {
@@ -100,30 +100,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="container">
 
 	<!-- Form nhập -->
-    <?php echo form_open('admin/exam-period-details/'.$id_ky_thi.'/create-ca', ['class'=>'form-row'])?>
-        <div class="create-form">
-            <div id="form-input-container" class="form-row">
-                <div class="col">
-                    <?php echo form_input(['name'=>'bat_dau', 'value'=>set_value('bat_dau'), 'placeholder'=>'Thời gian bắt đầu', 'class'=>'form-control', 'type'=>'datetime-local']); ?>
-                </div>
-                <div class="col">
-                    <?php echo form_input(['name'=>'ket_thuc', 'value'=>set_value('ket_thuc'), 'placeholder'=>'Thời gian kết thúc', 'class'=>'form-control', 'type'=>'datetime-local']); ?>
-                </div>
-                <div class="col">
-                    <select class="custom-select form-control" name="subjectList">
-                        <option value="" selected disabled>Môn học</option>
-                        <?php foreach ($subjects as $subject) : ?>
-                            <option value="<?php echo $subject->id ?>"><?php echo $subject->id ?>: <?php echo $subject->ten_mon ?></a>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-            </div>
-            <?php echo validation_errors(); ?>
-            <div>
-                <?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']); ?>
-                <?php //echo anchor(''); ?>
-            </div>
-        </div>     
+    <?php echo form_open('admin/exam-period-details/'.$id_ky_thi.'/create-ca')?>
+
+		<?php if ($this->session->flashdata('success')) { ?>
+			<div class="alert alert-success alert-dismissible text-center col-md-9"> 
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<?php echo $this->session->flashdata('success'); ?>
+			</div>
+		<?php } else if ($this->session->flashdata('error')) { ?>
+			<div class = "alert alert-danger alert-dismissible text-center col-md-9">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<?php echo $this->session->flashdata('error'); ?>
+			</div>
+		<?php } ?>
+
+		<div class="form-row">
+			<div class="form-group col-md-3">
+				<label for="bat_dau">Thời gian bắt đầu</label>
+				<?php echo form_input(['name'=>'bat_dau', 'value'=>set_value('bat_dau'), 'placeholder'=>'Thời gian bắt đầu', 'class'=>'form-control', 'type'=>'datetime-local']); ?>
+			</div>
+			<div class="form-group col-md-3">
+				<label for="ket_thuc">Thời gian kết thúc</label>
+				<?php echo form_input(['name'=>'ket_thuc', 'value'=>set_value('ket_thuc'), 'placeholder'=>'Thời gian kết thúc', 'class'=>'form-control', 'type'=>'datetime-local']); ?>
+			</div>
+			<div class="form-group col-md-3">
+				<label for="ten">Thời gian kết thúc</label>
+				<select class="custom-select form-control" name="subjectList">
+                    <option value="" selected disabled>Môn học</option>
+                    <?php foreach ($subjects as $subject) : ?>
+                        <option value="<?php echo $subject->id ?>"><?php echo $subject->id ?>: <?php echo $subject->ten_mon ?></a>
+                    <?php endforeach; ?>
+                </select>
+			</div>
+		</div>
+		<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']); ?>
+
     </form>	
 </div>
 

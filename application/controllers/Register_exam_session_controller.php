@@ -25,13 +25,6 @@ class Register_exam_session_controller extends CI_Controller{
         $this->load->view('student/student_register_exam_session', $data);
     }
     
-    //lấy các môn mà sv học
-    public function get_mon() {
-        //data mon gồm có: id môn, tên môn
-        $id_sv = $this->session->userdata('user_id');
-        $data['mon'] = $this->sv_mon_model->get_mon($id_sv);
-        //TODO: thêm load view
-    }
     //lấy các ca thi của môn
     public function get_ca($id_mon) {
         //data ca gồm có: id ca, giờ bắt đầu, giờ kết thúc
@@ -40,6 +33,7 @@ class Register_exam_session_controller extends CI_Controller{
         //TODO: get phòng + ca cùng lúc = id môn
         $this->load->view('student/student_view_subject_ca', $data);
     }
+
     //lấy các phòng thi của ca thi
     public function get_phong($id_mon, $id_ca) {
         //data phòng gồm có: tên phòng, số chỗ
@@ -51,6 +45,7 @@ class Register_exam_session_controller extends CI_Controller{
         //TODO: thêm load view
         $this->load->view('student/student_view_subject_ca_room', $data);
     }
+
     //sinh viên đăng ký phòng thi trong ca thi
     public function register($id_mon, $id_ca) {
         $data['ca']             = $this->ca_model->get_by_id($id_ca);
@@ -71,13 +66,6 @@ class Register_exam_session_controller extends CI_Controller{
                 );
                 $this->sv_phong_ca_model->insert($reg_data);
             }
-    
-            //TODO: kiểm tra điều kiện ca thi không bị trùng bởi lịch đã đăng kí
-            //TODO: viết query check xem primary_key (id_sv+id_ca) có bị trùng không
-    
-            //TODO: kiểm tra điều kiện phòng còn chỗ trống
-            
-            //TODO: thêm load view
             $this->session->set_flashdata('success', "Đăng kí thành công"); 
             redirect('student/subject-details/'.$id_mon.'/'.$id_ca);
         }   

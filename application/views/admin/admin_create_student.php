@@ -25,7 +25,7 @@
 	<style type="text/css">
 	::selection { background-color: #E13300; color: white; }
 	::-moz-selection { background-color: #E13300; color: white; }
-
+	
 	body {
 		background-color: #fff;
 		margin: 40px;
@@ -66,7 +66,7 @@
 
 	#container {
 		margin: 10px;
-		padding-top: 20px;
+		padding-top: 50px;
 		padding-left: 200px;
 	}
 
@@ -99,43 +99,45 @@
 <div id="container">
 
 	<!-- Form nhập -->
-    <?php echo form_open('admin/add-student', ['class'=>'form-row']);?>
-        <div class="create-form">
-			<div id="form-input-container" class="form-row">
-				<div class="col">
-					<?php 
-						echo form_input(['name'=>'ten', 'value'=>set_value('ten'), 'placeholder'=>'Tên', 'class'=>'form-control']); 
-					?>
-				</div>
-				<div class="col">
-					<?php echo form_input(['name'=>'id', 'value'=>set_value('id'), 'placeholder'=>'ID', 'class'=>'form-control']); ?>
-				</div>
-				<div class="col">
-					<?php echo form_input(['name'=>'password', 'value'=>set_value('password'), 'placeholder'=>'Password', 'class'=>'form-control']); ?>
-				</div>
-				<div class="col">
-					<?php echo form_input(['name'=>'khoa_hoc', 'value'=>set_value('khoa_hoc'), 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
-				</div>
-			</div>
-			<?php echo validation_errors(); ?>
-			<div>
-				<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm']);?>
-				<?php //echo anchor('');?>
-			</div>
-			
+	<?php echo form_open('admin/add-student');?>
+				
+		<div class="form-row justify-content-md-center">
 			<?php if ($this->session->flashdata('success')) { ?>
-				<div class="alert alert-success alert-dismissible text-center"> 
+				<div class="alert alert-success alert-dismissible text-center col-md-8"> 
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 					<?php echo $this->session->flashdata('success'); ?>
 				</div>
-			<?php } else if ($this->session->flashdata('error')) { ?>
-				<div class = "alert alert-danger alert-dismissible text-center">
+				<?php } else if ($this->session->flashdata('error')) { ?>
+				<div class = "alert alert-danger alert-dismissible text-center col-md-8">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 					<?php echo $this->session->flashdata('error'); ?>
 				</div>
 			<?php } ?>
-		</div>     
-    </form>	
+		</div>
+
+		<div class="form-row justify-content-md-center">
+			<div class="form-group col-md-4">
+				<label for="id">ID</label>
+				<?php echo form_input(['name'=>'id', 'value'=>set_value('id'), 'placeholder'=>'ID', 'class'=>'form-control form-group']); ?>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="ten">Tên</label>
+				<?php echo form_input(['name'=>'ten', 'value'=>set_value('ten'), 'placeholder'=>'Tên', 'class'=>'form-control form-group']); ?>
+			</div>
+		</div>
+		<div class="form-row justify-content-md-center">
+			<div class="form-group col-md-5">
+				<label for="password">Password</label>
+				<?php echo form_input(['name'=>'password', 'value'=>set_value('password'), 'placeholder'=>'Password', 'class'=>'form-control']); ?>
+			</div>
+			<div class="form-group col-md-3">
+				<label for="khoa_hoc">Khoá học</label>
+				<?php echo form_input(['name'=>'khoa_hoc', 'value'=>set_value('khoa_hoc'), 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
+			</div>
+		</div>
+		
+		<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm offset-md-2']);?>
+	</form>
 </div>
 
 
