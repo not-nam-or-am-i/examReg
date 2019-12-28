@@ -159,24 +159,24 @@
 		<div class="form-row justify-content-md-center">
 			<div class="form-group col-md-5">
 				<label for="ten">Tên</label>
-				<?php echo form_input(['name'=>'ten', 'value'=>$student->ten, 'placeholder'=>'Tên', 'class'=>'form-control']); ?>
+				<?php echo form_input(['name'=>'ten', 'value'=>$student_account->ten, 'placeholder'=>'Tên', 'class'=>'form-control']); ?>
 			</div>
 			<div class="form-group col-md-3">
 				<label for="id">ID</label>
-				<?php echo form_input(['name'=>'id', 'value'=>$student->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+				<?php echo form_input(['name'=>'id', 'value'=>$student_account->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
 			</div>
 		</div>
 		<div class="form-row justify-content-md-center">
 			<div class="form-group col-md-5">
 				<label for="password">Password</label>
-				<?php echo form_input(['name'=>'password', 'value'=>$student->password, 'placeholder'=>'Password', 'class'=>'form-control']); ?>
+				<?php echo form_input(['name'=>'password', 'value'=>$student_account->password, 'placeholder'=>'Password', 'class'=>'form-control']); ?>
 			</div>
 			<div class="form-group col-md-3">
 				<label for="khoa_hoc">Khóa học</label>
-				<?php echo form_input(['name'=>'khoa_hoc', 'value'=>$student->khoa_hoc, 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
+				<?php echo form_input(['name'=>'khoa_hoc', 'value'=>$student_account->khoa_hoc, 'placeholder'=>'Khóa học', 'class'=>'form-control']); ?>
 			</div>
 		</div>
-		<?php echo form_submit(['name'=>'submit', 'value'=>'Update', 'class'=>'btn btn-primary btn-sm offset-md-3']);?>
+		<?php echo form_submit(['name'=>'submit', 'value'=>'Update', 'class'=>'btn btn-primary btn-sm offset-md-2']);?>
 
         <!--div class="update-form">
 			<div id="form-input-container" class="form-row">

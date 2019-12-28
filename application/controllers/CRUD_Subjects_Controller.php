@@ -44,7 +44,7 @@ class CRUD_Subjects_Controller extends CI_Controller {
     
     //sửa thông tin môn học
 	public function update($id) {
-        $data['subject'] = $this->mon_model->get_by_id($id);
+        $data['subject_data'] = $this->mon_model->get_by_id($id);
         
         //kiểm tra dữ liệu điền vào có trống không
         $this->form_validation->set_rules('id', 'ID', 'required');

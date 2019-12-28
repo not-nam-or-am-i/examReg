@@ -43,17 +43,10 @@ class CRUD_Students_Controller extends CI_Controller {
             redirect('admin');
         }
     }
-
-    public function update_index($id) {
-        $data['id']      = $id;
-        $data['student'] = $this->account_model->get_by_id($id);
-        $this->load->view('admin/admin_update_student');
-    }
     
     //sửa thông tin sinh viên
 	public function update($id) {
-        $data['id']      = $id;
-        $data['student'] = $this->account_model->get_by_id($id);
+        $data['student_account'] = $this->account_model->get_by_id($id);
         
         //kiểm tra dữ liệu điền vào có trống không
         $this->form_validation->set_rules('ten', 'Tên', 'required');

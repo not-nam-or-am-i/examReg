@@ -67,7 +67,7 @@
 
 	#container {
 		margin: 10px;
-		padding-top: 20px;
+		padding-top: 70px;
 		padding-left: 200px;
 	}
 
@@ -143,7 +143,7 @@
     </div-->
 
 	<!-- Form nhập -->
-    <?php echo form_open('admin/update-subject/'.$id);?>
+    <?php echo form_open('admin/update-subject/'.$subject_data->id);?>
 		<div class="form-row justify-content-md-center">
 			<?php if ($this->session->flashdata('success')) { ?>
 				<div class="alert alert-success alert-dismissible text-center col-md-6"> 
@@ -159,26 +159,26 @@
 		</div>
 
 		<div class="form-row justify-content-md-center">
-			<div class="form-group col-md-5">
-				<label for="id">ID</label>
-				<?php echo form_input(['name'=>'id', 'value'=>$subject->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
-			</div>
 			<div class="form-group col-md-3">
+				<label for="id">ID</label>
+				<?php echo form_input(['name'=>'id', 'value'=>$subject_data->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+			</div>
+			<div class="form-group col-md-5">
 				<label for="ten_mon">Tên môn</label>
-				<?php echo form_input(['name'=>'ten_mon', 'value'=>$subject->ten_mon, 'placeholder'=>'Tên môn', 'class'=>'form-control']); ?>
+				<?php echo form_input(['name'=>'ten_mon', 'value'=>$subject_data->ten_mon, 'placeholder'=>'Tên môn', 'class'=>'form-control']); ?>
 			</div>
 		</div>
 
-		<?php echo form_submit(['name'=>'submit', 'value'=>'Thêm', 'class'=>'btn btn-primary btn-sm offset-md-3']);?>
+		<?php echo form_submit(['name'=>'submit', 'value'=>'Sửa', 'class'=>'btn btn-primary btn-sm offset-md-2']);?>
 
 
         <!--div class="update-form">
 			<div id="form-input-container" class="form-row">
 				<div class="col-3">
-					<?php echo form_input(['name'=>'id', 'value'=>$subject->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
+					<?php echo form_input(['name'=>'id', 'value'=>$subject_data->id, 'placeholder'=>'ID', 'class'=>'form-control']); ?>
 				</div>
 				<div class="col-3">
-					<?php echo form_input(['name'=>'ten_mon', 'value'=>$subject->ten_mon, 'placeholder'=>'Tên môn', 'class'=>'form-control']); ?>
+					<?php echo form_input(['name'=>'ten_mon', 'value'=>$subject_data->ten_mon, 'placeholder'=>'Tên môn', 'class'=>'form-control']); ?>
 				</div>
 			</div>
 			<?php echo validation_errors(); ?>
